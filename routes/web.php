@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\CustomerController;
+use App\Http\Controllers\UserController;
 use App\Http\Controllers\OrderController;
 
 
@@ -20,5 +20,5 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::resource('customers', CustomerController::class);
-Route::get('/index', [CustomerController::class,'index'])->name('mypage');
+Route::resource('users', UserController::class);
+Route::get('/index', [UserController::class,'index'])->name('mypage');

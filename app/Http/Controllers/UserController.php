@@ -2,21 +2,27 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Customer;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 
-class CustomerController extends Controller
+class UserController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $customer = new Customer();
-        return view('customers/index', ['customer'=> $customer]);
+        $user = new User();
+        //$user->id = $request->id;
+       //$user->name = $request->name;
+        //$user->email = $request->email;
+       // $user->birth = $request->birth;
+        //$user->tel = $request->tel;
+        //$user->save();
+        return view('users/index', ['user'=> $user]);
     }
 
     /**
@@ -43,10 +49,10 @@ class CustomerController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Customer  $customer
+     * @param  \App\Models\User  $user
      * @return \Illuminate\Http\Response
      */
-    public function show(Customer $customer)
+    public function show(User $user)
     {
         //
     }
@@ -54,22 +60,22 @@ class CustomerController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Customer  $customer
+     * @param  \App\Models\User  $user
      * @return \Illuminate\Http\Response
      */
-    public function edit(Customer $customer)
+    public function edit(User $user)
     {
-        return view('customers/edit',['customer' => $customer]);
+        return view('users/edit',['user' => $user]);
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Customer  $customer
+     * @param  \App\Models\User  $user
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Customer $customer)
+    public function update(Request $request, User $user)
     {
         
     }
@@ -77,10 +83,10 @@ class CustomerController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Customer  $customer
+     * @param  \App\Models\User  $user
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Customer $customer)
+    public function destroy(User $user)
     {
         //
     }

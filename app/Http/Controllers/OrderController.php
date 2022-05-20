@@ -17,7 +17,7 @@ class OrderController extends Controller
         $order = new Order;
         $order = $request->hotel()->orders()->create($request->all());
         $order = $request->plan()->orders()->create($request->all());
-        return view('customers/index', ['order' => $order]);
+        return view('users/index', ['order' => $order]);
     }
 
     /**
