@@ -22,6 +22,6 @@ class CategoriesSeeder extends Seeder
           ['name' => 'ペンション']
       ];
 
-      \DB::table('categories')->insert($date);  
+      \DB::table('categories')->insert($data);  
     }
 }
