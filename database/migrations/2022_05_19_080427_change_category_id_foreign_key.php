@@ -25,7 +25,7 @@ class ChangeCategoryIdForeignKey extends Migration
      */
     public function down()
     {
-        Schema::table('products', function (Blueprint $table) {
+        Schema::table('hotels', function (Blueprint $table) {
             $table->dropForeign('category_id');
         });
     }

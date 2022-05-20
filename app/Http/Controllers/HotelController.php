@@ -4,7 +4,10 @@ namespace App\Http\Controllers;
 
 use App\Models\Hotel;
 use App\Models\Category;
+use App\Models\Plan;
+
 use Illuminate\Http\Request;
+use App\Http\Requests\HotelRequest;
 
 class HotelController extends Controller
 {
@@ -24,9 +27,6 @@ class HotelController extends Controller
         if($request->date) {
             $query->where('address', 'LIKE', '%' . $request->address . '%');
         }
-        //日付検索はいらんかったかも
-        
-        //宿分類検索
         if($request->category) {
             $query->where('category_id', '=', $request->category);
         }
@@ -47,7 +47,8 @@ class HotelController extends Controller
     {
         //新規作成画面を表示
         $hotel = new Hotel;
-        return view('hotels/create', ['hotel' => $hotel]);
+        $categories = Category::all();
+        return view('admin/hotels/create', ['hotel' => $hotel, 'categories' => $categories]);
     }
 
     /**
@@ -56,10 +57,24 @@ class HotelController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(HotelRequest $request)
     {
-        $hotel = create($request->all());
-        return redirect(view('admin.top'));
+        //ファイルの取得
+        $image = $request->file('image');
+        //ファイルの保存とパス取得
+        $path = "";
+        if(isset($image)) {
+            $path = $image->store('public/images');
+        }
+        Hotel::create([
+            'category_id' => $request->category,
+            'name' => $request->name,
+            'address' => $request->address,
+            'email' => $request->email,
+            'tel' => $request->tel,
+            'image' => $path,
+        ]);
+        return redirect(route('hotels.index'));
     }
 
     /**
