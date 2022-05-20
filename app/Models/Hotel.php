@@ -9,7 +9,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 class Hotel extends Model
 {
     use HasFactory;
-    protected $fillable = ['category_id', 'name', 'address', 'tel', 'email'];
+    protected $fillable = ['category_id', 'name', 'address', 'tel', 'email', 'image'];
 
     // categoryテーブルと一対多の関係
     public function category(): BelongsTo
