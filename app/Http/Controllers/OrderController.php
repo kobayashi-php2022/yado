@@ -12,9 +12,12 @@ class OrderController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        //
+        $order = new Order;
+        $order = $request->hotel()->orders()->create($request->all());
+        $order = $request->plan()->orders()->create($request->all());
+        return view('customers/index', ['order' => $order]);
     }
 
     /**
