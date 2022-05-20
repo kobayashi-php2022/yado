@@ -14,9 +14,9 @@ class AddIdToChanges extends Migration
     public function up()
     {
         Schema::table('changes', function (Blueprint $table) {
-            $table->unsignedBigInteger('customer_id');
+            $table->unsignedBigInteger('user_id');
             $table->unsignedBigInteger('orders_id');
-            $table->foreign('customer_id')->references('id')->on('orders');
+            $table->foreign('user_id')->references('id')->on('orders');
             $table->foreign('orders_id')->references('id')->on('orders');
         });
     }
