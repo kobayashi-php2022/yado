@@ -6,6 +6,13 @@ use Illuminate\Http\Request;
 
 class UserController extends Controller
 {
+    public $form_data = [
+        ["secondname", "text"],
+        ["firstname", "text"],
+        ["email", "email"],
+        ["password", "password"],
+        ["password_confirmation", "password"],
+    ];
     /**
      * Display a listing of the resource.
      *
@@ -34,7 +41,13 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        //
+    // 入力欄の name を使って取得
+        $secondname = $request->input('secondname');
+        $firstname = $request->input('firstname');
+        $email = $request->input('email');
+        $password = $request->input('password');
+        $password_confirmation = $request->input('password_confirmation');
+    return view(compact('title','firstname','email','password','password_confirmation'));
     }
 
     /**

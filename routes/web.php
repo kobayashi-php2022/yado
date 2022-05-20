@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\RegisterController;
+use Illuminate\Http\Request;
 
 /*
 |--------------------------------------------------------------------------
@@ -27,4 +28,11 @@ Route::get('/home', [UserController::class,'index'])->name('conf');
 
 Route::get('/conf', [UserController::class,'complete'])->name('complete');
 
-//Route::post('/conf', 'UserController@show');
+Route::post('/conf', function(Request $request){
+});
+
+Route::post('/conf', [App\Http\Controllers\UserController::class, 'postData']);
+
+Route::get('/form/','Form\FormController@index');
+Route::post('/form/confirm/','Form\FormController@confirm');
+Route::post('/form/complete/','Form\FormController@complete');

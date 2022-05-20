@@ -28,10 +28,11 @@
         </dl>
         <dl>
             <dt>パスワード</dt>
-            <dd>{{'password'}}</dd>
+            <dd>{{ 'password' }}</dd>
         </dl>
     </div>
         <p><input type="submit" value="登録" ></p>
+        <p><input type="button" onClick="history.back()" value="再入力" ></p>
         </form>
 </body>
 </html>
