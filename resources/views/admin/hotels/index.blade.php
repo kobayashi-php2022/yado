@@ -45,9 +45,10 @@
     </form>
     <hr>
     <p>検索結果を表示</p>
-    {{-- 宿データ・画像表示もしたい --}}
+    {{-- 宿データの一覧 --}}
     @foreach ($hotels as $hotel)
         <div class="info_index">
+            {{-- 宿写真と宿詳細 --}}
             <div class="info" style="display:flex; margin:40px;">
                 @if ($hotel->image !== "")
                 <img src="{{ \Storage::url($hotel->image) }}" width="100" height="100">
@@ -85,16 +86,9 @@
                         <td>{{ $hotel->updated_at }}</td>
                     </tr>
                 </table>
-
-                {{-- <h2>{{ $hotel->name }}</h2>
-                <p>宿分類：{{ $hotel->category->name }}</p>
-                <p>住所：{{ $hotel->address }}</p>
-                <p>電話番号：{{ $hotel->tel }}</p>
-                <p>メールアドレス{{ $hotel->email }}</p>
-                <p>登録日{{ $hotel->created_at }}</p>
-                <p>最終更新日{{ $hotel->updated_at }}</p> --}}
             </div>
 
+            {{-- プラン --}}
             <div class="plan_index">
                 {{-- プランってどうやって表示させるんだろう --}}
             </div>

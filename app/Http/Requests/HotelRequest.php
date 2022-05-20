@@ -21,15 +21,16 @@ class HotelRequest extends FormRequest
      *
      * @return array
      */
+    //バリデーション
     public function rules()
     {
         return [
-            'category' => ['required'],
-            'name' => ['required'],
-            'address' => ['required'],
-            'email' => ['required'],
-            'tel' => ['required'],
-            'image' => ['file', 'mimes:jpeg, jpg, png', 'dimensions:min_width=100,min_height=100,max_width=2000,max_height=2000'],            
+            'category' => 'required',
+            'name' => 'required',
+            'address' => 'required',
+            'email' => 'required',
+            'tel' => 'required',
+            'image' => 'file|mimes:jpeg,jpg,png|max:1600',            
         ];
     }
 }

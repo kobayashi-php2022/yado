@@ -10,7 +10,7 @@
 </div>
 <h1>宿情報詳細</h1>
 <p>
-    <a href="{{ route('hotels.edit', $hotel) }}">編集する</a>
+    <a href="{{ route('hotels.edit', $hotel->id) }}">編集する</a>
     |
     <a href="#" onclick="deleteHotel()">削除する</a>
     <form action="{{ route('hotels.destroy', $hotel) }}" method="post" id="delete-form">
@@ -56,5 +56,10 @@
         <td>{{ $hotel->updated_at }}</td>
     </tr>
 </table>
+
+{{-- プラン一覧・追加 --}}
+<a href="">プランを追加する</a>
+
+<hr>
 <a href="/hotels">一覧に戻る</a>
 @endsection

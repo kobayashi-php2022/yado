@@ -96,7 +96,8 @@ class HotelController extends Controller
      */
     public function edit(Hotel $hotel)
     {
-        return view('admin/hotels/edit', ['hotel' => $hotel]);
+        $categories = Category::all();
+        return view('admin/hotels/edit', ['hotel' => $hotel, 'categories' => $categories]);
     }
 
     /**
@@ -106,10 +107,25 @@ class HotelController extends Controller
      * @param  \App\Models\Hotel  $hotel
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Hotel $hotel)
+    public function update(HotelRequest $request, Hotel $hotel)
     {
-        $hotel->update($request->all());
-        return redirect(view('admin.top'));
+        //ファイルの取得
+        $image = $request->file('image');
+        //ファイルは保存してたやつ
+        $path = $hotel->image;
+        if(isset($image)) {
+            \Stroge::disk('public')->delete($path);
+            $path = $image->store('public/items');
+        }        
+        $hotel->update([
+            'category_id' => $request->category,
+            'name' => $request->name,
+            'address' => $request->address,
+            'email' => $request->email,
+            'tel' => $request->tel,
+            'image' => $path,
+        ]);
+        return redirect(route('hotels.index'));
     }
 
     /**
@@ -120,6 +136,11 @@ class HotelController extends Controller
      */
     public function destroy(Hotel $hotel)
     {
+        //ファイルが登録されていれば一緒に削除する
+        $path = $hotel->image;
+        if($path !== '') {
+            \Storage::disk('public')->delete($path);
+        }
         $hotel->delete();
         return redirect(route('hotels.index'));
     }
