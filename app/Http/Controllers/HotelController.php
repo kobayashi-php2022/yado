@@ -21,10 +21,10 @@ class HotelController extends Controller
         $query = Hotel::with('category');
 
         // 名前検索と住所検索
-        if($request->keyword) {
+        if($request->name) {
             $query->where('name', 'LIKE', '%' . $request->name . '%');
         }
-        if($request->date) {
+        if($request->address) {
             $query->where('address', 'LIKE', '%' . $request->address . '%');
         }
         if($request->category) {
@@ -64,7 +64,7 @@ class HotelController extends Controller
         //ファイルの保存とパス取得
         $path = "";
         if(isset($image)) {
-            $path = $image->store('public/images');
+            $path = $image->store('public/items');
         }
         Hotel::create([
             'category_id' => $request->category,
@@ -121,6 +121,6 @@ class HotelController extends Controller
     public function destroy(Hotel $hotel)
     {
         $hotel->delete();
-        return redirect(view('admin.top'));
+        return redirect(route('hotels.index'));
     }
 }

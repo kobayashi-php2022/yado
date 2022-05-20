@@ -48,28 +48,57 @@
     {{-- 宿データ・画像表示もしたい --}}
     @foreach ($hotels as $hotel)
         <div class="info_index">
-            <div class="info">
-                {{-- 画像表示
-                @if ($item->image !=='')
-                <img src="{{ \Storage::url($item->image) }}" width="25%">
+            <div class="info" style="display:flex; margin:40px;">
+                @if ($hotel->image !== "")
+                <img src="{{ \Storage::url($hotel->image) }}" width="100" height="100">
                 @else
-                <img src="{{ \Storage::url('items/no_image.png') }}">
+                <img src="{{ \Storage::url('items/no_image.png') }}" width="100" height="100">
                 @endif
-                参考：http://taustation.com/laravel-uploaded-image-display/
-                --}}
                 
-                <h2>{{ $hotel->name }}</h2>
+                <table style="margin-left: 30px;">
+                    <tr>
+                        <th>宿名</th>
+                        <th><a href="{{ route('hotels.show', $hotel->id) }}">{{ $hotel->name }}</a></th>
+                    </tr>
+                    <tr>
+                        <td>宿分類</td>
+                        <td>{{ $hotel->category->name }}</td>
+                    </tr>
+                    <tr>
+                        <td>住所</td>
+                        <td>{{ $hotel->address }}</td>
+                    </tr>
+                    <tr>
+                        <td>電話番号</td>
+                        <td>{{ $hotel->tel }}</td>
+                    </tr>
+                    <tr>
+                        <td>メールアドレス</td>
+                        <td>{{ $hotel->email }}</td>
+                    </tr>
+                    <tr>
+                        <td>登録日</td>
+                        <td>{{ $hotel->created_at }}</td>
+                    </tr>
+                    <tr>
+                        <td>最終更新日</td>
+                        <td>{{ $hotel->updated_at }}</td>
+                    </tr>
+                </table>
+
+                {{-- <h2>{{ $hotel->name }}</h2>
                 <p>宿分類：{{ $hotel->category->name }}</p>
                 <p>住所：{{ $hotel->address }}</p>
                 <p>電話番号：{{ $hotel->tel }}</p>
                 <p>メールアドレス{{ $hotel->email }}</p>
                 <p>登録日{{ $hotel->created_at }}</p>
-                <p>最終更新日{{ $hotel->updated_at }}</p>
+                <p>最終更新日{{ $hotel->updated_at }}</p> --}}
             </div>
 
             <div class="plan_index">
                 {{-- プランってどうやって表示させるんだろう --}}
             </div>
+            </a>   
         </div>
     @endforeach
 {{ $hotels->appends(Request::All())->links('pagination::bootstrap-4') }}
