@@ -1,20 +1,20 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ja">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>会員登録</title>
+    <title>ログイン</title>
 </head>
 <body>
-    <h1>会員登録</h1>
-    <form action="confirm.php" method="post">
-        <p><label><br><input type="text" name="secondname" placeholder="名字"></label></p>
-        <p><label><br><input type="text" name="firstname" placeholder="名前"></label></p>
+    <h1>ログイン</h1>
+    <form action="{{route('login')}}" method="post">
+    @csrf
         <p><label><br><input type="email" name="email" placeholder="メールアドレス"></label></p>
         <p><label><br><input type="password" name="password" placeholder="パスワード"></label></p>
-        <p><label><br><input type="password" name="password_re" placeholder="パスワード確認"></label></p>
         <p><input type="submit" value="ログイン"></p>
         </form>
+        <p>または</p>
+        <p><a href="{{route('register')}}">新規会員登録</a></p>
 </body>
 </html>
