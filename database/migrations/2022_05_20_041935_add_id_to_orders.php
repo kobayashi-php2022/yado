@@ -18,7 +18,6 @@ class AddIdToOrders extends Migration
             $table->unsignedBigInteger('user_id');
             $table->foreign('users_id')->references('id')->on('users');
             $table->foreign('hotel_id')->references('id')->on('hotels');
-           
         });
     }
 
