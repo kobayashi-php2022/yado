@@ -14,12 +14,13 @@ class CreateHotelsTable extends Migration
     public function up()
     {
         Schema::create('hotels', function (Blueprint $table) {
-            $table->id();
-            $table->unsignedBigInteger('category_id');
-            $table->string('name', 255);
-            $table->string('address', 255);
-            $table->string('tel', 255);
-            $table->string('email', 255);
+            $table->bigIncrements('id');
+            
+            $table->string('name',255);
+            $table->string('address',255);
+            $table->string('email',255);
+            $table->string('tel',255);
+            $table->date('birth');
             $table->timestamps();
         });
     }
