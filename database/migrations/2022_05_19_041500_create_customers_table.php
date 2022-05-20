@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateHotelsTable extends Migration
+class CreateCustomersTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,15 @@ class CreateHotelsTable extends Migration
      */
     public function up()
     {
-        Schema::create('hotels', function (Blueprint $table) {
+        Schema::create('customers', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('name',255);
+            $table->string('password',12);
+            $table->string('auth',5);
             $table->string('address',255);
-            $table->string('email',255);
             $table->string('tel',255);
+            $table->string('email',255);
+            $table->date('birth');
             $table->timestamps();
         });
     }
@@ -30,6 +33,6 @@ class CreateHotelsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('hotels');
+        Schema::dropIfExists('customers');
     }
 }
