@@ -16,7 +16,7 @@ class AddIdToOrders extends Migration
         Schema::table('orders', function (Blueprint $table) {
             $table->unsignedBigInteger('hotels_id');
             $table->unsignedBigInteger('user_id');
-            $table->foreign('users_id')->references('id')->on('users');
+            $table->foreign('user_id')->references('id')->on('users');
             $table->foreign('hotel_id')->references('id')->on('hotels');
         });
     }
