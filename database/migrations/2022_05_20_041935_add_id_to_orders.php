@@ -31,7 +31,6 @@ class AddIdToOrders extends Migration
         Schema::table('orders', function (Blueprint $table) {
             $table->dropForeign(['hotels_id']);
             $table->dropForeign(['user_id']);
-            
         });
     }
 }
