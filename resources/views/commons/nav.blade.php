@@ -14,7 +14,22 @@
           <ul class="navbar-nav mr-10">
               @auth
                   <li class="nav-item"><a href="#" class="nav-link">マイページ</a></li>
-                  <li class="nav-item"><a href="{{ route('logout') }}" class="nav-link">ログアウト</a></li>
+                  <li class="nav-item">
+                    <a href="#" onclick="logout()" class="nav-link">
+                      ログアウト
+                    </a>
+                    <form action="{{ route('logout') }}" method="post" id="logout-form">
+                      @csrf
+                    </form>
+                    <script>
+                      function logout() {
+                        event.preventDefault();
+                        if(window.confirm('ログアウトしますか？')) {
+                          document.getElementById('logout-form').submit();
+                        }
+                      }
+                    </script>
+                  </li>
               @else
                   <li class="nav-item"><a href="{{ route('login') }}" class="nav-link">ログイン</a></li>
 
