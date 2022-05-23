@@ -36,8 +36,8 @@
             
 <tr>
     <td>会員ID：{{$user->id}}<br></td>
-       {{--<a href="{{route('users.edit', $user->id)}}">変更する</a></td>--}}
-      {{--<a href="#" onclick="deleteUser()">退会する</a>
+       <a href="{{route('users.edit', $user->id)}}">変更する</a></td>
+      <a href="#" onclick="deleteUser()">退会する</a>
     <form action ="{{route('users.destroy',$user)}}" method="post" id="delete-form">
         @csrf
         @method('delette')
@@ -48,7 +48,7 @@
                     document.getElementById('delete-form').submit();
                 }
             }
-            </script>--}}
+            </script>
       
     <td>お名前：{{$user->name}}<br></td>
     <td>住所：{{$user->address}}<br></td>
