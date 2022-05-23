@@ -6,7 +6,6 @@ use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\HotelController;
 use App\Http\Controllers\PlanController;
-use App\Http\Controllers\OrderController;
 
 use Illuminate\Http\Request;
 
@@ -22,17 +21,13 @@ use Illuminate\Http\Request;
 |
 */
 
-Route::get('/', function () {
-    return view('reserve.index');
-});
+Route::get('/', [HotelController::class,'index']);
 
 Route::get('/register', [RegisterController::class,'index'])->name('register');
-
 Route::post('/conf', [UserController::class,'confirm'])->name('conf');
-
 Route::post('/complete', [UserController::class,'complete'])->name('complete');
 
-Route::get('/home', [OderController::class,'index'])->name('home');
+Route::get('/home', [HotelController::class,'index'])->name('home');
 
 //Route::post('/conf', function(Request $request){
 //});

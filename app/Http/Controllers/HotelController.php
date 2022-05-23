@@ -115,7 +115,7 @@ class HotelController extends Controller
         //ファイルは保存してたやつ
         $path = $hotel->image;
         if(isset($image)) {
-            \Stroge::disk('public')->delete($path);
+            \Storage::disk('public')->delete($path);
             $path = $image->store('public/items');
         }        
         $hotel->update([

@@ -39,6 +39,7 @@ class UserController extends Controller
         $conf->name = $request->name;
         $conf->email = $request->email;
         $conf->password = Hash::make($request->password);
+        $conf->auth = $request->auth;
         $conf->save();
         return view('complete');
     }
