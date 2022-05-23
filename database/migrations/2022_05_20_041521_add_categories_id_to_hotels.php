@@ -27,7 +27,7 @@ class AddCategoriesIdToHotels extends Migration
     public function down()
     {
         Schema::table('hotels', function (Blueprint $table) {
-            $table->dropForeign(['categories_id']);
+            $table->dropForeign(['category_id']);
         });
     }
 }

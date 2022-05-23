@@ -30,3 +30,4 @@ class AddImageStringToHotelsTable extends Migration
         });
     }
 }
+
