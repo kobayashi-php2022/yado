@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HotelController;
 use App\Http\Controllers\PlanController;
+use App\Http\Controllers\OrderController;
 
 /*
 |--------------------------------------------------------------------------
@@ -24,5 +25,11 @@ Route::get('/admin', function () {
     return view('admin/top');
 });
 
+//一覧と詳細表示だけ
 Route::resource('hotels', HotelController::class);
 Route::resource('plans', PlanController::class);
+Route::resource('orders', OrderController::class);
+
+// Route::group(['middleware' => ['auth']] function () {
+    // ログインしてないと見れないところ、ログイン機能完成したら入れます
+// });
