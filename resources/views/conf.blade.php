@@ -43,9 +43,8 @@
               </div>
               </div>
               <input type="hidden" name="name" value="{{ request('name') }}">
-        <input type="hidden" name="email" value="{{ request('email') }}">
-        <input type="hidden" name="password" value="{{ request('password') }}">
-
+              <input type="hidden" name="email" value="{{ request('email') }}">
+              <input type="hidden" name="password" value="{{ request('password') }}">
           </form>
           </div>
               </div>

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
 {
@@ -37,7 +38,7 @@ class UserController extends Controller
         $conf = new \App\Models\User;
         $conf->name = $request->name;
         $conf->email = $request->email;
-        $conf->password = $request->password;
+        $conf->password = Hash::make($request->password);
         $conf->save();
         return view('complete');
     }
@@ -89,7 +90,12 @@ class UserController extends Controller
         return view('conf');
 	}
 
-    public function store(Request $request) {
-        //
+    public function login(Request $request) {
+        $this->validate($request,[
+            'email' => 'required',
+            'password' => 'required',
+        ]);
+        return view('login');
     }
+    
 }

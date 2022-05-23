@@ -9,13 +9,6 @@
     <title>新規会員登録</title>
 </head>
 <body>
-        @if($errors->count())
-            <ul class="alert">
-                @foreach($errors->all() as $error)
-                    <li>{{ $error }}</li>
-                @endforeach
-            </ul>
-        @endif
         <div class="cotainer">
             <div class="row justify-content-center mt-5">
                 <div class="col-md-8">
@@ -26,25 +19,25 @@
           <form action="{{route('conf')}}" method="post" onsubmit="">
           @csrf
           <div class="form-group row">
-              <label for="name" class="col-md-4 col-form-label text-md-right"></label>
+              <label for="name" class="col-md-3 col-form-label text-md-right"></label>
               <div class="col-md-6">
                 <input type="text" id="name" class="form-control" name="name" placeholder="氏名" required>
               </div>
             </div>
             <div class="form-group row">
-              <label for="email" class="col-md-4 col-form-label text-md-right"></label>
+              <label for="email" class="col-md-3 col-form-label text-md-right"></label>
               <div class="col-md-6">
                 <input type="email" id="email" class="form-control" name="email" placeholder="メールアドレス" required>
               </div>
             </div>
             <div class="form-group row">
-              <label for="password" class="col-md-4 col-form-label text-md-right"></label>
+              <label for="password" class="col-md-3 col-form-label text-md-right"></label>
               <div class="col-md-6">
                 <input type="password" id="password" class="form-control" name="password" placeholder="パスワード" required>
               </div>
             </div>
             <div class="form-group row">
-              <label for="confirm-password" class="col-md-4 col-form-label text-md-right"></label>
+              <label for="confirm-password" class="col-md-3 col-form-label text-md-right"></label>
               <div class="col-md-6">
                 <input type="password" id="confirm-password" class="form-control" name="confirm-password" placeholder="パスワード確認" required>
                 <div class="valid-feedback">O.K.</div>
@@ -52,12 +45,24 @@
               </div>
             </div>
             <div class="row">
-              <div class="col-md-8 offset-md-4">
+              <div class="col-md-8 offset-md-3">
+              @if($errors->count())
+            <ul class="alert" style="color:red; font-size:12px;">
+                @foreach($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+            @endif
               <p><input type="submit" value="入力内容を確認" class="btn btn-secondary"></p><br>
               <p>または　<a href="{{route('login')}}">ログイン</a></p>
               </div>
-            </div>
+              </div>
           </form>
+          </div>
+            </div>
+            </div>
+            </div>
+            </div>
             <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
             <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
 
