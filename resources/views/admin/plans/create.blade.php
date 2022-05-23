@@ -23,7 +23,7 @@
             </p>
             <p>
                 <label for="rooms_num">部屋数</label>
-                <input type="number" name="rooms_num" id="rooms_num">
+            <input type="number" name="rooms_num" id="rooms_num">
             </p>
             <input type="submit" value="登録">
             <hr>

@@ -13,15 +13,15 @@
     <a href="{{ route('hotels.edit', $hotel->id) }}">編集する</a>
     |
     <a href="#" onclick="deleteHotel()">削除する</a>
-    <form action="{{ route('hotels.destroy', $hotel) }}" method="post" id="delete-form">
+    <form action="{{ route('hotels.destroy', $hotel) }}" method="post" id="hotels-delete-form">
         @csrf
         @method('delete')
     </form>
     <script type="text/javascript">
         function deleteHotel() {
             event.preventDefault();
-            if(window.confirm('本当に削除しますか？')) {
-                document.getElementById('delete-form').submit();
+            if(window.confirm('この宿にお客様の予約がある場合、自動的に削除されます。\r\n本当に削除しますか？')) {
+                document.getElementById('hotels-delete-form').submit();
             }
         }
     </script>
@@ -68,7 +68,10 @@
 <table style="margin-left: 30px;">
     <tr>
         <th>プラン名</th>
-        <th>{{ $plan->name }}</a></th>
+        <th>
+            {{ $plan->name }}
+            <a href="{{ route('plans.edit', $plan->id) }}"><button>編集する</button></a>
+        </th>
     </tr>
     <tr>
         <td>プランの説明</td>

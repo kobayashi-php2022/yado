@@ -73,9 +73,12 @@ class PlanController extends Controller
      * @param  \App\Models\Plan  $plan
      * @return \Illuminate\Http\Response
      */
-    public function edit(Plan $plan)
+    public function edit(Plan $plan, Hotel $hotel, Request $request)
     {
-        //
+        // dd($plan);
+        $hotel = Hotel::find($plan->hotels_id);
+        // dd($hotel);
+        return view('admin.plans.edit', ['plan' => $plan, 'hotel' => $hotel]);
     }
 
     /**
@@ -87,7 +90,20 @@ class PlanController extends Controller
      */
     public function update(Request $request, Plan $plan)
     {
-        //
+        $validated = $request->validate([
+            'plan_name' => 'required|max:255',
+            'content' => 'required',
+            'rooms_num' => 'required',
+        ]);
+        $plan->update([
+            'hotels_id' => $request->hotel_id,
+            'name' => $request->plan_name,
+            'content' => $request->content,
+            'price' => $request->price,
+            'rooms_num' => $request->rooms_num,
+        ]);
+        $hotel = Hotel::find($request->hotel_id);
+        return redirect(route('hotels.show', ['hotel' => $hotel->id]));
     }
 
     /**
@@ -98,6 +114,8 @@ class PlanController extends Controller
      */
     public function destroy(Plan $plan)
     {
-        //
+        $plan->delete();
+        $hotel = Hotel::find($plan->hotels_id);
+        return redirect(route('hotels.show', ['hotel' => $hotel->id]));
     }
 }
