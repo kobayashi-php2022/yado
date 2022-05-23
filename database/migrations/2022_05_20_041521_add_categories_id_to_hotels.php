@@ -14,8 +14,8 @@ class AddCategoriesIdToHotels extends Migration
     public function up()
     {
         Schema::table('hotels', function (Blueprint $table) {
-            $table->unsignedBigInteger('categories_id');
-            $table->foreign('categories_id')->references('id')->on('categories');
+            $table->unsignedBigInteger('category_id');
+            $table->foreign('category_id')->references('id')->on('categories');
         });
     }
 
@@ -27,7 +27,7 @@ class AddCategoriesIdToHotels extends Migration
     public function down()
     {
         Schema::table('hotels', function (Blueprint $table) {
-            $table->dropForeign(['categories_id']);
+            $table->dropForeign(['category_id']);
         });
     }
 }

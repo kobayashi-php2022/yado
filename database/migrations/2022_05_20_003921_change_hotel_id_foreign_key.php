@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class AddImageStringToHotelsTable extends Migration
+class ChangeHotelIdForeignKey extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +13,8 @@ class AddImageStringToHotelsTable extends Migration
      */
     public function up()
     {
-        Schema::table('hotels', function (Blueprint $table) {
-            $table->string('image', 100)->nullable();
+        Schema::table('plans', function (Blueprint $table) {
+            $table->foreign('hotel_id')->references('id')->on('hotels');
         });
     }
 
@@ -25,9 +25,8 @@ class AddImageStringToHotelsTable extends Migration
      */
     public function down()
     {
-        Schema::table('hotels', function (Blueprint $table) {
-            $table->dropColumn('image');
+        Schema::table('plans', function (Blueprint $table) {
+            $table->dropForeign('hotel_id');
         });
     }
 }
-
