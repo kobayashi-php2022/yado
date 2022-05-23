@@ -9,7 +9,7 @@
     @endif
 </div>
 <h1>宿情報詳細</h1>
-{{-- @if(\Auth::user()->auth == "管理者") --}}
+{{-- @if(\Auth::user()->auth = "管理者") --}}
 <p>
     <a href="{{ route('hotels.edit', $hotel->id) }}">編集する</a>
     |
@@ -61,7 +61,7 @@
 
 {{-- プラン一覧・追加 --}}
 <h2>プラン一覧</h2>
-{{-- @if(\Auth::user()->auth == "管理者") --}}
+{{-- @if(\Auth::user()->auth = "管理者") --}}
 <form action="{{ route('plans.create') }}">
     @csrf
     <input type="hidden" name="hotel_id" value={{ $hotel->id }}>

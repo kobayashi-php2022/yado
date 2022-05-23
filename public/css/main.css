@@ -19,3 +19,12 @@
   color: black;
   margin-top: -650px;
 }
+
+/* ナビゲーションです */
+.navbar-nav {
+  margin-right: 10px;
+}
+.nav-item {
+  width: 80px;
+  text-align: center;
+}
