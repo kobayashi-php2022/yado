@@ -40,7 +40,6 @@ class UserController extends Controller
         $conf->password = $request->password;
         $conf->save();
         return view('complete');
-        //return view(compact('title','firstname','email','password'));
     }
 
     /**
@@ -80,29 +79,17 @@ class UserController extends Controller
 	public function form() {
 		return view('register');
 	}
-    public function confirm() {
+    public function confirm(Request $request) {
+        $this->validate($request,[
+            'name' => 'required',
+            'email' => 'required|unique:users,email',
+            'password' => 'required',
+            'confirm-password' => 'required | same:password',
+        ]);
         return view('conf');
 	}
 
     public function store(Request $request) {
-        $this -> validate($request,[
-            'name' => 'required',
-            'email' => 'required',
-            'password' => 'required',
-            'password_confirmation' => 'required | same:password',
-        ]);
-        $user = $request->user->conf()->create($request->all());
-        return redirect(route('home'));
+        //
     }
-        /**
-         * エラーメッセージ
-         *
-         * @return array
-         */
-        public function messages()
-        {
-            return [
-                'password.confirmed' => 'パスワードが異なります',
-            ];
-        }
 }

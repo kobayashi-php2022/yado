@@ -9,6 +9,13 @@
     <title>新規会員登録</title>
 </head>
 <body>
+        @if($errors->count())
+            <ul class="alert">
+                @foreach($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+        @endif
         <div class="cotainer">
             <div class="row justify-content-center mt-5">
                 <div class="col-md-8">

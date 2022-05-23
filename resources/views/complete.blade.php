@@ -4,12 +4,33 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+
     <title>会員登録完了</title>
 </head>
 <body>
-    <h1>会員登録完了</h1>
-    <meta charset="utf-8">
-    <title>会員登録が完了しました</title>
-    <p><a href="{{route('login')}}">ログインする</a></p>
+<div class="cotainer">
+            <div class="row justify-content-center mt-5">
+                <div class="col-md-8">
+                <div class="card">
+                    <div class="card-header">会員登録完了</div>
+                    <div class="card-body">
+
+          <div class="form-group row">
+              <div class="col-md-20 text-align: center;">
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-8 offset-md-2" style="text-align: center;">
+              <h2>会員登録が完了しました</h2><br>
+              <a href="{{route('login')}}"><input type="button" value="ログインする" class="btn btn-secondary"></a>
+              </div>
+            </div>
+                     </div>
+              </div>
+              </div>
+            </div>
+        </div>
 </body>
 </html>

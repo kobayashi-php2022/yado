@@ -42,15 +42,15 @@
               <input type="submit" class="btn btn-secondary ml-12" value="登録">
               </div>
               </div>
+              <input type="hidden" name="name" value="{{ request('name') }}">
+        <input type="hidden" name="email" value="{{ request('email') }}">
+        <input type="hidden" name="password" value="{{ request('password') }}">
+
           </form>
           </div>
               </div>
               </div>
               </div>
               </div>
-        <input type="hidden" name="name"value="{{ request()->name }}">
-        <input type="hidden" name="email"value="{{ request()->email }}">
-        <input type="hidden" name="password"value="{{ request()->password }}">
-        </form>
 </body>
 </html>
