@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
+use DateTime;
 
 class CategoriesSeeder extends Seeder
 {
@@ -14,12 +15,26 @@ class CategoriesSeeder extends Seeder
     public function run()
     {
       $data = [
-          ['name' => 'シティホテル'],
-          ['name' => 'リゾートホテル'],
-          ['name' => 'ビジネスホテル'],
-          ['name' => '旅館'],
-          ['name' => '民宿'],
-          ['name' => 'ペンション']
+          ['name' => 'シティホテル',
+          'created_at' => new Datetime(),
+          'updated_at' => new Datetime()
+          ],
+          ['name' => 'リゾートホテル',
+          'created_at' => new Datetime(),
+          'updated_at' => new Datetime()
+          ],
+          ['name' => 'ビジネスホテル',
+          'created_at' => new Datetime(),
+          'updated_at' => new Datetime()],
+          ['name' => '旅館',
+          'created_at' => new Datetime(),
+          'updated_at' => new Datetime()],
+          ['name' => '民宿',
+          'created_at' => new Datetime(),
+          'updated_at' => new Datetime()],
+          ['name' => 'ペンション',
+          'created_at' => new Datetime(),
+          'updated_at' => new Datetime()]
       ];
 
       \DB::table('categories')->insert($data);  
