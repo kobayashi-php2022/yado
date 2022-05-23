@@ -16,5 +16,4 @@ return [
     'failed' => 'ログインできません。入力した情報に誤りがないかご確認ください。',
     'throttle' => 'ロックされました。:seconds秒後に再度お試しください。',
     'password' => 'The provided password is incorrect.',
-
 ];

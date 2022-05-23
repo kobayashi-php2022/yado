@@ -4,12 +4,12 @@ return [
 
     /*
     |--------------------------------------------------------------------------
-    | Validation Language Lines
+    | バリデーション言語行
     |--------------------------------------------------------------------------
     |
-    | The following language lines contain the default error messages used by
-    | the validator class. Some of these rules have multiple versions such
-    | as the size rules. Feel free to tweak each of these messages here.
+    | 以下の言語行はバリデタークラスにより使用されるデフォルトのエラー
+    | メッセージです。サイズルールのようにいくつかのバリデーションを
+    | 持っているものもあります。メッセージはご自由に調整してください。
     |
     */
 
@@ -124,31 +124,32 @@ return [
     'uploaded'             => ':attributeのアップロードに失敗しました。',
     'url'                  => ':attributeに正しい形式を指定してください。',
     'uuid'                 => ':attributeに有効なUUIDを指定してください。',
+  
     /*
     |--------------------------------------------------------------------------
-    | Custom Validation Language Lines
+    | Custom バリデーション言語行
     |--------------------------------------------------------------------------
     |
-    | Here you may specify custom validation messages for attributes using the
-    | convention "attribute.rule" to name the lines. This makes it quick to
-    | specify a specific custom language line for a given attribute rule.
+    | "属性.ルール"の規約でキーを指定することでカスタムバリデーション
+    | メッセージを定義できます。指定した属性ルールに対する特定の
+    | カスタム言語行を手早く指定できます。
     |
     */
 
     'custom' => [
-        'attribute-name' => [
-            'rule-name' => 'custom-message',
+        '属性名' => [
+            'ルール名' => 'カスタムメッセージ',
         ],
     ],
 
     /*
     |--------------------------------------------------------------------------
-    | Custom Validation Attributes
+    | カスタムバリデーション属性名
     |--------------------------------------------------------------------------
     |
-    | The following language lines are used to swap our attribute placeholder
-    | with something more reader friendly such as "E-Mail Address" instead
-    | of "email". This simply helps us make our message more expressive.
+    | 以下の言語行は、例えば"email"の代わりに「メールアドレス」のように、
+    | 読み手にフレンドリーな表現でプレースホルダーを置き換えるために指定する
+    | 言語行です。これはメッセージをよりきれいに表示するために役に立ちます。
     |
     */
 
@@ -156,6 +157,12 @@ return [
         'name' => '名前',
         'password' => 'パスワード',
         'email' => 'メールアドレス',
+        'address' => '住所',
+        'tel' => '電話番号',
+        'category' => '宿分類',
+        'content' => 'プランの説明',
+        'plan_name' => 'プラン名',
+        'room_num' => '部屋数',
     ],
 
 ];
