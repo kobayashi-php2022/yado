@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class AddCategoriesIdToHotels extends Migration
+class ChangeCategoryIdForeignKey extends Migration
 {
     /**
      * Run the migrations.
@@ -14,7 +14,6 @@ class AddCategoriesIdToHotels extends Migration
     public function up()
     {
         Schema::table('hotels', function (Blueprint $table) {
-            $table->unsignedBigInteger('category_id');
             $table->foreign('category_id')->references('id')->on('categories');
         });
     }
@@ -27,7 +26,7 @@ class AddCategoriesIdToHotels extends Migration
     public function down()
     {
         Schema::table('hotels', function (Blueprint $table) {
-            $table->dropForeign(['category_id']);
+            $table->dropForeign('category_id');
         });
     }
 }
