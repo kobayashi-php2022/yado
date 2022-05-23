@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\OrderController;
 
+use App\Http\Controllers\HotelController;
 
 /*
 |--------------------------------------------------------------------------
@@ -22,3 +23,9 @@ Route::get('/', function () {
 
 Route::resource('users', UserController::class);
 Route::get('/index', [UserController::class,'index'])->name('mypage');
+// 最終的に消すやつ
+Route::get('/admin', function () {
+    return view('admin/top');
+});
+
+Route::resource('hotels', HotelController::class);
