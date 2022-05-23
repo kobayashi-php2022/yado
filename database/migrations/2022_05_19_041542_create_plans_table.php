@@ -18,7 +18,7 @@ class CreatePlansTable extends Migration
             
             $table->string('name',255);
             $table->text('content',200);
-            $table->integer('prices');
+            $table->integer('price');
             $table->timestamps();
         });
     }
