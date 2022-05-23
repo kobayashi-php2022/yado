@@ -159,6 +159,9 @@ return [
         'email' => 'メールアドレス',
         'tel' => '電話番号',
         'category' => '宿分類',
+        'content' => 'プランの説明',
+        'plan_name' => 'プラン名',
+        'room_num' => '部屋数',
     ],
 
 ];
