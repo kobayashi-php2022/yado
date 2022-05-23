@@ -46,7 +46,8 @@
             </div>
             <div class="row">
               <div class="col-md-8 offset-md-4">
-              <p><input type="submit" value="入力内容を確認"></p>
+              <p><input type="submit" value="入力内容を確認" class="btn btn-secondary"></p><br>
+              <p>または　<a href="{{route('login')}}">ログイン</a></p>
               </div>
             </div>
           </form>
@@ -97,7 +98,5 @@
                 }
             });
             </script>
-        <p>または</p>
-        <p><a href="{{route('login')}}">ログイン</a></p>
 </body>
 </html>
