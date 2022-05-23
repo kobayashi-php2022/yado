@@ -2,10 +2,10 @@
 
 @section('content')
 <div class="header_image">
-    @if ($hotel->image !== null)
+    @if ($hotel->image !== "")
     <img src="{{ \Storage::url($hotel->image) }}" width="600" height="400">
     @else
-    <img src="{{ \Storage::url('items/no_image.png') }}" width="100" height="100" style="text-align: center;">
+    <img src="{{ \Storage::url('items/no_image.png') }}" width="100" height="100">
     @endif
 </div>
 <h1>宿情報詳細</h1>
@@ -58,8 +58,40 @@
 </table>
 
 {{-- プラン一覧・追加 --}}
-<a href="">プランを追加する</a>
-
+<h2>プラン一覧</h2>
+<form action="{{ route('plans.create') }}">
+    @csrf
+    <input type="hidden" name="hotel_id" value={{ $hotel->id }}>
+    <input type="submit" value="プランを追加する">
+</form>
+@foreach ($plans as $plan)
+<table style="margin-left: 30px;">
+    <tr>
+        <th>プラン名</th>
+        <th>{{ $plan->name }}</a></th>
+    </tr>
+    <tr>
+        <td>プランの説明</td>
+        <td>{!! nl2br(e($plan->content)) !!}</td>
+    </tr>
+    <tr>
+        <td>料金</td>
+        <td>{{ $plan->price }}</td>
+    </tr>
+    <tr>
+        <td>部屋数</td>
+        <td>{{ $plan->rooms_num }}</td>
+    </tr>
+    <tr>
+        <td>登録日</td>
+        <td>{{ $plan->created_at }}</td>
+    </tr>
+    <tr>
+        <td>最終更新日</td>
+        <td>{{ $plan->updated_at }}</td>
+    </tr>
+</table>
+@endforeach
 <hr>
 <a href="/hotels">一覧に戻る</a>
 @endsection

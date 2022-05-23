@@ -18,8 +18,8 @@ class Hotel extends Model
     }
 
     // planテーブルと一対多の関係
-    public function plan(): BelongsTo
+    public function plans(): HasMany
     {
-        return $this->belongsTo(Plan::class);
+        return $this->hasMany(Plan::class);
     }
 }

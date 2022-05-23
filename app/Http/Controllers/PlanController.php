@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Plan;
+use App\Models\Hotel;
 use Illuminate\Http\Request;
 
 class PlanController extends Controller
@@ -22,9 +23,13 @@ class PlanController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Request $request, Hotel $hotel)
     {
-        //
+        // dd($request->hotel_id);
+        $hotel = Hotel::find($request->hotel_id);
+        // dd($hotel);
+        $plan = new Plan;
+        return view('admin/plans/create', ['plan' => $plan, 'hotel' => $hotel]);        
     }
 
     /**
@@ -33,9 +38,22 @@ class PlanController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request, Hotel $hotel)
     {
-        //
+        $validated = $request->validate([
+            'plan_name' => 'required|max:255',
+            'content' => 'required',
+            'rooms_num' => 'required',
+        ]);
+        Plan::create([
+            'hotels_id' => $request->hotel_id,
+            'name' => $request->plan_name,
+            'content' => $request->content,
+            'price' => $request->price,
+            'rooms_num' => $request->rooms_num,
+        ]);
+        $hotel = Hotel::find($request->hotel_id);
+        return redirect(route('hotels.show', ['hotel' => $hotel->id]));
     }
 
     /**
