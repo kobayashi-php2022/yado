@@ -12,22 +12,6 @@
         <dt>住所検索：</dt>
         <dl><input type="text" name="address" id="address" value="{{ request('address') }}"></dl>
 
-        {{-- なんか複雑になりそうなので保留 --}}
-        {{-- <dt>日付検索：</dt>
-        <dl><input type="date" name="date" id="date" value="{{ request('date') }}"></dl> --}}
-
-        {{-- プラン検索は保留！ --}}
-        {{-- <dt>プラン検索：</dt>
-            <dl><select name="plan" id="plan" value="{{ request('plan') }}">
-                <option value=""></option>
-                @foreach ($plans as $plan)
-                    <option value="{{ $plan->id }}" @if(request('plan') == $plan->id) selected @endif >
-                        {{ $plan->name }}
-                    </option>
-                @endforeach
-            </select>
-        </dt> --}}
-
         <dt>宿分類検索：</dt>
         <dl>
             <select name="category" id="category">
@@ -87,12 +71,6 @@
                     </tr>
                 </table>
             </div>
-
-            {{-- プラン --}}
-            <div class="plan_index">
-                {{-- プランってどうやって表示させるんだろう --}}
-            </div>
-            </a>   
         </div>
     @endforeach
 {{ $hotels->appends(Request::All())->links('pagination::bootstrap-4') }}
