@@ -54,7 +54,7 @@ class UserController extends Controller
      */
     public function show(User $user)
     {
-        //
+        return view('users.show',['user' => $user]);
     }
 
     /**
@@ -65,7 +65,7 @@ class UserController extends Controller
      */
     public function edit(User $user)
     {
-        return view('users/edit',['user' => $user]);
+        return view('users.edit',['user' => $user]);
     }
 
     /**
@@ -77,7 +77,8 @@ class UserController extends Controller
      */
     public function update(Request $request, User $user)
     {
-        
+        $user->update($request->all());
+        return redirect(route('users.index',$user));
     }
 
     /**
@@ -88,6 +89,9 @@ class UserController extends Controller
      */
     public function destroy(User $user)
     {
-        //
+        $user->delete();
+        return redirect(route('welcome'));
     }
+
+    
 }

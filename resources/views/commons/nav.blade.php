@@ -8,18 +8,18 @@
       </button>
 
 {{-- ロゴの横のメニューです --}}
-      {{-- <div class="collapse navbar-collapse" id="navbarText">
+       <div class="collapse navbar-collapse" id="navbarText">
         <ul class="navbar-nav ml-auto">
           <li class="nav-item">
-            <a class="nav-link" href="{{ route('products.index') }}">商品一覧</a>
+            <a class="nav-link" href="{{ route('users.index') }}">マイページ</a>
+          </li>
+          {{--<li class="nav-item">
+            <a class="nav-link" href="{{ route('welcome') }}">ログアウト</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="{{ route('products.index') }}">商品一覧</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="{{ route('products.index') }}">商品一覧</a>
-          </li>
+          </li>--}}
         </ul>
-      </div> --}}
+      </div> 
     </div>
   </nav>
