@@ -18,7 +18,7 @@ use Illuminate\Http\Request;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('reserve.index');
 });
 
 Route::get('/register', [RegisterController::class,'index'])->name('register');
