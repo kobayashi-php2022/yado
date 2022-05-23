@@ -6,13 +6,6 @@ use Illuminate\Http\Request;
 
 class UserController extends Controller
 {
-    public $form_data = [
-        ["secondname", "text"],
-        ["firstname", "text"],
-        ["email", "email"],
-        ["password", "password"],
-        ["password_confirmation", "password"],
-    ];
     /**
      * Display a listing of the resource.
      *
@@ -30,7 +23,7 @@ class UserController extends Controller
      */
     public function create()
     {
-        //
+        return view('register');
     }
 
     /**
@@ -39,15 +32,15 @@ class UserController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function complete(Request $request)
     {
-    // 入力欄の name を使って取得
-        $secondname = $request->input('secondname');
-        $firstname = $request->input('firstname');
-        $email = $request->input('email');
-        $password = $request->input('password');
-        $password_confirmation = $request->input('password_confirmation');
-    return view(compact('title','firstname','email','password','password_confirmation'));
+        $conf = new \App\Models\User;
+        $conf->name = $request->name;
+        $conf->email = $request->email;
+        $conf->password = $request->password;
+        $conf->save();
+        return view('complete');
+        //return view(compact('title','firstname','email','password'));
     }
 
     /**
@@ -58,7 +51,8 @@ class UserController extends Controller
      */
     public function edit($id)
     {
-        //
+        $conf = \App\Models\User::find($id);
+        return view('edit',['conf'=>$conf]);
     }
 
     /**
@@ -83,27 +77,32 @@ class UserController extends Controller
     {
         //
     }
-/**
-	 * フォーム表示
-	 */
 	public function form() {
 		return view('register');
 	}
+    public function confirm() {
+        return view('conf');
+	}
 
-	/**
-	 * プロフィール表示
-	 */
-	public function show(Request $request) {
-		$profile = array(
-			'secondname' => $request->input('secondname'),
-			'firstname' => $request->input('firstname'),
-			'email' => $request->input('email'),
-			'password' => $request->input('password'),
-			'password_confirmation' => $request->input('password_confirmation'),
-		);
-		return view('user.show', $profile);
-	}
-    public function complete() {
-        return view('complete');
-	}
+    public function store(Request $request) {
+        $this -> validate($request,[
+            'name' => 'required',
+            'email' => 'required',
+            'password' => 'required',
+            'password_confirmation' => 'required | same:password',
+        ]);
+        $user = $request->user->conf()->create($request->all());
+        return redirect(route('home'));
+    }
+        /**
+         * エラーメッセージ
+         *
+         * @return array
+         */
+        public function messages()
+        {
+            return [
+                'password.confirmed' => 'パスワードが異なります',
+            ];
+        }
 }
