@@ -1,0 +1,21 @@
+.bg_slide {
+    max-width: 100%;
+    padding-top: 60%;
+    background: url("images/top1.jpg");
+    background-size: cover;
+    background-position: center center;
+
+    animation: bg_slide 15s linear infinite;
+  }
+  @keyframes bg_slide {
+      0% { background-position: left center;}
+     50% { background-position: right center;}
+    100% { background-position: left center;}
+  }
+.top_mozi{
+  font-size: 80px;
+  text-align: center;
+  margin-top: 20%;
+  color: black;
+  margin-top: -650px;
+}

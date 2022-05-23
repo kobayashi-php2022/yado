@@ -1,9 +1,15 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\UserController;
+use App\Http\Controllers\RegisterController;
+use App\Http\Controllers\OrderController;
 use App\Http\Controllers\HotelController;
 use App\Http\Controllers\PlanController;
 use App\Http\Controllers\OrderController;
+
+use Illuminate\Http\Request;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -17,10 +23,21 @@ use App\Http\Controllers\OrderController;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('reserve.index');
 });
 
-// 最終的に消すやつ
+Route::get('/register', [RegisterController::class,'index'])->name('register');
+
+Route::post('/conf', [UserController::class,'confirm'])->name('conf');
+
+Route::post('/complete', [UserController::class,'complete'])->name('complete');
+
+Route::get('/home', [OderController::class,'index'])->name('home');
+
+//Route::post('/conf', function(Request $request){
+//});
+
+// 最終的に消すやつ（こばやし）
 Route::get('/admin', function () {
     return view('admin/top');
 });
