@@ -31,13 +31,10 @@
     @endforeach
 @endif
 <div class="p-3 mb-2 bg-secondary text-white">会員情報</div>
-<div class="container mt-3">
-        <p class="border rounded">
-            
 <tr>
-    <td>会員ID：{{$user->id}}<br></td>
-       <a href="{{route('users.edit', $user->id)}}">変更する</a></td>
-      <a href="#" onclick="deleteUser()">退会する</a>
+    <td><h5>会員ID：{{$user->id}}</h5>
+       <a href="{{route('users.edit', $user->id)}}"><button type="submit">変更する</button></a>
+      <a href="#" onclick="deleteUser()"><button type="submit">退会する</button></a>
     <form action ="{{route('users.destroy',$user)}}" method="post" id="delete-form">
         @csrf
         @method('delette')
@@ -49,7 +46,10 @@
                 }
             }
             </script>
-      
+            </td>
+      <div class="container mt-3">
+        <p class="border rounded">
+            
     <td>お名前：{{$user->name}}<br></td>
     <td>住所：{{$user->address}}<br></td>
     <td>生年月日：{{$user->birth}}<br></td>

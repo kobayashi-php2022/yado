@@ -16,12 +16,13 @@ class UserController extends Controller
     public function index(Request $request)
     {
         $user = new User();
-        //$user->id = $request->id;
-       //$user->name = $request->name;
-        //$user->email = $request->email;
-       // $user->birth = $request->birth;
-        //$user->tel = $request->tel;
-        //$user->save();
+        /*$user->id = $request->id;
+        $user->name = $request->name;
+        $user->email = $request->email;
+        $user->birth = $request->birth;
+        $user->tel = $request->tel;
+        $user->save();*/
+        $user=User::where('id','=',1)->first();
         return view('users/index', ['user'=> $user]);
     }
 
@@ -92,6 +93,8 @@ class UserController extends Controller
         $user->delete();
         return redirect(route('welcome'));
     }
+
+    
 
     
 }
