@@ -19,7 +19,6 @@
   color: black;
   margin-top: -650px;
 }
-<<<<<<< HEAD
 
 /* ナビゲーションです */
 .navbar-nav {
@@ -28,13 +27,4 @@
 .nav-item {
   width: 80px;
   text-align: center;
-=======
-.text-background-test02 {
-  display: inline-block;
-  font-weight: 600;
-  line-height: 1.4em;
-  padding: 5px;
-  background: white;
-  background-color: rgba(255,255,255,0.5);
->>>>>>> main
 }
