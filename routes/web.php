@@ -29,6 +29,11 @@ Route::post('/complete', [UserController::class,'complete'])->name('complete');
 
 Route::get('/home', [HotelController::class,'index'])->name('home');
 
+//宿予約
+Route::post('/create', [OrderController::class, 'create'])->name('orders.form.create');
+Route::post('/orders/confirm', [OrderController::class, 'confirm'])->name("orders.confirm");
+Route::post('/orders/complete', [OrderController::class, 'complete'])->name("orders.complete");
+
 //Route::post('/conf', function(Request $request){
 //});
 
