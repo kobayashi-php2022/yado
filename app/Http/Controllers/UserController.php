@@ -13,16 +13,9 @@ class UserController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(Request $request)
+    public function index(User $user)
     {
-        $user = new User();
-        /*$user->id = $request->id;
-        $user->name = $request->name;
-        $user->email = $request->email;
-        $user->birth = $request->birth;
-        $user->tel = $request->tel;
-        $user->save();*/
-        $user=User::where('id','=',1)->first();
+        $user=User::where('id','=',\Auth::id())->first();
         return view('users/index', ['user'=> $user]);
     }
 
@@ -44,7 +37,8 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $user=$request->user()->edit($request->all());
+        return redirect(route('users.index',$user));
     }
 
     /**
@@ -57,6 +51,7 @@ class UserController extends Controller
     {
         return view('users.show',['user' => $user]);
     }
+    
 
     /**
      * Show the form for editing the specified resource.
@@ -85,16 +80,17 @@ class UserController extends Controller
     /**
      * Remove the specified resource from storage.
      *
+
      * @param  \App\Models\User  $user
      * @return \Illuminate\Http\Response
      */
     public function destroy(User $user)
     {
         $user->delete();
-        return redirect(route('welcome'));
+        return redirect(route('hotels.index'));
     }
 
-    
+
 
     
 }

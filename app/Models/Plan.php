@@ -8,10 +8,10 @@ use Illuminate\Database\Eloquent\Model;
 class Plan extends Model
 {
     use HasFactory;
-    protected $fillable = ['name', 'content', 'prices'];
+    protected $fillable = ['name', 'content', 'price', 'rooms_num', 'hotels_id'];
     
-    public function hotels()
+    public function hotel()
     {
-        return $this->hasMany(Hotel::class);
+        return $this->belongsTo(Hotel::class);
     }
 }

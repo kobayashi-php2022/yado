@@ -5,9 +5,12 @@
     <form action="{{route ('users.update', $user->id)}}" method="post">
         @method('patch')
         @csrf
-    <p>会員ID：{{$user->id}}</p>
-<div class="container mt-3">
-<p class="border rounded">
+        <div class="cotainer">
+            <div class="row justify-content-center mt-5">
+                <div class="col-md-8">
+                <div class="card">
+                    <div class="card-header">会員ID：{{$user->id}}</div>
+                    <div class="card-body">
     <tr>
         <td>お名前:<input type="text" name="name" value="{{old('name', $user->name)}}" cols="30"><br></td>
         <td>住所:<input type="text" name="address" value="{{old('address', $user->address)}}"cols="30" ><br></td>

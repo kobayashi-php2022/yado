@@ -21,7 +21,8 @@ class planSeeder extends Seeder
                 'price' => '2000',
                 'created_at' => new Datetime(),
                 'updated_at' => new Datetime(),
-                'hotels_id' => '1'
+                'hotels_id' => '1',
+                'rooms_num' => 5,
             ],
             [
                 'name' => '素泊まりプラン',
@@ -29,7 +30,8 @@ class planSeeder extends Seeder
                 'price' => '2000',
                 'created_at' => new Datetime(),
                 'updated_at' => new Datetime(),
-                'hotels_id' => '2'
+                'hotels_id' => '2',
+                'rooms_num' => 5,
             ],
             [
                 'name' => '素泊まりプラン',
@@ -37,7 +39,8 @@ class planSeeder extends Seeder
                 'price' => '2000',
                 'created_at' => new Datetime(),
                 'updated_at' => new Datetime(),
-                'hotels_id' => '3'
+                'hotels_id' => '3',
+                'rooms_num' => 5,
             ],
             [
                 'name' => '素泊まりプラン',
@@ -45,7 +48,8 @@ class planSeeder extends Seeder
                 'price' => '2000',
                 'created_at' => new Datetime(),
                 'updated_at' => new Datetime(),
-                'hotels_id' => '5'
+                'hotels_id' => '5',
+                'rooms_num' => 5,
             ],
             [
                 'name' => '素泊まりプラン',
@@ -53,7 +57,8 @@ class planSeeder extends Seeder
                 'price' => '2000',
                 'created_at' => new Datetime(),
                 'updated_at' => new Datetime(),
-                'hotels_id' => '7'
+                'hotels_id' => '7',
+                'rooms_num' => 5,
             ],
             [
                 'name' => '素泊まりプラン',
@@ -61,7 +66,8 @@ class planSeeder extends Seeder
                 'price' => '2000',
                 'created_at' => new Datetime(),
                 'updated_at' => new Datetime(),
-                'hotels_id' => '8'
+                'hotels_id' => '8',
+                'rooms_num' => 5,
             ],
             [
                 'name' => '素泊まりプラン',
@@ -69,7 +75,8 @@ class planSeeder extends Seeder
                 'price' => '2000',
                 'created_at' => new Datetime(),
                 'updated_at' => new Datetime(),
-                'hotels_id' => '9'
+                'hotels_id' => '9',
+                'rooms_num' => 5,
             ],
             [
                 'name' => '本泊まりプラン',
@@ -77,7 +84,8 @@ class planSeeder extends Seeder
                 'price' => '5000',
                 'created_at' => new Datetime(),
                 'updated_at' => new Datetime(),
-                'hotels_id' => '1'
+                'hotels_id' => '1',
+                'rooms_num' => 5,
             ],
             [
                 'name' => '本泊まりプラン',
@@ -85,7 +93,8 @@ class planSeeder extends Seeder
                 'price' => '5000',
                 'created_at' => new Datetime(),
                 'updated_at' => new Datetime(),
-                'hotels_id' => '2'
+                'hotels_id' => '2',
+                'rooms_num' => 5,
             ],
             [
                 'name' => '本泊まりプラン',
@@ -93,7 +102,8 @@ class planSeeder extends Seeder
                 'price' => '5000',
                 'created_at' => new Datetime(),
                 'updated_at' => new Datetime(),
-                'hotels_id' => '3'
+                'hotels_id' => '3',
+                'rooms_num' => 5,
             ],
             [
                 'name' => '本泊まりプラン',
@@ -101,7 +111,8 @@ class planSeeder extends Seeder
                 'price' => '5000',
                 'created_at' => new Datetime(),
                 'updated_at' => new Datetime(),
-                'hotels_id' => '5'
+                'hotels_id' => '5',
+                'rooms_num' => 5,
             ],
             [
                 'name' => '本泊まりプラン',
@@ -109,7 +120,8 @@ class planSeeder extends Seeder
                 'price' => '5000',
                 'created_at' => new Datetime(),
                 'updated_at' => new Datetime(),
-                'hotels_id' => '7'
+                'hotels_id' => '7',
+                'rooms_num' => 5,
             ],
             [
                 'name' => '本泊まりプラン',
@@ -117,7 +129,8 @@ class planSeeder extends Seeder
                 'price' => '5000',
                 'created_at' => new Datetime(),
                 'updated_at' => new Datetime(),
-                'hotels_id' => '8'
+                'hotels_id' => '8',
+                'rooms_num' => 5,
             ],
             [
                 'name' => '本泊まりプラン',
@@ -125,7 +138,8 @@ class planSeeder extends Seeder
                 'price' => '5000',
                 'created_at' => new Datetime(),
                 'updated_at' => new Datetime(),
-                'hotels_id' => '9'
+                'hotels_id' => '9',
+                'rooms_num' => 5,
             ],
             [
                 'name' => '素泊まりプラン',
@@ -133,7 +147,8 @@ class planSeeder extends Seeder
                 'price' => '5000',
                 'created_at' => new Datetime(),
                 'updated_at' => new Datetime(),
-                'hotels_id' => '4'
+                'hotels_id' => '4',
+                'rooms_num' => 5,
             ],
             [
                 'name' => '素泊まりプラン',
@@ -141,7 +156,8 @@ class planSeeder extends Seeder
                 'price' => '5000',
                 'created_at' => new Datetime(),
                 'updated_at' => new Datetime(),
-                'hotels_id' => '6'
+                'hotels_id' => '6',
+                'rooms_num' => 5,
             ],
             [
                 'name' => '素泊まりプラン',
@@ -149,7 +165,8 @@ class planSeeder extends Seeder
                 'price' => '5000',
                 'created_at' => new Datetime(),
                 'updated_at' => new Datetime(),
-                'hotels_id' => '9'
+                'hotels_id' => '9',
+                'rooms_num' => 5,
             ],
             [
                 'name' => '素泊まりプラン',
@@ -157,7 +174,8 @@ class planSeeder extends Seeder
                 'price' => '5000',
                 'created_at' => new Datetime(),
                 'updated_at' => new Datetime(),
-                'hotels_id' => '10'
+                'hotels_id' => '10',
+                'rooms_num' => 5,
             ],
             [
                 'name' => '本泊まりプラン',
@@ -165,7 +183,8 @@ class planSeeder extends Seeder
                 'price' => '10000',
                 'created_at' => new Datetime(),
                 'updated_at' => new Datetime(),
-                'hotels_id' => '4'
+                'hotels_id' => '4',
+                'rooms_num' => 5,
             ],
             [
                 'name' => '本泊まりプラン',
@@ -173,7 +192,8 @@ class planSeeder extends Seeder
                 'price' => '10000',
                 'created_at' => new Datetime(),
                 'updated_at' => new Datetime(),
-                'hotels_id' => '6'
+                'hotels_id' => '6',
+                'rooms_num' => 5,
             ],
             [
                 'name' => '本泊まりプラン',
@@ -181,7 +201,8 @@ class planSeeder extends Seeder
                 'price' => '10000',
                 'created_at' => new Datetime(),
                 'updated_at' => new Datetime(),
-                'hotels_id' => '9'
+                'hotels_id' => '9',
+                'rooms_num' => 5,
             ],
             [
                 'name' => '本泊まりプラン',
@@ -189,7 +210,8 @@ class planSeeder extends Seeder
                 'price' => '10000',
                 'created_at' => new Datetime(),
                 'updated_at' => new Datetime(),
-                'hotels_id' => '10'
+                'hotels_id' => '10',
+                'rooms_num' => 5,
             ],
             [
                 'name' => '朝食付きプラン',
@@ -197,7 +219,8 @@ class planSeeder extends Seeder
                 'price' => '4000',
                 'created_at' => new Datetime(),
                 'updated_at' => new Datetime(),
-                'hotels_id' => '1'
+                'hotels_id' => '1',
+                'rooms_num' => 5,
             ],
             [
                 'name' => '朝食付きプラン',
@@ -205,7 +228,8 @@ class planSeeder extends Seeder
                 'price' => '4000',
                 'created_at' => new Datetime(),
                 'updated_at' => new Datetime(),
-                'hotels_id' => '3'
+                'hotels_id' => '3',
+                'rooms_num' => 5,
             ],
             [
                 'name' => '朝食付きプラン',
@@ -213,7 +237,8 @@ class planSeeder extends Seeder
                 'price' => '4000',
                 'created_at' => new Datetime(),
                 'updated_at' => new Datetime(),
-                'hotels_id' => '7'
+                'hotels_id' => '7',
+                'rooms_num' => 5,
             ],
             [
                 'name' => '朝食付きプラン',
@@ -221,7 +246,8 @@ class planSeeder extends Seeder
                 'price' => '4000',
                 'created_at' => new Datetime(),
                 'updated_at' => new Datetime(),
-                'hotels_id' => '8'
+                'hotels_id' => '8',
+                'rooms_num' => 5,
             ]
             
             
