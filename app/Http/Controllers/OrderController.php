@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Order;
 use App\Models\Hotel;
 use App\Models\Category;
+use App\Models\Plan;
 use Illuminate\Http\Request;
 
 class OrderController extends Controller
@@ -62,9 +63,14 @@ class OrderController extends Controller
      * @param  \App\Models\Order  $order
      * @return \Illuminate\Http\Response
      */
-    public function show(Order $order)
+    public function show(Hotel $hotel, Plan $plan)
     {
-        //
+        // dd($hotel->id);
+        // $hotel = Hotel::find
+        $plans = Plan::where('hotels_id', "=", $hotel->id)->get();
+        dd($plans);
+        // $hotel = Hotel::all()->get();
+        return view('reserve/show', ['hotel' => $hotel, 'plans' => $plans]);
     }
 
     /**

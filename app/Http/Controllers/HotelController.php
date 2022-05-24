@@ -34,8 +34,12 @@ class HotelController extends Controller
         $hotels = $query->orderBy('id')->paginate(10);
 
         $categories = Category::all();
-        //ビュー
-        return view('admin/hotels/index', ['hotels' => $hotels, 'categories' => $categories]);
+        //ビュー 管理者と会員で分ける
+        if(\Auth::check() == true && \Auth::user()->auth == "管理者") {
+            return view('admin/hotels/index', ['hotels' => $hotels, 'categories' => $categories]);
+        } else {
+            return view('reserve/index', ['hotels' => $hotels, 'categories' => $categories]);
+        }
     }
 
     /**
@@ -86,7 +90,11 @@ class HotelController extends Controller
     public function show(Hotel $hotel, Plan $plan)
     {
         $plans = Plan::with('hotel')->where('hotels_id', "=", $hotel->id)->get();
-        return view('admin/hotels/show', ['hotel' => $hotel, 'plans' => $plans]);
+        if(\Auth::check() == true && \Auth::user()->auth == "管理者") {
+            return view('admin/hotels/show', ['hotel' => $hotel, 'plans' => $plans]);
+        } else {
+            return view('reserve/show', ['hotel' => $hotel, 'plans' => $plans]);
+        }
     }
 
     /**
