@@ -8,7 +8,7 @@
             @csrf
             <p>
                 <label for="category">宿分類</label>
-                <select name="category" id="category" value="{{ request('category') }}">
+                <select name="category" id="category">
                     <option value=""></option>
                     @foreach ($categories as $category)
                         <option value="{{ $category->id }}" @if(request('category') == $category->id) selected @endif >
@@ -19,19 +19,19 @@
             </p>
             <p>
                 <label for="name">宿名</label>
-                <input type="text" name="name" id="name">
+                <input type="text" name="name" id="name" value={{ request('name')}}>
             </p>
             <p>
                 <label for="address">住所</label>
-                <input type="text" name="address" id="address">
+                <input type="text" name="address" id="address" value={{ request('text')}}>
             </p>
             <p>
                 <label for="email">メールアドレス</label>
-                <input type="email" name="email" id="email">
+                <input type="email" name="email" id="email" value={{ request('email')}}>
             </p>
             <p>
                 <label for="tel">電話番号</label>
-                <input type="tel" name="tel" id="tel">
+                <input type="tel" name="tel" id="tel" value={{ request('tel')}}>
             </p>
             {{-- 画像投稿 --}}
             <p>

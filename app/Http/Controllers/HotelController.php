@@ -83,9 +83,10 @@ class HotelController extends Controller
      * @param  \App\Models\Hotel  $hotel
      * @return \Illuminate\Http\Response
      */
-    public function show(Hotel $hotel)
+    public function show(Hotel $hotel, Plan $plan)
     {
-        return view('admin/hotels/show', ['hotel' => $hotel]);
+        $plans = Plan::with('hotel')->where('hotels_id', "=", $hotel->id)->get();
+        return view('admin/hotels/show', ['hotel' => $hotel, 'plans' => $plans]);
     }
 
     /**
@@ -114,7 +115,7 @@ class HotelController extends Controller
         //ファイルは保存してたやつ
         $path = $hotel->image;
         if(isset($image)) {
-            \Stroge::disk('public')->delete($path);
+            \Storage::disk('public')->delete($path);
             $path = $image->store('public/items');
         }        
         $hotel->update([
