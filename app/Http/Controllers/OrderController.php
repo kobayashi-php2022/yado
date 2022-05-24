@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Order;
+use App\Models\Hotel;
+use App\Models\Category;
 use Illuminate\Http\Request;
 
 class OrderController extends Controller
@@ -12,11 +14,27 @@ class OrderController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        //
-    }
+        $query = Hotel::with('category');
 
+        // 名前検索と住所検索
+        if($request->name) {
+            $query->where('name', 'LIKE', '%' . $request->name . '%');
+        }
+        if($request->address) {
+            $query->where('address', 'LIKE', '%' . $request->address . '%');
+        }
+        if($request->category) {
+            $query->where('category_id', '=', $request->category);
+        }
+        //検索結果
+        $hotels = $query->orderBy('id')->paginate(10);
+
+        $categories = Category::all();
+        //ビュー
+        return view('reserve/index', ['hotels' => $hotels, 'categories' => $categories]);
+    }
     /**
      * Show the form for creating a new resource.
      *

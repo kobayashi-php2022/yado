@@ -22,4 +22,10 @@ class Hotel extends Model
     {
         return $this->hasMany(Plan::class);
     }
+
+    //orderテーブル
+    public function orders(): HasMany
+    {
+        return $this->hasMany(Order::class);
+    }
 }

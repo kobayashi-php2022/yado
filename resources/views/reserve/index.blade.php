@@ -1,12 +1,9 @@
 @extends('layouts.app')
 
 @section('content')
-<form action="{{ route('hotels.index') }}" method="get">
+<form action="{{ route('orders.index') }}" method="get">
     @csrf
     <h1>宿情報を検索</h1>
-    {{-- @if(Auth::user()->auth == "管理者") --}}
-    <a href="{{ route('hotels.create') }}">新規登録</a>
-    {{-- @endif --}}
     <dl>
         <dt>名前検索：</dt>
         <dl><input type="text" name="name" id="name" value="{{ request('name') }}"></dl>
