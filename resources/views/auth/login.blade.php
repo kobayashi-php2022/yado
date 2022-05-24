@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<<<<<<< HEAD
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
     <title>ログイン</title>
@@ -60,5 +61,20 @@
             </div>
             </div>
             </div>
+=======
+    <title>ログイン</title>
+</head>
+<body>
+    <h1>ログイン</h1>
+    @include('commons/flash')
+    <form action="route('login')" method="post">
+    @csrf
+        <p><label><br><input type="email" name="email" placeholder="メールアドレス"></label></p>
+        <p><label><br><input type="password" name="password" placeholder="パスワード"></label></p>
+        <p><input type="submit" value="ログイン"></p>
+        </form>
+        <p>または</p>
+        <p><a href="{{route('register')}}">新規会員登録</a></p>
+>>>>>>> main
 </body>
 </html>
