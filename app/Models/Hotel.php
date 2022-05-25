@@ -28,4 +28,10 @@ class Hotel extends Model
     {
         return $this->hasMany(Order::class);
     }
+
+    // comentsテーブルと一対多の関係
+    public function comments() 
+    { 
+        return $this->hasMany(Comment::class);
+    }
 }

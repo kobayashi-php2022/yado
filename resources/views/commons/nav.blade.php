@@ -13,7 +13,7 @@
       @if (Route::has('login'))
           <ul class="navbar-nav mr-10">
               @auth
-                  <li class="nav-item"><a href="#" class="nav-link">マイページ</a></li>
+                  <li class="nav-item"><a href="{{ route('users.index') }}" class="nav-link">マイページ</a></li>
                   <li class="nav-item">
                     <a href="#" onclick="logout()" class="nav-link">
                       ログアウト
