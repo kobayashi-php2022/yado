@@ -12,6 +12,15 @@ class Plan extends Model
     
     public function hotel()
     {
-        return $this->belongsTo(Hotel::class);
+        return $this->belongsTo(Hotel::class, 'hotels_id');
+    }
+    /**
+     * Get all of the orders for the Plan
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function orders(): HasMany
+    {
+        return $this->hasMany(Order::class);
     }
 }

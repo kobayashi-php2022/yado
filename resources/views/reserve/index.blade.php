@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-<form action="{{ route('orders.index') }}" method="get">
+<form action="{{ route('hotels.index') }}" method="get">
     @csrf
     <h1>宿情報を検索</h1>
     <dl>
@@ -33,7 +33,7 @@
         <div class="info_index">
             {{-- 宿写真と宿詳細 --}}
             <div class="info" style="display:flex; margin:40px;">
-                @if ($hotel->image !== "")
+                @if (!is_null($hotel->image))
                 <img src="{{ \Storage::url($hotel->image) }}" width="100" height="100">
                 @else
                 <img src="{{ \Storage::url('items/no_image.png') }}" width="100" height="100">

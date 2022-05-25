@@ -6,7 +6,12 @@ use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\HotelController;
 use App\Http\Controllers\PlanController;
+<<<<<<< HEAD
 use App\Http\Controllers\MemberInfoController;
+=======
+use App\Http\Controllers\HomeController;
+
+>>>>>>> main
 use Illuminate\Http\Request;
 
 
@@ -23,11 +28,23 @@ use Illuminate\Http\Request;
 
 Route::get('/', [HotelController::class,'index']);
 
+Route::resource('users', UserController::class);
+Route::get('/index', [UserController::class,'index'])->name('mypage');
+// 最終的に消すやつ
 Route::get('/register', [RegisterController::class,'index'])->name('register');
-Route::post('/conf', [UserController::class,'confirm'])->name('conf');
-Route::post('/complete', [UserController::class,'complete'])->name('complete');
+Route::post('/conf', [HomeController::class,'confirm'])->name('conf');
+Route::post('/complete', [HomeController::class,'complete'])->name('complete');
 
 Route::get('/home', [HotelController::class,'index'])->name('home');
+<<<<<<< HEAD
+=======
+
+//宿予約
+Route::post('/create', [OrderController::class, 'create'])->name('orders.form.create');
+Route::post('/orders/confirm', [OrderController::class, 'confirm'])->name("orders.confirm");
+Route::post('/orders/complete', [OrderController::class, 'complete'])->name("orders.complete");
+
+>>>>>>> main
 //Route::post('/conf', function(Request $request){
 //});
 // 最終的に消すやつ（こばやし）
