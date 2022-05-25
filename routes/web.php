@@ -35,6 +35,7 @@ Route::get('/home', [HotelController::class,'index'])->name('home');
 
 //Route::post('/conf', function(Request $request){
 //});
+Route::get('/members', [MemberController::class,'index'])->name('members');
 
 // 最終的に消すやつ（こばやし）
 Route::get('/admin', function () {
@@ -45,7 +46,7 @@ Route::get('/admin', function () {
 Route::resource('hotels', HotelController::class);
 Route::resource('plans', PlanController::class);
 Route::resource('orders', OrderController::class);
-
+Route::resource('members', MemberController::class);
 // Route::group(['middleware' => ['auth']] function () {
     // ログインしてないと見れないところ、ログイン機能完成したら入れます
 // });
