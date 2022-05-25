@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+use App\Models\Order;
 use Illuminate\Http\Request;
 
 
@@ -15,8 +16,9 @@ class UserController extends Controller
      */
     public function index(User $user)
     {
+        $orders = Order::with('user')->get();
         $user=User::where('id','=',\Auth::id())->first();
-        return view('users/index', ['user'=> $user]);
+        return view('users/index', ['user'=> $user, 'orders' => $orders]);
     }
 
     /**

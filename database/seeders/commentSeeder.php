@@ -18,6 +18,7 @@ class commentSeeder extends Seeder
             [
                 'user_id' => '1',
                 'star' => '4',
+                'user_id' => '1',
                 'comment' => 'よかった',
                 'hotels_id' => '1',
                 'created_at' => new Datetime(),
