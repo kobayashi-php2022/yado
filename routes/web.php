@@ -23,7 +23,9 @@ use Illuminate\Http\Request;
 */
 
 Route::get('/', [HotelController::class,'index']);
-
+Route::resource('hotels', HotelController::class)->only([
+    'index', 'show'
+]);
 
 //ログイン・会員登録
 Route::get('/register', [RegisterController::class,'index'])->name('register');
@@ -39,7 +41,10 @@ Route::group(['middleware' => ['auth']], function () {
     Route::post('/orders/complete', [OrderController::class, 'complete'])->name("orders.complete");
     
     //リソースルーティング
-    Route::resource('hotels', HotelController::class);
+    Route::resource('hotels', HotelController::class)->except([
+        'index', 'show'
+    ]);
+    Route::resource('users', UserController::class);
     Route::resource('plans', PlanController::class);
     Route::resource('orders', OrderController::class);
 
@@ -50,6 +55,6 @@ Route::group(['middleware' => ['auth']], function () {
 });
 
 // 行き場のないルーティングたち
-// Route::resource('users', UserController::class);
+
 // Route::get('/index', [UserController::class,'index'])->name('mypage');
 //Route::post('/conf', function(Request $request){
