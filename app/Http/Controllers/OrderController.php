@@ -119,6 +119,7 @@ class OrderController extends Controller
 
     public function confirm(Request $request)
     {
+        // dd($request->hotel_name);
         $this->validate($request, [
             "check_in" => "required",
             "check_out" => "required",

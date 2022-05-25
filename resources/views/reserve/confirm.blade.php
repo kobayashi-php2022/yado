@@ -7,6 +7,18 @@
     <div class="create">
         <form action="{{ route('orders.complete') }}" method="post">
             @csrf
+            {{-- <p style="margin-top: 30px;">予約するプラン</p>
+            <table>
+                <tr>
+                    <td>宿泊施設名</td>
+                    <td>{{ $request->hotel_name }}</td>
+                </tr>
+                <tr>
+                    <td>プラン名</td>
+                    <td>{{ $request->plan_name }}</td>
+                </tr>
+            </table> --}}
+            <p style="margin-top: 30px;">予約者情報</p>
             <table>
                 <tr>
                     <td>お名前</td>
@@ -16,6 +28,17 @@
                     <td>メールアドレス</td>
                     <td>:{{ Auth::user()->email }}</td>
                 </tr>
+                <tr>
+                    <td>住所</td>
+                    <td>{{ request('address') }}</td>
+                </tr>
+                <tr>
+                    <td>電話番号</td>
+                    <td>{{ request('tel') }}</td>
+                </tr>
+            </table>
+            <p style="margin-top: 30px;">宿泊予約</p>
+            <table>
                 <tr>
                     <td>チェックイン</td>
                     <td>{{ request('check_in') }}</td>
@@ -31,14 +54,6 @@
                 <tr>
                     <td>部屋数</td>
                     <td>{{ request('room') }}部屋</td>
-                </tr>
-                <tr>
-                    <td>住所</td>
-                    <td>{{ request('address') }}</td>
-                </tr>
-                <tr>
-                    <td>電話番号</td>
-                    <td>{{ request('tel') }}</td>
                 </tr>
             </table>
             <input type="hidden" name="check_in" id="check_in" value="{{ request('check_in') }}">

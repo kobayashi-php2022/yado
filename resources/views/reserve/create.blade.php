@@ -12,10 +12,12 @@
                 <tr>
                     <td>宿泊施設名</td>
                     <td>{{ $plan->hotel->name }}</td>
+                    {{-- <input type="hidden" name="hotel_name" value="{{ $plan->hotel->name }}"> --}}
                 </tr>
                 <tr>
                     <td>プラン名</td>
                     <td>{{ $plan->name }}</td>
+                    {{-- <input type="hidden" name="plan_name" value="{{ $plan->name }}"> --}}
                 </tr>
             </table>
             <p style="margin-top: 30px;">予約者情報</p>
