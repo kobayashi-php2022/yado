@@ -45,3 +45,8 @@ Route::resource('orders', OrderController::class);
 // Route::group(['middleware' => ['auth']] function () {
     // ログインしてないと見れないところ、ログイン機能完成したら入れます
 // });
+
+// 最終的に消すやつ（こばやし）
+Route::get('/', function () {
+    return view('index');
+});

@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="ja">
+<html lang="en">
 <head>
 	<meta charset="utf-8" />
 
@@ -8,7 +8,7 @@
 
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 
-	<title>新宿トラベル_管理者TOP</title>
+	<title>新宿トラベル</title>
 
 	<meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
 
@@ -101,12 +101,6 @@
 			<li>
                 <a href="#">マイページ</a>
             </li>
-			<li>
-                <a href="#">会員検索</a>
-            </li>
-			<li>
-                <a href="#">宿検索</a>
-            </li>
     	</ul>
 
     </div><!-- /.navbar-collapse -->
@@ -118,8 +112,7 @@
 		<div class="container">
 			<div class="row">
 				<div class="col-md-6 col-md-offset-3 text-center">
-					<h3 class="title">ー　新宿トラベル　ー</h2>
-					<h1 class="title">管理者画面</h1>
+					<h2 class="title">新宿トラベル<br>管理者画面の例</h2>
 				</div>
 			</div>
 		</div>
@@ -130,7 +123,7 @@
             <div class="col-md-8 col-md-offset-1">
                 <div class="tim-container">
 						    	<!-- tooltip row -->
-						<div class="tim-row" id="tooltip-row">
+								<div class="tim-row" id="tooltip-row">
 						<div class="card wizard-card2" data-color="purple">
 							<div class="row">
 								<div class="col-sm-4 col-sm-offset-2">
@@ -197,11 +190,3 @@
     </script>
 
 </html>
-
-<?php /*
-@extends('layouts.app')
-
-@section('content')
-    <p><a href="{{ route('hotels.index') }}">宿情報検索へ</a></p>
-    <p><a href="">会員情報検索へ</a></p>
-@endsection

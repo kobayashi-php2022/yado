@@ -8,7 +8,7 @@
 
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 
-	<title>新宿トラベル_管理者TOP</title>
+	<title>新宿トラベル</title>
 
 	<meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
 
@@ -118,9 +118,10 @@
 		<div class="container">
 			<div class="row">
 				<div class="col-md-6 col-md-offset-3 text-center">
-					<h3 class="title">ー　新宿トラベル　ー</h2>
-					<h1 class="title">管理者画面</h1>
-				</div>
+				<form action="{{ route('hotels.index') }}" method="get">
+			@csrf
+			<h1>宿情報を検索</h1>
+			</div>
 			</div>
 		</div>
 	</div>
@@ -129,33 +130,77 @@
         <div class="row">
             <div class="col-md-8 col-md-offset-1">
                 <div class="tim-container">
-						    	<!-- tooltip row -->
-						<div class="tim-row" id="tooltip-row">
-						<div class="card wizard-card2" data-color="purple">
-							<div class="row">
-								<div class="col-sm-4 col-sm-offset-2">
-									<div class="choice" data-toggle="wizard-radio" rel="tooltip" title="宿を検索する">
-										<input type="radio" name="job" value="Design">
-										<div class="icon">
-											<i class="material-icons">rounded_corner</i>
-										</div>
-										<h6>宿検索</h6>
-									</div>
-								</div>
+				{{-- @if(Auth::user()->auth == "管理者") --}}
+    <a href="{{ route('hotels.create') }}">新規登録</a>
+    {{-- @endif --}}
+    <dl>
+        <dt>名前検索：</dt>
+        <dl><input type="text" name="name" id="name" value="{{ request('name') }}"></dl>
 
-								<div class="col-sm-4">
-									<div class="choice" data-toggle="wizard-radio" rel="tooltip" title="会員を検索する">
-										<input type="radio" name="job" value="Code">
-										<div class="icon">
-											<i class="material-icons">accessibility</i>
-										</div>
-										<h6>会員検索</h6>
-									</div>
-								</div>
-							</div>
-						</div>
-				    </div>
-				    <!-- end row -->
+        <dt>住所検索：</dt>
+        <dl><input type="text" name="address" id="address" value="{{ request('address') }}"></dl>
+
+        <dt>宿分類検索：</dt>
+        <dl>
+            <select name="category" id="category">
+                <option value=""></option>
+                @foreach ($categories as $category)
+                {{-- 検索した内容を残したい --}}
+                    <option value="{{ $category->id }}" @if(request('category') == $category->id) selected @endif >
+                        {{ $category->name }}
+                    </option>
+                @endforeach
+            </select>
+        </dl>
+
+        <p><input type="submit" value="検索"></p>
+    </form>	
+				<p>検索結果を表示</p>
+    {{-- 宿データの一覧 --}}
+    @foreach ($hotels as $hotel)
+        <div class="info_index">
+            {{-- 宿写真と宿詳細 --}}
+            <div class="info" style="display:flex; margin:40px;">
+                @if ($hotel->image !== "")
+                <img src="{{ \Storage::url($hotel->image) }}" width="100" height="100">
+                @else
+                <img src="{{ \Storage::url('items/no_image.png') }}" width="100" height="100">
+                @endif
+                
+                <table style="margin-left: 30px;">
+                    <tr>
+                        <th>宿名</th>
+                        <th><a href="{{ route('hotels.show', $hotel->id) }}">{{ $hotel->name }}</a></th>
+                    </tr>
+                    <tr>
+                        <td>宿分類</td>
+                        <td>{{ $hotel->category->name }}</td>
+                    </tr>
+                    <tr>
+                        <td>住所</td>
+                        <td>{{ $hotel->address }}</td>
+                    </tr>
+                    <tr>
+                        <td>電話番号</td>
+                        <td>{{ $hotel->tel }}</td>
+                    </tr>
+                    <tr>
+                        <td>メールアドレス</td>
+                        <td>{{ $hotel->email }}</td>
+                    </tr>
+                    <tr>
+                        <td>登録日</td>
+                        <td>{{ $hotel->created_at }}</td>
+                    </tr>
+                    <tr>
+                        <td>最終更新日</td>
+                        <td>{{ $hotel->updated_at }}</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    @endforeach
+{{ $hotels->appends(Request::All())->links('pagination::bootstrap-4') }}
             </div>
         </div>
         </div>
@@ -197,11 +242,3 @@
     </script>
 
 </html>
-
-<?php /*
-@extends('layouts.app')
-
-@section('content')
-    <p><a href="{{ route('hotels.index') }}">宿情報検索へ</a></p>
-    <p><a href="">会員情報検索へ</a></p>
-@endsection
