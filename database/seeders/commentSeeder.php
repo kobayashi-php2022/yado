@@ -16,6 +16,7 @@ class commentSeeder extends Seeder
     {
         \DB::table('comments')->insert([
             [
+                'user_id' => '1',
                 'star' => '4',
                 'comment' => 'よかった',
                 'hotels_id' => '1',
@@ -23,6 +24,7 @@ class commentSeeder extends Seeder
                 'updated_at' => new Datetime()
             ],
             [
+                'user_id' => '1',
                 'star' => '2',
                 'comment' => '部屋の埃が気になった',
                 'hotels_id' => '3',
