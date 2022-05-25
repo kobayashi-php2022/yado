@@ -39,8 +39,13 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        $user=$request->user()->edit($request->all());
-        return redirect(route('users.index',$user));
+        $conf = new \App\Models\User;
+        $conf->name = $request->name;
+        $conf->email = $request->email;
+        $conf->password = Hash::make($request->password);
+        $conf->auth = $request->auth; 
+        $conf->save();
+        return view('complete');
     }
 
     /**
