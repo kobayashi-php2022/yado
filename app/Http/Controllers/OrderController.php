@@ -16,6 +16,11 @@ class OrderController extends Controller
      */
     public function index(Request $request)
     {
+        $order = new Order;
+        $order = $request->hotel()->orders()->create($request->all());
+        $order = $request->plan()->orders()->create($request->all());
+        
+    
         $query = Hotel::with('category');
 
         // 名前検索と住所検索
@@ -98,6 +103,7 @@ class OrderController extends Controller
      */
     public function destroy(Order $order)
     {
-        //
+        $order->delete();
+        return redirect(route('index'));
     }
 }
