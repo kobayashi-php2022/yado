@@ -6,6 +6,7 @@ use App\Models\Order;
 use App\Models\Hotel;
 use App\Models\Category;
 use App\Models\Plan;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class OrderController extends Controller
@@ -134,10 +135,12 @@ class OrderController extends Controller
             "address" => "required|max:255",
             "tel" => "required|max:15",
         ]);
-        return view("reserve/confirm");
+        $plan = Plan::where('id', '=', $request->plan_id)->first();
+        return view("reserve/confirm", ['plan' => $plan]);
     }
 
-    public function complete() {
+    public function complete(Request $request) {
+        $plan = Plan::where('id', '=', $request->plan_id)->first();
         Order::create([
             'num' => $request->num,
             'check_in' => $request->check_in,
@@ -148,11 +151,11 @@ class OrderController extends Controller
             'plan_id' => $request->plan_id,
         ]);
         //電話番号と住所はusersテーブルにぶちこむ
-        $user = User::find(Auth::id);
+        $user = User::find(\Auth::id());
         $user->update([
             'address' => $request->address,
             'tel' => $request->tel,
         ]);
-        return redirect(route('hotels.index'));
+        return view("reserve/complete");
     }
 }

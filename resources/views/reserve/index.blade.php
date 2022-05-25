@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-<form action="{{ route('orders.index') }}" method="get">
+<form action="{{ route('hotels.index') }}" method="get">
     @csrf
     <h1>宿情報を検索</h1>
     <dl>

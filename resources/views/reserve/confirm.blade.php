@@ -7,17 +7,19 @@
     <div class="create">
         <form action="{{ route('orders.complete') }}" method="post">
             @csrf
-            {{-- <p style="margin-top: 30px;">予約するプラン</p>
+            <p style="margin-top: 30px;">予約するプラン</p>
             <table>
                 <tr>
                     <td>宿泊施設名</td>
-                    <td>{{ $request->hotel_name }}</td>
+                    <td>{{ $plan->hotel->name }}</td>
+                    <input type="hidden" name="hotels_id" value="{{ $plan->hotels_id }}">
                 </tr>
                 <tr>
                     <td>プラン名</td>
-                    <td>{{ $request->plan_name }}</td>
+                    <td>{{ $plan->name }}</td>
+                    <input type="hidden" name="plan_id" value="{{ $plan->id }}">
                 </tr>
-            </table> --}}
+            </table>
             <p style="margin-top: 30px;">予約者情報</p>
             <table>
                 <tr>
@@ -31,10 +33,12 @@
                 <tr>
                     <td>住所</td>
                     <td>{{ request('address') }}</td>
+                    <input type="hidden" name="address" id="address" value="{{ request('address') }}">
                 </tr>
                 <tr>
                     <td>電話番号</td>
                     <td>{{ request('tel') }}</td>
+                    <input type="hidden" name="tel" id="tel" value="{{ request('tel') }}">
                 </tr>
             </table>
             <p style="margin-top: 30px;">宿泊予約</p>
@@ -42,28 +46,25 @@
                 <tr>
                     <td>チェックイン</td>
                     <td>{{ request('check_in') }}</td>
+                    <input type="hidden" name="check_in" id="check_in" value="{{ request('check_in') }}">
                 </tr>
                 <tr>
                     <td>チェックアウト</td>
                     <td>{{ request('check_out') }}</td>
+                    <input type="hidden" name="check_out" id="check_out" value="{{ request('check_out') }}">
                 </tr>
                 <tr>
                     <td>宿泊人数</td>
                     <td>{{ request('num') }}人</td>
+                    <input type="hidden" name="num" id="num" value="{{ request('num') }}">
                 </tr>
                 <tr>
                     <td>部屋数</td>
                     <td>{{ request('room') }}部屋</td>
+                    <input type="hidden" name="room" id="room" value="{{ request('room') }}">
                 </tr>
             </table>
-            <input type="hidden" name="check_in" id="check_in" value="{{ request('check_in') }}">
-            <input type="hidden" name="check_out" id="check_out" value="{{ request('check_out') }}">
-            <input type="hidden" name="num" id="num" value="{{ request('num') }}">
-            <input type="hidden" name="room" id="room" value="{{ request('room') }}">
-            <input type="hidden" name="address" id="address" value="{{ request('address') }}">
-            <input type="hidden" name="tel" id="tel" value="{{ request('tel') }}">
-            <input type="hidden" name="">
-            <input type="submit" value="次へ">
+            <input type="submit" value="予約">
         </form>
     </div>
     <hr>

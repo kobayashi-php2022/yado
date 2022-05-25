@@ -4,15 +4,29 @@
 <h1>マイページ</h1>
 <div class="p-3 mb-2 bg-secondary text-white">予約一覧</div>
  @if($user->orders()->count()) 
-    @foreach($user->orders as $order)
-        <div class="container mt-3">
-        <p class="border rounded">
+    @foreach($orders as $order)
+        <div class="container mt-2 mb-2">
+        <table class="border rounded">
             <tr>
-                <td>{{$order->hotel->name}}<br></td>
-                <td>予約内容<br></td>
-                <td>プラン名：{{$order->plan->name}}<br></td>
-                <td>日程：{{$order->check_in}}-{{$order->check_out}}<br></td>
-                <td>人数：{{$order->num}}<br></td>
+                <td>ホテル名</td>
+                <td>{{ $order->hotel->name }}</td>
+            </tr>
+            <tr>
+                <td>プラン名</td>
+                <td>{{$order->plan->name}}</td>
+            </tr>
+            <tr>
+                <td>日程</td>
+                <td>{{$order->check_in}} から {{$order->check_out}}</td>
+            </tr>
+            <tr>
+                <td>人数</td>
+                <td>{{$order->num}}人</td>
+            </tr>
+            <tr>
+                <td>部屋数</td>
+                <td>{{ $order->room }}部屋</td>
+            </tr>
                 {{--<a href="#" onclick="deleteUser()">この予約をキャンセルする</a>
                     <form action ="{{route('oders.destroy',$order)}}" method="post" id="delete-form">
         @csrf
@@ -27,11 +41,14 @@
             }
             </script>--}}
             </tr>
-        </p>
+        </table>
         </div>
     @endforeach
+@else
+    <p>現在予約しているプランはありません。</p>
 @endif 
 
+<div class="p-3 mb-2 bg-secondary text-white">会員登録情報</div>
 <div class="cotainer">
 <div class="row justify-content-center mt-5">
 <div class="col-md-8">

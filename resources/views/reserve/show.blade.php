@@ -61,7 +61,6 @@
         <input type="hidden" name="plan_id" value="{{ $plan->id }}">
         <button type="submit" style="margin-left: 30px;">このプランを予約する</button>
     </form>
-    {{-- <a href="{{ route('orders.create') }}"><button style="margin-left:30px;">このプランを予約する</button></a> --}}
 </div>
 @endforeach
 <hr>
