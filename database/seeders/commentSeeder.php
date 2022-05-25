@@ -16,6 +16,7 @@ class commentSeeder extends Seeder
     {
         \DB::table('comments')->insert([
             [
+                'user_id' => '1',
                 'star' => '4',
                 'user_id' => '1',
                 'comment' => 'よかった',
