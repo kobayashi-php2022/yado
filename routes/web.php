@@ -36,7 +36,13 @@ Route::get('/home', [HotelController::class,'index'])->name('home');
 
 //Route::post('/conf', function(Request $request){
 //});
-Route::get('/members', [MemberController::class,'index'])->name('members');
+Route::get('/members', [MemberController::class,'index'])->name('members.index');
+Route::delete('/ruin/{id}', [MemberController::class,'ruin'])->name('members.ruin');
+Route::delete('/members/{member}', [MemberController::class,'destroy'])->name('members.destroy');
+Route::get('/members/{member}', [MemberController::class,'show'])->name('members.show');
+Route::get('/members/{member}/edit', [MemberController::class,'edit'])->name('members.edit');
+Route::patch('/members/{member}', [MemberController::class,'update'])->name('members.update');
+
 
 // 最終的に消すやつ（こばやし）
 Route::get('/admin', function () {
@@ -47,7 +53,8 @@ Route::get('/admin', function () {
 Route::resource('hotels', HotelController::class);
 Route::resource('plans', PlanController::class);
 Route::resource('orders', OrderController::class);
-Route::resource('members', MemberController::class);
+
+
 // Route::group(['middleware' => ['auth']] function () {
     // ログインしてないと見れないところ、ログイン機能完成したら入れます
 // });

@@ -19,7 +19,6 @@ class DatabaseSeeder extends Seeder
             hotelSeeder::class,
             planSeeder::class,
             orderSeeder::class,
-            changeSeeder::class,
             commentSeeder::class,
         ]);
     }
