@@ -138,22 +138,28 @@ class OrderController extends Controller
     }
 
     public function complete(Request $request) {
-        $plan = Plan::where('id', '=', $request->plan_id)->first();
-        Order::create([
-            'num' => $request->num,
-            'check_in' => $request->check_in,
-            'check_out' => $request->check_out,
-            'room' => $request->room,
-            'hotels_id' => $request->hotels_id,
-            'user_id' => \Auth::id(),
-            'plan_id' => $request->plan_id,
-        ]);
-        //電話番号と住所はusersテーブルにぶちこむ
-        $user = User::find(\Auth::id());
-        $user->update([
-            'address' => $request->address,
-            'tel' => $request->tel,
-        ]);
-        return view("reserve/complete");
+        $now_reserved = Order::with('user')->where('check_in', '>', date('Y-m-d'))->get();
+        if($now_reserved->count() > 5) {
+            $plan = Plan::where('id', '=', $request->plan_id)->first();
+            Order::create([
+                'num' => $request->num,
+                'check_in' => $request->check_in,
+                'check_out' => $request->check_out,
+                'room' => $request->room,
+                'hotels_id' => $request->hotels_id,
+                'user_id' => \Auth::id(),
+                'plan_id' => $request->plan_id,
+            ]);
+            //電話番号と住所はusersテーブルにぶちこむ
+            $user = User::find(\Auth::id());
+            $user->update([
+                'address' => $request->address,
+                'tel' => $request->tel,
+            ]);
+            return view("reserve/complete");
+        } else {
+            return view("reserve/cannot_complete");
+        }
+
     }
 }
