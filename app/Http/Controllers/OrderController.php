@@ -129,7 +129,7 @@ class OrderController extends Controller
     {
         // dd($request->hotel_name);
         $this->validate($request, [
-            "num" => "required",
+            "num" => "required|min:1",
             "address" => "required|max:255",
             "tel" => "required|max:15",
         ]);
@@ -139,7 +139,7 @@ class OrderController extends Controller
 
     public function complete(Request $request) {
         $now_reserved = Order::with('user')->where('check_in', '>', date('Y-m-d'))->get();
-        if($now_reserved->count() > 5) {
+        if($now_reserved->count() <= 5) {
             $plan = Plan::where('id', '=', $request->plan_id)->first();
             Order::create([
                 'num' => $request->num,

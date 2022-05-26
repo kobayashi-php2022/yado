@@ -7,6 +7,7 @@ use App\Http\Controllers\OrderController;
 use App\Http\Controllers\HotelController;
 use App\Http\Controllers\PlanController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\CommentController;
 
 use Illuminate\Http\Request;
 
@@ -47,6 +48,7 @@ Route::group(['middleware' => ['auth']], function () {
     Route::resource('users', UserController::class);
     Route::resource('plans', PlanController::class);
     Route::resource('orders', OrderController::class);
+    Route::resource('comments', CommentController::class);
 
     //管理者トップ
     Route::get('/admin', function () {
