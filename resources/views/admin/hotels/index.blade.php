@@ -5,6 +5,14 @@
 
 <body class="components-page2">
 
+<a href="">
+	         <div class="logo-container">
+	            <div class="logo">
+	                <img src="img/logo.png"alt="logo">
+	            </div>
+	        </div>
+	    </a>
+
 <nav class="navbar navbar-transparent navbar-fixed-top navbar-color-on-scroll" role="navigation">
   <div class="container">
     <!-- Brand and toggle get grouped for better mobile display -->

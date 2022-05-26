@@ -3,23 +3,9 @@
     position: absolute;
     top: 20px;
     z-index: 3;
+    width:12%;
 }
-.logo-container .logo{
-    overflow: hidden;
-    border-radius: 50%;
-    border: 1px solid #333333;
-    width: 60px;
-    float: left;
-}
-.logo-container .brand{
-    font-size: 18px;
-    color: #FFF;
-    line-height: 20px;
-    float: left;
-    margin-left: 10px;
-    margin-top: 10px;
-    width: 60px
-}
+
 
 body{
     background-color: #CCCCCC;
@@ -159,24 +145,8 @@ body{
     left: 0;
 }
 
-.logo-container .logo{
-    overflow: hidden;
-    border-radius: 50%;
-    border: 1px solid #333333;
-    width: 50px;
-    float: left;
-}
 
-.logo-container .brand{
-    font-size: 16px;
-    line-height: 18px;
-    float: left;
-    margin-left: 10px;
-    margin-top: 7px;
-    width: 70px;
-    height: 40px;
-    text-align: left;
-}
+
 
 
 .navbar-default .logo-container .brand{
