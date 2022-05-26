@@ -7,7 +7,7 @@
     <h1>会員情報を検索</h1>
     <dl>
         <dt>ID検索：</dt>
-        <dl><input type="number" name="id" id="id" value="{{ request('id') }}"></dl>
+        <dl><input type="number" name="id" id="id" min="1" max="300" value="{{ request('id') }}"></dl>
         <dt>名前検索：</dt>
         <dl><input type="text" name="name" id="name" value="{{ request('name') }}"></dl>
         <p><input type="submit" value="検索"></p>
