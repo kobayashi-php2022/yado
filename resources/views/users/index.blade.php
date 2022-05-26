@@ -54,10 +54,11 @@
         @endif
         </div>
     @endforeach
-    {{ $orders->appends(Request::All())->links('pagination::bootstrap-4') }}
+    {{ $orders->links('pagination::bootstrap-4') }}
 @else
     <p>現在予約しているプランはありません。</p>
 @endif 
+
 
 <div class="p-3 mb-2 bg-secondary text-white">会員登録情報</div>
 <div class="cotainer">

@@ -16,7 +16,7 @@ class UserController extends Controller
      */
     public function index(User $user)
     {
-        $orders = Order::with('user')->orderBy('created_at','desc')->paginate(5);
+        $orders = Order::with('user')->orderByDesc('created_at')->paginate(5);
         $user=User::where('id','=',\Auth::id())->first();
         return view('users/index', ['user'=> $user, 'orders' => $orders]);
     }
