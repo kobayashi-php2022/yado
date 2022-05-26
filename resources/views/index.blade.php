@@ -1,10 +1,21 @@
-@extends('layouts.app')
+@extends('layouts.app3')
 
-@section('title', '個別のページタイトル')
+@section('title', '新宿トラベル_ログイン画面')
 @section('content')
-<body class="components-page">
 
-<nav class="navbar navbar-transparent navbar-fixed-top navbar-color-on-scroll" role="navigation">
+<body>
+	<div class="image-container set-full-height" style="background-image: url('img/wizard-city.jpg')">
+    <a href="">
+	         <div class="logo-container">
+	            <div class="logo">
+	                <img src="logo.png"alt="logo">
+	            </div>
+	        </div>
+	    </a>
+        
+    <body class="components-page2">
+
+    <nav class="navbar navbar-transparent navbar-fixed-top navbar-color-on-scroll" role="navigation">
   <div class="container">
     <!-- Brand and toggle get grouped for better mobile display -->
     <div class="navbar-header">
@@ -20,70 +31,69 @@
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="navigation-doc">
 		<ul  class="nav navbar-nav navbar-right">
-			<li>
-				<a href="#">TOP</a>
+    <li>
+				<a href="#">TOPページへ</a>
 			</li>
 			<li>
-                <a href="#">マイページ</a>
-            </li>
-			<li>
-                <a href="#">会員検索</a>
-            </li>
-			<li>
-                <a href="#">宿検索</a>
-            </li>
     	</ul>
 
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->
 </nav>
 
-<div class="wrapper">
-	<div class="header header-filter" style="background-image: url('https://images.unsplash.com/photo-1423655156442-ccc11daa4e99?crop=entropy&dpr=2&fit=crop&fm=jpg&h=750&ixjsv=2.1.0&ixlib=rb-0.3.5&q=50&w=1450');">
-		<div class="container">
-			<div class="row">
-				<div class="col-md-6 col-md-offset-3 text-center">
-					<h3 class="title">ー　新宿トラベル　ー</h2>
-					<h1 class="title">管理者画面</h1>
-				</div>
-			</div>
-		</div>
-	</div>
-    <div class="main main-raised">
-        <div class="section">
-        <div class="row">
-            <div class="col-md-8 col-md-offset-1">
-                <div class="tim-container">
-						    	<!-- tooltip row -->
-						<div class="tim-row" id="tooltip-row">
-						<div class="card wizard-card2" data-color="purple">
-							<div class="row">
-								<div class="col-sm-4 col-sm-offset-2">
-									<div class="choice" data-toggle="wizard-radio" rel="tooltip" title="宿を検索する">
-										<input type="radio" name="job" value="Design">
-										<div class="icon">
-											<i class="material-icons">rounded_corner</i>
-										</div>
-										<h6>宿検索</h6>
-									</div>
-								</div>
-
-								<div class="col-sm-4">
-									<div class="choice" data-toggle="wizard-radio" rel="tooltip" title="会員を検索する">
-										<input type="radio" name="job" value="Code">
-										<div class="icon">
-											<i class="material-icons">accessibility</i>
-										</div>
-										<h6>会員検索</h6>
-									</div>
-								</div>
-							</div>
-						</div>
-				    </div>
-				    <!-- end row -->
+	    <!--   Big container   -->
+	    <div class="container">
+	        <div class="row">
+		        <div class="col-sm-8 col-sm-offset-2">
+		            <div class="wizard-container">
+		                <div class="card wizard-card" data-color="purple" id="wizard">
+                            <div class="wizard-header">
+		                        	<h3 class="wizard-title">
+		                        		ログイン
+		                        	</h3>
+		                    	</div>
+								<div class="wizard-navigation">
+									<ul>
+			                <li><a href="#details" data-toggle="tab">ログイン情報の入力</a></li>
+			                <li><a data-toggle="tab"></a></li>
+			            </ul>
+								</div><br><br>
+          <div class="cotainer">
+          <form action="{{route('login')}}" method="post" onsubmit="">
+          @csrf
+            <div class="form-group row">
+              <label for="email" class="col-md-3 col-form-label text-md-right"></label>
+              <div class="col-md-6">
+                <input type="email" id="email" class="form-control" name="email" placeholder="メールアドレス" value="{{old('email')}}" required>
+              </div>
             </div>
-        </div>
-        </div>
-    </div>
-    </div>
-	@endsection
+            <div class="form-group row">
+              <label for="password" class="col-md-3 col-form-label text-md-right"></label>
+              <div class="col-md-6">
+                <input type="password" id="password" class="form-control" name="password" placeholder="パスワード" required>
+              </div>
+            </div>
+            <br>
+            <div style="text-align: center;">
+              <p><input type="submit" value="ログイン" class='btn btn-primary'></p><br>
+              <p>または、<a href="{{route('register')}}">新規会員登録</a></p>
+              </div>
+            <div class="row">
+              <div class="col-md-8 offset-md-3">
+              @if($errors->count())
+            <ul class="alert" style="color:red; font-size:12px;">
+                @foreach($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+            @endif
+              </div>
+              </div>
+          </form>
+		                </div>
+		            </div> <!-- wizard container -->
+		        </div>
+	        </div> <!-- row -->
+	    </div> <!--  big container -->
+
+@endsection

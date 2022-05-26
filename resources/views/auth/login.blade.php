@@ -1,31 +1,64 @@
-<!DOCTYPE html>
-<html lang="ja">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
-    <title>ログイン</title>
-</head>
-<body>
-    <header>
-    <nav class="navbar navbar-expand-lg navbar-light bg-white">
-    <div class="container-fluid">
-      <a class="navbar-brand" href="/">{{ config('app.name') }}</a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      </nav>
-    </div>
-    </header>
-    <div class="cotainer">
-            <div class="row justify-content-center mt-5">
-                <div class="col-md-8">
-                <div class="card">
-                    <div class="card-header">ログイン</div>
-                    <div class="card-body">
+@extends('layouts.app3')
 
+@section('title', '新宿トラベル_ログイン画面')
+@section('content')
+
+<body>
+	<div class="image-container set-full-height" style="background-image: url('img/wizard-city.jpg')">
+    <a href="">
+	         <div class="logo-container">
+	            <div class="logo">
+	                <img src="logo.png"alt="logo">
+	            </div>
+	        </div>
+	    </a>
+        
+    <body class="components-page2">
+
+    <nav class="navbar navbar-transparent navbar-fixed-top navbar-color-on-scroll" role="navigation">
+  <div class="container">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button id="menu-toggle" type="button" class="navbar-toggle" data-target="#navigation-doc">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar bar1"></span>
+        <span class="icon-bar bar2"></span>
+        <span class="icon-bar bar3"></span>
+      </button>
+
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="navigation-doc">
+		<ul  class="nav navbar-nav navbar-right">
+    <li>
+				<a href="#">TOPページへ</a>
+			</li>
+			<li>
+    	</ul>
+
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>
+
+	    <!--   Big container   -->
+	    <div class="container">
+	        <div class="row">
+		        <div class="col-sm-8 col-sm-offset-2">
+		            <div class="wizard-container">
+		                <div class="card wizard-card" data-color="purple" id="wizard">
+                            <div class="wizard-header">
+		                        	<h3 class="wizard-title">
+		                        		ログイン
+		                        	</h3>
+		                    	</div>
+								<div class="wizard-navigation">
+									<ul>
+			                <li><a href="#details" data-toggle="tab">ログイン情報の入力</a></li>
+			                <li><a data-toggle="tab"></a></li>
+			            </ul>
+								</div><br><br>
+          <div class="cotainer">
           <form action="{{route('login')}}" method="post" onsubmit="">
           @csrf
             <div class="form-group row">
@@ -40,6 +73,11 @@
                 <input type="password" id="password" class="form-control" name="password" placeholder="パスワード" required>
               </div>
             </div>
+            <br>
+            <div style="text-align: center;">
+              <p><input type="submit" value="ログイン" class='btn btn-primary'></p><br>
+              <p>または、<a href="{{route('register')}}">新規会員登録</a></p>
+              </div>
             <div class="row">
               <div class="col-md-8 offset-md-3">
               @if($errors->count())
@@ -49,16 +87,13 @@
                 @endforeach
             </ul>
             @endif
-              <p><input type="submit" value="ログイン" class="btn btn-secondary"></p><br>
-              <p>または</p>
-              <p><a href="{{route('register')}}">新規会員登録</a></p>
               </div>
               </div>
           </form>
-          </div>
-            </div>
-            </div>
-            </div>
-            </div>
-</body>
-</html>
+		                </div>
+		            </div> <!-- wizard container -->
+		        </div>
+	        </div> <!-- row -->
+	    </div> <!--  big container -->
+
+@endsection

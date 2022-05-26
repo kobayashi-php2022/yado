@@ -1,31 +1,12 @@
-<!doctype html>
-<html lang="ja">
-<head>
-	<meta charset="utf-8" />
-	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-	<title>新宿トラベル_宿情報入力画面</title>
+@extends('layouts.app2')
 
-	<meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
-    <meta name="viewport" content="width=device-width" />
-
-	<link rel="apple-touch-icon" sizes="76x76" href="img/apple-icon.png" />
-	<link rel="icon" type="image/png" href="img/favicon.png" />
-
-	<!--     Fonts and icons     -->
-	<link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:400,700|Material+Icons" />
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" />
-
-	<!-- CSS Files -->
-	<link href="css/bootstrap.min.css" rel="stylesheet" />
-	<link href="css/material-bootstrap-wizard.css" rel="stylesheet" />
-
-	<!-- CSS Just for demo purpose, don't include it in your project -->
-	<link href="css/demo.css" rel="stylesheet" />
-</head>
+@section('title', '新宿トラベル_宿情報の変更')
+@section('content')
 
 <body>
+    
 	<div class="image-container set-full-height" style="background-image: url('img/wizard-book.jpg')">
-    <a href="http://creative-tim.com">
+    <a href="">
 	         <div class="logo-container">
 	            <div class="logo">
 	                <img src="logo.png"alt="logo">
@@ -50,12 +31,9 @@
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="navigation-doc">
 		<ul  class="nav navbar-nav navbar-right">
-			<li>
-				<a href="#">TOP</a>
+        <li>
+				<a href="#">管理者画面TOP</a>
 			</li>
-			<li>
-                <a href="#">マイページ</a>
-            </li>
 			<li>
                 <a href="#">会員検索</a>
             </li>
@@ -80,7 +58,7 @@
 
 								<div class="wizard-navigation">
 									<ul>
-			                            <li><a href="#details" data-toggle="tab">新規宿泊施設の登録</a></li>
+			                            <li><a href="#details" data-toggle="tab">宿泊施設情報の更新</a></li>
 			                            <li><a data-toggle="tab"></a></li>
 			                        </ul>
 								</div>
@@ -90,51 +68,67 @@
 		                            	<div class="row">
 			                            	<div class="col-sm-12">
                                             <div class="create">
-			                                	<h4 class="info-text">新規宿泊施設の情報を入力してください</h4>
+			                                	<h4 class="info-text">宿泊施設の情報を更新してください</h4>
                                                 @include('commons/error_flash')
 			                            	</div>
-                                            <form action="{{ route('hotels.store') }}" method="post" enctype="multipart/form-data">
+                                            <div class="a" style="margin-left: 100px;">
+                                            <form action="{{ route('hotels.update', $hotel->id) }}" method="post" enctype="multipart/form-data">
                                             @csrf
-		                                	<div class="col-sm-6"style="text-align:left; color:black;">
-                                                    <p>
-                                                <label for="category">宿分類：　　　　</label>
-                                                <select name="category" id="category">
-                                                    <option value=""></option>
-                                                    @foreach ($categories as $category)
-                                                        <option value="{{ $category->id }}" @if(request('category') == $category->id) selected @endif >
-                                                            {{ $category->name }}
-                                                        </option>
-                                                    @endforeach
-                                                </select>
-                                            </p>            <p>
-                                                <label for="name">宿名：　　　　　</label>
-                                                <input type="text" name="name" id="name" value={{ request('name')}}>
-                                            </p>
+                                            @method('patch')
+		                                	<div class="col-sm-6"style="color:black;">
                                             <p>
-                                                <label for="address">住所：　　　　　</label>
-                                                <input type="text" name="address" id="address" value={{ request('text')}}>
-                                            </p>
-                                            <p>
-                                                <label for="email">メールアドレス：</label>
-                                                <input type="email" name="email" id="email" value={{ request('email')}}>
-                                            </p>
-                                            <p>
-                                                <label for="tel">電話番号：　　　</label>
-                                                <input type="tel" name="tel" id="tel" value={{ request('tel')}}>
-                                            </p>
-                                            {{-- 画像投稿 --}}
-                                            <p>
-                                                <label for="image">イメージ画像：</label>
-                                                <input type="file" name="image" id="image">
-                                            </p>
+                                            <label for="category">宿分類：</label>
+                                            <select name="category" id="category">
+                                            <option value=""></option>
+                                        @foreach ($categories as $category)
+                                            <option value="{{ $category->id }}" @if($hotel->category_id == $category->id) selected @endif >
+                                                {{ $category->name }}
+                                            </option>
+                                        @endforeach
+                                    </select>
+                                        </p>
+                                        <p>
+                                            <label for="name">宿名：</label>
+                                            <input type="text" name="name" id="name" size="55"value="{{ $hotel->name }}">
+                                        </p>
+                                        <p>
+                                            <label for="address">住所：</label>
+                                            <input type="text" name="address" id="address" size="55"value="{{ $hotel->address }}">
+                                        </p>
+                                        <p>
+                                            <label for="email">メールアドレス：</label>
+                                            <input type="email" name="email" id="email"size="45" value="{{ $hotel->email }}">
+                                        </p>
+                                        <p>
+                                            <label for="tel">電話番号：</label>
+                                            <input type="tel" name="tel" id="tel" value="{{ $hotel->tel }}">
+                                        </p>
+                                        {{-- 画像投稿 --}}
+                                        <p>
+                                            <label for="image">イメージ画像：</label>
+                                            <input type="file" name="image" id="image" value="">
+                                            @if ($hotel->image !== "")
+                                            <img src="{{ \Storage::url($hotel->image) }}" width="500">
+                                            @else
+                                            <img src="{{ \Storage::url('items/no_image.png') }}" width="300" height="300">
+                                            @endif
+
+                                        </p>
+                                        <p>
+
+                                        </p>
 
                                             {{-- <p>
-                                                <label for="text">プラン名</label>
-                                                <input type="text" name="text" id="text">
-                                            </p>
-                                            <p>
-                                                <textarea name="content" id="content" cols="30" rows="10"></textarea>
-                                            </p> --}}
+                                            <label for="text">プラン名：</label>
+                                            <input type="text" name="text" id="text">
+                                        </p>
+                                        <p>
+                                            <textarea name="content" id="content" cols="30" rows="10"></textarea>
+                                        </p> --}}
+                                        <div class="b" style="text-align:center;">
+                                        <button class="btn btn-danger" type="submit" ><a href="{{ route('hotels.show', $hotel->id) }}" style="color: white;">更新</a></button>
+                                            </div>
+                                            <p><a href="#">< 戻る</a></p>
 		                                	</div>
 		                            	</div>
 		                            </div>
@@ -146,90 +140,4 @@
                 </div>
 	    	</div> <!-- row -->
 		</div> <!--  big container -->
-
-	    <div class="footer">
-	        <div class="container text-center">
-            <div class="copyright">
-                &copy; yado4
-            </div>
-        </div>
-	    </div>
-	</div>
-
-</body>
-	<!--   Core JS Files   -->
-	<script src="js/jquery-2.2.4.min.js" type="text/javascript"></script>
-	<script src="js/bootstrap.min.js" type="text/javascript"></script>
-	<script src="js/jquery.bootstrap.js" type="text/javascript"></script>
-
-	<!--  Plugin for the Wizard -->
-	<script src="js/material-bootstrap-wizard.js"></script>
-
-	<!--  More information about jquery.validate here: http://jqueryvalidation.org/	 -->
-	<script src="js/jquery.validate.min.js"></script>
-</html>
-<?php /*
-
-@extends('layouts.app')
-
-@section('content')
-    <h1>宿泊施設の更新</h1>
-    @include('commons/error_flash')
-    <div class="create">
-        <form action="{{ route('hotels.update', $hotel->id) }}" method="post" enctype="multipart/form-data">
-            @csrf
-            @method('patch')
-            <p>
-                <label for="category">宿分類</label>
-                <select name="category" id="category">
-                    <option value=""></option>
-                    @foreach ($categories as $category)
-                        <option value="{{ $category->id }}" @if($hotel->category_id == $category->id) selected @endif >
-                            {{ $category->name }}
-                        </option>
-                    @endforeach
-                </select>
-            </p>
-            <p>
-                <label for="name">宿名</label>
-                <input type="text" name="name" id="name" value="{{ $hotel->name }}">
-            </p>
-            <p>
-                <label for="address">住所</label>
-                <input type="text" name="address" id="address" value="{{ $hotel->address }}">
-            </p>
-            <p>
-                <label for="email">メールアドレス</label>
-                <input type="email" name="email" id="email" value="{{ $hotel->email }}">
-            </p>
-            <p>
-                <label for="tel">電話番号</label>
-                <input type="tel" name="tel" id="tel" value="{{ $hotel->tel }}">
-            </p>
-            {{-- 画像投稿 --}}
-            <p>
-                <label for="image">イメージ画像</label>
-                <input type="file" name="image" id="image" value="">
-            </p>
-            <p>
-                @if ($hotel->image !== "")
-                <img src="{{ \Storage::url($hotel->image) }}" width="500">
-                @else
-                <img src="{{ \Storage::url('items/no_image.png') }}" width="300" height="300">
-                @endif
-            </p>
-
-            {{-- <p>
-                <label for="text">プラン名</label>
-                <input type="text" name="text" id="text">
-            </p>
-            <p>
-                <textarea name="content" id="content" cols="30" rows="10"></textarea>
-            </p> --}}
-
-            <input type="submit" value="更新">
-        </form>
-        <hr>
-        <a href="{{ route('hotels.show', $hotel->id) }}">戻る</a>
-    </div>
-@endsection
+		@endsection
