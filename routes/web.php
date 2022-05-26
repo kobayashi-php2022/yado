@@ -7,6 +7,7 @@ use App\Http\Controllers\OrderController;
 use App\Http\Controllers\HotelController;
 use App\Http\Controllers\PlanController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\MemberController;
 
 use Illuminate\Http\Request;
 
