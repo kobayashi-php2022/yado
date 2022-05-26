@@ -4,7 +4,11 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
+<<<<<<< HEAD
     "content-hash": "7ac6d773829f765c3148186a126d415e",
+=======
+    "content-hash": "000013ac0ffe18847d232e59384f4c29",
+>>>>>>> main
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -2825,6 +2829,7 @@
             "time": "2020-04-05T10:47:18+00:00"
         },
         {
+<<<<<<< HEAD
             "name": "psr/cache",
             "version": "1.0.1",
             "source": {
@@ -2874,6 +2879,8 @@
             "time": "2016-08-06T20:24:11+00:00"
         },
         {
+=======
+>>>>>>> main
             "name": "psr/container",
             "version": "1.1.2",
             "source": {

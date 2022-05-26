@@ -50,6 +50,7 @@ class HotelController extends Controller
     public function create()
     {
         //新規作成画面を表示
+        $this->authorize($hotel);
         $hotel = new Hotel;
         $categories = Category::all();
         return view('admin/hotels/create', ['hotel' => $hotel, 'categories' => $categories]);
@@ -105,6 +106,7 @@ class HotelController extends Controller
      */
     public function edit(Hotel $hotel)
     {
+        $this->authorize($hotel);
         $categories = Category::all();
         return view('admin/hotels/edit', ['hotel' => $hotel, 'categories' => $categories]);
     }
@@ -118,6 +120,7 @@ class HotelController extends Controller
      */
     public function update(HotelRequest $request, Hotel $hotel)
     {
+        $this->authorize($hotel);
         //ファイルの取得
         $image = $request->file('image');
         //ファイルは保存してたやつ

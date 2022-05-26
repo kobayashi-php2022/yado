@@ -23,34 +23,38 @@ use Illuminate\Http\Request;
 */
 
 Route::get('/', [HotelController::class,'index']);
+Route::resource('hotels', HotelController::class)->only([
+    'index', 'show'
+]);
 
-Route::resource('users', UserController::class);
-Route::get('/index', [UserController::class,'index'])->name('mypage');
-// 最終的に消すやつ
+//ログイン・会員登録
 Route::get('/register', [RegisterController::class,'index'])->name('register');
 Route::post('/conf', [HomeController::class,'confirm'])->name('conf');
 Route::post('/complete', [HomeController::class,'complete'])->name('complete');
 
-Route::get('/home', [HotelController::class,'index'])->name('home');
+Route::group(['middleware' => ['auth']], function () {
+    Route::get('/home', [HotelController::class,'index'])->name('home');
 
-//宿予約
-Route::post('/create', [OrderController::class, 'create'])->name('orders.form.create');
-Route::post('/orders/confirm', [OrderController::class, 'confirm'])->name("orders.confirm");
-Route::post('/orders/complete', [OrderController::class, 'complete'])->name("orders.complete");
+    //宿予約
+    Route::post('/create', [OrderController::class, 'create'])->name('orders.form.create');
+    Route::post('/orders/confirm', [OrderController::class, 'confirm'])->name("orders.confirm");
+    Route::post('/orders/complete', [OrderController::class, 'complete'])->name("orders.complete");
+    
+    //リソースルーティング
+    Route::resource('hotels', HotelController::class)->except([
+        'index', 'show'
+    ]);
+    Route::resource('users', UserController::class);
+    Route::resource('plans', PlanController::class);
+    Route::resource('orders', OrderController::class);
 
-//Route::post('/conf', function(Request $request){
-//});
-
-// 最終的に消すやつ（こばやし）
-Route::get('/admin', function () {
-    return view('admin/top');
+    //管理者トップ
+    Route::get('/admin', function () {
+        return view('admin/top');
+    });
 });
 
-//一覧と詳細表示だけ
-Route::resource('hotels', HotelController::class);
-Route::resource('plans', PlanController::class);
-Route::resource('orders', OrderController::class);
+// 行き場のないルーティングたち
 
-// Route::group(['middleware' => ['auth']] function () {
-    // ログインしてないと見れないところ、ログイン機能完成したら入れます
-// });
+// Route::get('/index', [UserController::class,'index'])->name('mypage');
+//Route::post('/conf', function(Request $request){
