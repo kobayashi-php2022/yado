@@ -55,10 +55,7 @@
               <input type="hidden" name="name" value="{{ request('name') }}">
               <input type="hidden" name="email" value="{{ request('email') }}">
               <input type="hidden" name="password" value="{{ request('password') }}">
-<<<<<<< HEAD
               <input type="hidden" name="auth" value="会員">
-=======
->>>>>>> main
           </form>
           </div>
               </div>
