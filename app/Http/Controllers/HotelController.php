@@ -99,9 +99,6 @@ class HotelController extends Controller
         //当該ホテルのプランを取得
         $plans = Plan::with('hotel')->where('hotels_id', $hotel->id)->get();
         $comments = Comment::with(['hotel', 'user'])->where('hotels_id', $hotel->id)->orderByDesc('created_at')->get();
-        // foreach($comments as $comment){
-        //     dd($comment);
-        // }
         if(\Auth::check() == true && \Auth::user()->auth == "管理者") {
             return view('admin/hotels/show', ['hotel' => $hotel, 'plans' => $plans]);
         } else {
