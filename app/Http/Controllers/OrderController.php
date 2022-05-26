@@ -49,6 +49,7 @@ class OrderController extends Controller
      */
     public function create(Request $request)
     {
+        // dd($request->search_rooms_num);
         $plan = Plan::where('id', '=', $request->plan_id)->first();
         return view('reserve/create', ['plan' => $plan]);        
     }
@@ -112,7 +113,7 @@ class OrderController extends Controller
     public function destroy(Order $order)
     {
         $order->delete();
-        return redirect(route('index'));
+        return redirect(route('users.index'));
     }
 
     private $validator = [
@@ -128,10 +129,7 @@ class OrderController extends Controller
     {
         // dd($request->hotel_name);
         $this->validate($request, [
-            "check_in" => "required",
-            "check_out" => "required",
             "num" => "required",
-            "room" => "required",
             "address" => "required|max:255",
             "tel" => "required|max:15",
         ]);

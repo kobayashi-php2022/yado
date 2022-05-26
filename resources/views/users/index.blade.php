@@ -2,11 +2,15 @@
 
 @section('content')
 <h1>マイページ</h1>
-<div class="p-3 mb-2 bg-secondary text-white">予約一覧</div>
+<div class="p-3 mb-2 bg-secondary text-white">予約履歴</div>
  @if($user->orders()->count()) 
     @foreach($orders as $order)
-        <div class="container mt-2 mb-2">
-        <table class="border rounded">
+        <div class="container mt-2 mb-2 border rounded">
+        <table>
+            <tr>
+                <td>予約日</td>
+                <td>{{ $order->created_at }}</td>
+            </tr>
             <tr>
                 <td>ホテル名</td>
                 <td>{{ $order->hotel->name }}</td>
@@ -14,6 +18,10 @@
             <tr>
                 <td>プラン名</td>
                 <td>{{$order->plan->name}}</td>
+            </tr>
+            <tr>
+                <td>料金</td>
+                <td>{{ $order->plan->price }}円</td>
             </tr>
             <tr>
                 <td>日程</td>
@@ -27,23 +35,26 @@
                 <td>部屋数</td>
                 <td>{{ $order->room }}部屋</td>
             </tr>
-                {{--<a href="#" onclick="deleteUser()">この予約をキャンセルする</a>
-                    <form action ="{{route('oders.destroy',$order)}}" method="post" id="delete-form">
-        @csrf
-        @method('delete')
-        </form>
-        <script type="text/javascript">
-            function deleteUser(){
-                event.preventDefault();
-                if(window.confirm('本当にキャンセルしますか？')){
-                    document.getElementById('delete-form').submit();
-                }
-            }
-            </script>--}}
-            </tr>
         </table>
+        @if($order->check_in > date("Y-m-d"))
+            <a href="#" onclick="deleteOrder()"><button>この予約をキャンセルする</button></a>
+            <form action ="{{route('orders.destroy',$order)}}" method="post" id="order-delete-form">
+                @csrf
+                @method('delete')
+                </form>
+                <script type="text/javascript">
+                    function deleteOrder(){
+                        event.preventDefault();
+                        if(window.confirm('本当にキャンセルしますか？')){
+                            document.getElementById('order-delete-form').submit();
+                        }
+                    }
+                </script>
+            </form>
+        @endif
         </div>
     @endforeach
+    {{ $orders->appends(Request::All())->links('pagination::bootstrap-4') }}
 @else
     <p>現在予約しているプランはありません。</p>
 @endif 

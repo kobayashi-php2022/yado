@@ -31,38 +31,43 @@
         <td>{{ $hotel->email }}</td>
     </tr>
 </table>
-
+<h2>プラン</h2>
+{{-- プラン検索 --}}
+{{-- <p>予約可能なプランを表示するには、日程と部屋数を入力してください</p>
+<form action="{{ route('hotels.show', $hotel->id) }}" method="get">
+    <dl>
+        <dt>チェックイン日</dt>
+        <dd><input type="date" name="search_check_in" id="search_check_in" value="{{ request('search_check_in') }}"></dd>
+        <dt>チェックアウト日</dt>
+        <dd><input type="date" name="search_check_out" id="search_check_out" value="{{ request('search_check_out') }}"></dd>
+        <dt>部屋数</dt>
+        <dd><input type="number" name="search_rooms_num" id="search_rooms_num" value="{{ request('search_rooms_num') }}">部屋</dd>
+    </dl>
+    <input type="submit" value="検索">
+</form> --}}
 {{-- プラン一覧・追加 --}}
-<h2>プラン一覧</h2>
-@foreach ($plans as $plan)
-<div>
-    <table style="margin-left: 30px; margin-top:30px;">
-        <tr>
-            <th>プラン名</th>
-            <th>
-                {{ $plan->name }}
-            </th>
-        </tr>
-        <tr>
-            <td>プランの説明</td>
-            <td>{!! nl2br(e($plan->content)) !!}</td>
-        </tr>
-        <tr>
-            <td>料金</td>
-            <td>{{ $plan->price }}円</td>
-        </tr>
-        <tr>
-            <td>部屋数</td>
-            <td>{{ $plan->rooms_num }}部屋</td>
-        </tr>
-    </table>
-    <form action="{{ route('orders.form.create') }}" method="post">
-        @csrf
-        <input type="hidden" name="plan_id" value="{{ $plan->id }}">
-        <button type="submit" style="margin-left: 30px;">このプランを予約する</button>
-    </form>
-</div>
-@endforeach
+    @foreach ($plans as $plan)
+    <div>
+        <table style="margin-left: 30px; margin-top:30px;">
+            <tr>
+                <th>プラン名</th>
+                <th>
+                    {{ $plan->name }}
+                </th>
+            </tr>
+            <tr>
+                <td>プランの説明</td>
+                <td>{!! nl2br(e($plan->content)) !!}</td>
+            </tr>
+            <tr>
+                <td>料金</td>
+                <td>{{ $plan->price }}円</td>
+            </tr>
+        </table>
+        <a href="{{ route('plans.show', $plan->id) }}"><button type="submit" style="margin-left: 30px;">空き情報を確認する</button></a>
+    </div>
+    @endforeach
+{{-- @endif --}}
 <hr>
 <a href="/hotels">一覧に戻る</a>
 @endsection
