@@ -9,6 +9,8 @@ use App\Models\Plan;
 use App\Models\User;
 use Illuminate\Http\Request;
 
+use Illuminate\Support\Facades\Validator;
+
 class OrderController extends Controller
 {
     /**
@@ -49,7 +51,13 @@ class OrderController extends Controller
      */
     public function create(Request $request)
     {
+        // redirect('/dummy');
+        // dd($request->search_rooms_num);
         $plan = Plan::where('id', '=', $request->plan_id)->first();
+        // リクエストじゃなくてurlのセグメントからとる?
+        // $plan = Plan::where('id', '=', Request::segment(2))->first();
+        // セッションにplan_idいれる??
+
         return view('reserve/create', ['plan' => $plan]);        
     }
 
@@ -112,7 +120,7 @@ class OrderController extends Controller
     public function destroy(Order $order)
     {
         $order->delete();
-        return redirect(route('index'));
+        return redirect(route('users.index'));
     }
 
     private $validator = [
@@ -124,38 +132,47 @@ class OrderController extends Controller
 		"tel" => "required",
 	];
 
-    public function confirm(Request $request)
+    public function confirm(Request $request, Hotel $hotel)
     {
-        // dd($request->hotel_name);
-        $this->validate($request, [
-            "check_in" => "required",
-            "check_out" => "required",
-            "num" => "required",
-            "room" => "required",
+        $validated = $request->validate([
+            "num" => "required|min:1",
             "address" => "required|max:255",
             "tel" => "required|max:15",
         ]);
+        // if ($validated->fails()) {
+        //     return redirect()->route("orders.form.create.get", ['hotel' => $hotel]);
+        // }
+        // if ($validator->fails()) {
+        //     $test1 = $this->create($request);
+        //     return $test1;
+        // }
         $plan = Plan::where('id', '=', $request->plan_id)->first();
         return view("reserve/confirm", ['plan' => $plan]);
     }
 
     public function complete(Request $request) {
-        $plan = Plan::where('id', '=', $request->plan_id)->first();
-        Order::create([
-            'num' => $request->num,
-            'check_in' => $request->check_in,
-            'check_out' => $request->check_out,
-            'room' => $request->room,
-            'hotels_id' => $request->hotels_id,
-            'user_id' => \Auth::id(),
-            'plan_id' => $request->plan_id,
-        ]);
-        //電話番号と住所はusersテーブルにぶちこむ
-        $user = User::find(\Auth::id());
-        $user->update([
-            'address' => $request->address,
-            'tel' => $request->tel,
-        ]);
-        return view("reserve/complete");
+        $now_reserved = Order::with('user')->where('check_in', '>', date('Y-m-d'))->get();
+        if($now_reserved->count() <= 5) {
+            $plan = Plan::where('id', '=', $request->plan_id)->first();
+            Order::create([
+                'num' => $request->num,
+                'check_in' => $request->check_in,
+                'check_out' => $request->check_out,
+                'room' => $request->room,
+                'hotels_id' => $request->hotels_id,
+                'user_id' => \Auth::id(),
+                'plan_id' => $request->plan_id,
+            ]);
+            //電話番号と住所はusersテーブルにぶちこむ
+            $user = User::find(\Auth::id());
+            $user->update([
+                'address' => $request->address,
+                'tel' => $request->tel,
+            ]);
+            return view("reserve/complete");
+        } else {
+            return view("reserve/cannot_complete");
+        }
+
     }
 }

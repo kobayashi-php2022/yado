@@ -4,10 +4,11 @@
     <h1>予約内容の確認</h1>
     <p>こちらの内容で予約します。内容を確認したら「予約」ボタンを押してください。</p>
     @include('commons/error_flash')
+    <hr>
     <div class="create">
         <form action="{{ route('orders.complete') }}" method="post">
             @csrf
-            <p style="margin-top: 30px;">予約するプラン</p>
+            <p>予約するプラン</p>
             <table>
                 <tr>
                     <td>宿泊施設名</td>
@@ -19,8 +20,13 @@
                     <td>{{ $plan->name }}</td>
                     <input type="hidden" name="plan_id" value="{{ $plan->id }}">
                 </tr>
+                <tr>
+                    <td>料金</td>
+                    <td>{{ $plan->price }}円</td>
+                </tr>
             </table>
-            <p style="margin-top: 30px;">予約者情報</p>
+            <hr>
+            <p>予約者情報</p>
             <table>
                 <tr>
                     <td>お名前</td>
@@ -41,7 +47,8 @@
                     <input type="hidden" name="tel" id="tel" value="{{ request('tel') }}">
                 </tr>
             </table>
-            <p style="margin-top: 30px;">宿泊予約</p>
+            <hr>
+            <p>予約内容</p>
             <table>
                 <tr>
                     <td>チェックイン</td>

@@ -16,7 +16,7 @@ class UserController extends Controller
      */
     public function index(User $user)
     {
-        $orders = Order::with('user')->get();
+        $orders = Order::with('user')->orderByDesc('created_at')->paginate(5);
         $user=User::where('id','=',\Auth::id())->first();
         return view('users/index', ['user'=> $user, 'orders' => $orders]);
     }
@@ -39,8 +39,13 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        $user=$request->user()->edit($request->all());
-        return redirect(route('users.index',$user));
+        $conf = new \App\Models\User;
+        $conf->name = $request->name;
+        $conf->email = $request->email;
+        $conf->password = Hash::make($request->password);
+        $conf->auth = $request->auth; 
+        $conf->save();
+        return view('complete');
     }
 
     /**

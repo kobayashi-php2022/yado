@@ -8,12 +8,8 @@
     <img src="{{ \Storage::url('items/no_image.png') }}" width="400" height="400">
     @endif
 </div>
-<h1>宿情報詳細</h1>
+<h1>{{ $hotel->name }}</h1>
 <table style="margin-left: 30px;">
-    <tr>
-        <th>宿名</th>
-        <th>{{ $hotel->name }}</a></th>
-    </tr>
     <tr>
         <td>宿分類</td>
         <td>{{ $hotel->category->name }}</td>
@@ -31,38 +27,61 @@
         <td>{{ $hotel->email }}</td>
     </tr>
 </table>
+<h3>口コミ</h3>
+@if(count($comments))
+<div class="box">
+    @foreach ($comments as $comment)
+        <table class="bg-light ml-4 m-2">
+            <tr>
+                <td>投稿日</td>
+                <td>{{ $comment->created_at }}</td>
+            </tr>
+            <tr>
+                @if(empty($comment->user->nickname))
+                    <td>名無しさん</td>
+                @else
+                    <td>{{ $comment->user->nickname }}さん</td>
+                @endif
+                <td><span class="star" data-rate="{{ $comment->star }}"></span></td>
+            </tr>
+            <tr>    
+                <td colspan="2">{!! nl2br(e($comment->comment)) !!}</td>
+            </tr>
+        </table>
+        @endforeach
+    </div>
+    @else
+        <p>口コミはまだありません。</p>
+    @endif
+    
+{{-- <form action="{{ route('comments.create') }}" method="get" class="ml-4">
+    @csrf
+    <input type="hidden" name="hotel_id" value="{{ $hotel->id }}">
+    <input type="submit" value="口コミを投稿する">
+</form> --}}
 
-{{-- プラン一覧・追加 --}}
-<h2>プラン一覧</h2>
-@foreach ($plans as $plan)
-<div>
-    <table style="margin-left: 30px; margin-top:30px;">
-        <tr>
-            <th>プラン名</th>
-            <th>
-                {{ $plan->name }}
-            </th>
-        </tr>
-        <tr>
-            <td>プランの説明</td>
-            <td>{!! nl2br(e($plan->content)) !!}</td>
-        </tr>
-        <tr>
-            <td>料金</td>
-            <td>{{ $plan->price }}円</td>
-        </tr>
-        <tr>
-            <td>部屋数</td>
-            <td>{{ $plan->rooms_num }}部屋</td>
-        </tr>
-    </table>
-    <form action="{{ route('orders.form.create') }}" method="post">
-        @csrf
-        <input type="hidden" name="plan_id" value="{{ $plan->id }}">
-        <button type="submit" style="margin-left: 30px;">このプランを予約する</button>
-    </form>
-</div>
-@endforeach
+<h3>プラン</h3>
+    @foreach ($plans as $plan)
+    <div>
+        <table style="margin-left: 30px; margin-top:30px;">
+            <tr>
+                <th>プラン名</th>
+                <th>
+                    {{ $plan->name }}
+                </th>
+            </tr>
+            <tr>
+                <td>プランの説明</td>
+                <td>{!! nl2br(e($plan->content)) !!}</td>
+            </tr>
+            <tr>
+                <td>料金</td>
+                <td>{{ $plan->price }}円</td>
+            </tr>
+        </table>
+        <a href="{{ route('plans.show', $plan->id) }}"><button type="submit" style="margin-left: 30px;">空き情報を確認する</button></a>
+    </div>
+    @endforeach
 <hr>
 <a href="/hotels">一覧に戻る</a>
 @endsection

@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Hotel extends Model
 {
@@ -20,18 +21,18 @@ class Hotel extends Model
     // planテーブルと一対多の関係
     public function plans(): HasMany
     {
-        return $this->hasMany(Plan::class);
+        return $this->hasMany(Plan::class, 'hotels_id');
     }
 
     //orderテーブル
     public function orders(): HasMany
     {
-        return $this->hasMany(Order::class);
+        return $this->hasMany(Order::class, 'hotels_id');
     }
 
     // comentsテーブルと一対多の関係
     public function comments() 
     { 
-        return $this->hasMany(Comment::class);
+        return $this->hasMany(Comment::class, 'hotels_id');
     }
 }

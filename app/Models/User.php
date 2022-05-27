@@ -25,6 +25,7 @@ class User extends Authenticatable
         'email',
         'password',
         'auth',
+        'nickname',
     ];
 
     /**
@@ -51,9 +52,9 @@ class User extends Authenticatable
         return $this->hasMany(Order::class);
     }
 
-    public function comment_hotels()
+    public function comments()
     {
-        return $this->belongsToMany(Hotel::class, 'Comment');
+        return $this->belongsTo(Comment::class, 'user_id');
     }
     protected $table = "users";
 }
