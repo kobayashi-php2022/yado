@@ -123,11 +123,11 @@
     </tr>
     <tr>
         <td>料金</td>
-        <td>{{ $plan->price }}</td>
+        <td>{{ $plan->price }}円</td>
     </tr>
     <tr>
         <td>部屋数</td>
-        <td>{{ $plan->rooms_num }}</td>
+        <td>{{ $plan->rooms_num }}部屋</td>
     </tr>
     <tr>
         <td>登録日</td>

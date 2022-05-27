@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Plan;
 use App\Models\Hotel;
+use App\Models\Order;
 use Illuminate\Http\Request;
 
 class PlanController extends Controller
@@ -62,9 +63,17 @@ class PlanController extends Controller
      * @param  \App\Models\Plan  $plan
      * @return \Illuminate\Http\Response
      */
-    public function show(Plan $plan)
+    public function show(Plan $plan, Request $request)
     {
-        //
+        //部屋数合計
+        $reserved_rooms_sum = "";
+        if ($request->filled('search_check_in') && $request->filled('search_check_out') && $request->filled('search_rooms_num')) {
+            $reserved_rooms_sum = Order::where('check_in', '<', $request->search_check_out)
+            ->where('check_out', '>', $request->search_check_in)
+            ->sum('room');
+            // dd($reserved_rooms_sum);
+        } 
+        return view('reserve/plan', ['plan' => $plan, 'reserved_rooms_sum' => $reserved_rooms_sum]);
     }
 
     /**

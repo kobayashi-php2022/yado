@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
+use App\Models\Order;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Hash;
+
 
 class UserController extends Controller
 {
@@ -12,9 +14,11 @@ class UserController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(User $user)
     {
-            return view('conf');
+        $orders = Order::with('user')->orderByDesc('created_at')->paginate(5);
+        $user=User::where('id','=',\Auth::id())->first();
+        return view('users/index', ['user'=> $user, 'orders' => $orders]);
     }
 
     /**
@@ -24,7 +28,7 @@ class UserController extends Controller
      */
     public function create()
     {
-        return view('register');
+        //
     }
 
     /**
@@ -33,7 +37,7 @@ class UserController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function complete(Request $request)
+    public function store(Request $request)
     {
         $conf = new \App\Models\User;
         $conf->name = $request->name;
@@ -45,58 +49,55 @@ class UserController extends Controller
     }
 
     /**
-     * Show the form for editing the specified resource.
+     * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\Models\User  $user
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function show(User $user)
     {
-        $conf = \App\Models\User::find($id);
-        return view('edit',['conf'=>$conf]);
+        return view('users.show',['user' => $user]);
+    }
+    
+
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  \App\Models\User  $user
+     * @return \Illuminate\Http\Response
+     */
+    public function edit(User $user)
+    {
+        return view('users.edit',['user' => $user]);
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  \App\Models\User  $user
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, User $user)
     {
-        //
+        $user->update($request->all());
+        return redirect(route('users.index',$user));
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+
+     * @param  \App\Models\User  $user
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(User $user)
     {
-        //
+        $user->delete();
+        return redirect(route('hotels.index'));
     }
-	public function form() {
-		return view('register');
-	}
-    public function confirm(Request $request) {
-        $this->validate($request,[
-            'name' => 'required',
-            'email' => 'required|unique:users,email',
-            'password' => 'required',
-            'confirm-password' => 'required | same:password',
-        ]);
-        return view('conf');
-	}
 
-    public function login(Request $request) {
-        $this->validate($request,[
-            'email' => 'required',
-            'password' => 'required',
-        ]);
-        return view('login');
-    }
+
+
     
 }

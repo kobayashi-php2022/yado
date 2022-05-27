@@ -15,11 +15,10 @@ class DatabaseSeeder extends Seeder
     {
         $this->call([
             userSeeder::class,
-            planSeeder::class,
             CategoriesSeeder::class,
             hotelSeeder::class,
+            planSeeder::class,
             orderSeeder::class,
-            changeSeeder::class,
             commentSeeder::class,
         ]);
     }
