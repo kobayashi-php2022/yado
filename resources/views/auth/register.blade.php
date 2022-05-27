@@ -31,7 +31,7 @@
     <a href="">
 	         <div class="logo-container">
 	            <div class="logo">
-	                <img src="img/logo.png"alt="logo">
+	                <img src="img/logo.png"alt="logo" style="width: 50%;">
 	            </div>
 	        </div>
 	    </a>

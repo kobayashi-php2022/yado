@@ -8,7 +8,7 @@
 <a href="">
 	         <div class="logo-container">
 	            <div class="logo">
-	                <img src="img/logo.png"alt="logo">
+	                <img src="img/logo.png"alt="logo" style="width: 50%;">
 	            </div>
 	        </div>
 	    </a>
@@ -29,15 +29,9 @@
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="navigation-doc">
 		<ul  class="nav navbar-nav navbar-right">
-        <li>
-				<a href="#">管理者画面TOP</a>
+            <li>
+				<a href="#">マイページ</a>
 			</li>
-			<li>
-                <a href="#">会員検索</a>
-            </li>
-			<li>
-                <a href="#">宿検索</a>
-            </li>
     	</ul>
 
     </div><!-- /.navbar-collapse -->
