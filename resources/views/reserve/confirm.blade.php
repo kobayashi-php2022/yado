@@ -1,16 +1,73 @@
-@extends('layouts.app')
+@extends('layouts.app2')
 
+@section('title', '新宿トラベル_ログイン画面')
 @section('content')
-    <h1>予約内容の確認</h1>
-    <p>こちらの内容で予約します。内容を確認したら「予約」ボタンを押してください。</p>
-    @include('commons/error_flash')
-    <hr>
-    <div class="create">
-        <form action="{{ route('orders.complete') }}" method="post">
+
+<body>
+	<div class="image-container set-full-height" style="background-image: url('img/wizard-city.jpg')">
+    <a href="">
+	         <div class="logo-container">
+	            <div class="logo">
+	                <img src="img/logo.png"alt="logo">
+	            </div>
+	        </div>
+	    </a>
+        
+    <body class="components-page2">
+
+    <nav class="navbar navbar-transparent navbar-fixed-top navbar-color-on-scroll" role="navigation">
+  <div class="container">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button id="menu-toggle" type="button" class="navbar-toggle" data-target="#navigation-doc">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar bar1"></span>
+        <span class="icon-bar bar2"></span>
+        <span class="icon-bar bar3"></span>
+      </button>
+
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="navigation-doc">
+		<ul  class="nav navbar-nav navbar-right">
+    <li>
+				<a href="#">TOPページへ</a>
+			</li>
+			<li>
+    	</ul>
+
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>
+
+	    <!--   Big container   -->
+	    <div class="container">
+	        <div class="row">
+		        <div class="col-sm-8 col-sm-offset-2">
+		            <div class="wizard-container">
+		                <div class="card wizard-card" data-color="purple" id="wizard">
+                            <div class="wizard-header">
+		                        	<h3 class="wizard-title">
+                                    予約内容
+		                        	</h3>
+		                    	</div>
+								<div class="wizard-navigation">
+									<ul>
+			                <li><a href="#details" data-toggle="tab">予約内容の確認</a></li>
+			                <li><a data-toggle="tab"></a></li>
+			            </ul>
+								</div><br><br>
+          <div class="cotainer">
+              <div class="b">
+          <h5 style="text-align:center;">こちらの内容で予約します。<br>内容を確認したら「予約」ボタンを押してください。</h5>
+            </div>
+            @include('commons/error_flash')
+          <form action="{{ route('orders.complete') }}" method="post">
             @csrf
-            <p>予約するプラン</p>
-            <table>
-                <tr>
+            <p style="margin-left:30px;">予約するプラン</p>
+            <table style="font-size: 16px; margin-left:30px;">
+            <tr>
                     <td>宿泊施設名</td>
                     <td>{{ $plan->hotel->name }}</td>
                     <input type="hidden" name="hotels_id" value="{{ $plan->hotels_id }}">
@@ -26,9 +83,9 @@
                 </tr>
             </table>
             <hr>
-            <p>予約者情報</p>
-            <table>
-                <tr>
+            <p style="margin-left:30px;">予約者情報</p>
+            <table style="margin-left:30px;">
+            <tr>
                     <td>お名前</td>
                     <td>:{{ Auth::user()->name }}</td>
                 </tr>
@@ -48,9 +105,9 @@
                 </tr>
             </table>
             <hr>
-            <p>予約内容</p>
-            <table>
-                <tr>
+            <p style="margin-left:30px;">予約内容</p>
+            <table style="margin-left:30px;">
+            <tr>
                     <td>チェックイン</td>
                     <td>{{ request('check_in') }}</td>
                     <input type="hidden" name="check_in" id="check_in" value="{{ request('check_in') }}">
@@ -70,10 +127,16 @@
                     <td>{{ request('room') }}部屋</td>
                     <input type="hidden" name="room" id="room" value="{{ request('room') }}">
                 </tr>
-            </table>
-            <input type="submit" value="予約">
+            <div style="text-align:center;">
+            <p><input type="submit" class="btn btn-primary" value="予約"></p>
+            </div>
         </form>
-    </div>
-    <hr>
-    <button type="button" onClick="history.back()">戻る</button>
+        <hr>
+    <a onClick="history.back()">　< 戻る</a>
+		                </div>
+		            </div> <!-- wizard container -->
+		        </div>
+	        </div> <!-- row -->
+	    </div> <!--  big container -->
+
 @endsection
