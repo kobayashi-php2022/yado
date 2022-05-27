@@ -22,7 +22,7 @@
                 </tr>
                 <tr>
                     <td>料金</td>
-                    <td>{{ $plan->price }}</td>
+                    <td>{{ $plan->price }}円</td>
                 </tr>
             </table>
             <hr>

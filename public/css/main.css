@@ -28,3 +28,65 @@
   width: 80px;
   text-align: center;
 }
+
+/*☆評価です*/
+/* 入力 */
+.rate-form {
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: flex-end;
+}
+.rate-form input[type=radio] {
+  display: none;
+}
+.rate-form label {
+  position: relative;
+  padding: 0 5px;
+  color: #ccc;
+  cursor: pointer;
+  font-size: 35px;
+}
+.rate-form label:hover {
+  color: #ffcc00;
+}
+.rate-form label:hover ~ label {
+  color: #ffcc00;
+}
+.rate-form input[type=radio]:checked ~ label {
+  color: #ffcc00;
+}
+
+/* 表示 */
+.star{
+  font-family: "Font Awesome 5 Free";
+  font-size: 15px;
+  color: #fc6530;
+}
+.star:before{
+  font-weight: 900;
+}
+.star:after{
+  font-weight: 400;
+}
+
+.star[data-rate="0"]:before{ content: ""; }
+.star[data-rate="1"]:before{ content: "\f005"; }
+.star[data-rate="2"]:before{ content: "\f005\f005"; }
+.star[data-rate="3"]:before{ content: "\f005\f005\f005"; }
+.star[data-rate="4"]:before{ content: "\f005\f005\f005\f005"; }
+.star[data-rate="5"]:before{ content: "\f005\f005\f005\f005\f005"; }
+
+.star[data-rate="0"]:after{ content: "\f005\f005\f005\f005\f005"; }
+.star[data-rate="1"]:after{ content: "\f005\f005\f005\f005"; }
+.star[data-rate="2"]:after{ content: "\f005\f005\f005"; }
+.star[data-rate="3"]:after{ content: "\f005\f005"; }
+.star[data-rate="4"]:after{ content: "\f005"; }
+.star[data-rate="5"]:after{ content: ""; }
+
+/* 口コミ */
+.box {
+  width: 500px;                /* 横幅を200pxに指定 */
+  height: 300px;               /* 横幅を200pxに指定 */
+  /* border: 1px solid #000;     */
+  overflow-y: scroll;          /* 縦方向にスクロール可能にする */
+}

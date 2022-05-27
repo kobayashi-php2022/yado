@@ -7,6 +7,7 @@ use App\Http\Controllers\OrderController;
 use App\Http\Controllers\HotelController;
 use App\Http\Controllers\PlanController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\CommentController;
 
 use Illuminate\Http\Request;
 
@@ -36,7 +37,8 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('/home', [HotelController::class,'index'])->name('home');
 
     //宿予約
-    Route::post('/create', [OrderController::class, 'create'])->name('orders.form.create');
+    // Route::get('/create', [OrderController::class, 'create'])->name('orders.form.create.get');
+    Route::get('/create/{plan}', [OrderController::class, 'create'])->name('orders.form.create');
     Route::post('/orders/confirm', [OrderController::class, 'confirm'])->name("orders.confirm");
     Route::post('/orders/complete', [OrderController::class, 'complete'])->name("orders.complete");
     
@@ -47,7 +49,8 @@ Route::group(['middleware' => ['auth']], function () {
     Route::resource('users', UserController::class);
     Route::resource('plans', PlanController::class);
     Route::resource('orders', OrderController::class);
-
+    Route::resource('comments', CommentController::class);
+    
     //管理者トップ
     Route::get('/admin', function () {
         return view('admin/top');
