@@ -25,15 +25,9 @@
                         <a href="{{ url('/home') }}">Home</a>
                     @else
                     <div  class="surr">
-<<<<<<< HEAD
-                        <p><a href="{{ route('login') }}">ログイン</a></p>
-                        @if (Route::has('register'))
-                        <p><a href="{{ route('register') }}">新規会員登録</a></p>
-=======
                         <p class="text-background-test02"><a href="{{ route('login') }}">ログイン</a></p>
                         @if (Route::has('register'))
                         <p class="text-background-test02"><a href="{{ route('register') }}">新規会員登録</a></p>
->>>>>>> main
                         @endif
                     </div>
                     @endauth

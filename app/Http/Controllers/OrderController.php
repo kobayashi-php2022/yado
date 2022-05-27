@@ -9,6 +9,8 @@ use App\Models\Plan;
 use App\Models\User;
 use Illuminate\Http\Request;
 
+use Illuminate\Support\Facades\Validator;
+
 class OrderController extends Controller
 {
     /**
@@ -49,8 +51,13 @@ class OrderController extends Controller
      */
     public function create(Request $request)
     {
+        // redirect('/dummy');
         // dd($request->search_rooms_num);
         $plan = Plan::where('id', '=', $request->plan_id)->first();
+        // リクエストじゃなくてurlのセグメントからとる?
+        // $plan = Plan::where('id', '=', Request::segment(2))->first();
+        // セッションにplan_idいれる??
+
         return view('reserve/create', ['plan' => $plan]);        
     }
 
@@ -125,14 +132,20 @@ class OrderController extends Controller
 		"tel" => "required",
 	];
 
-    public function confirm(Request $request)
+    public function confirm(Request $request, Hotel $hotel)
     {
-        // dd($request->hotel_name);
-        $this->validate($request, [
+        $validated = $request->validate([
             "num" => "required|min:1",
             "address" => "required|max:255",
             "tel" => "required|max:15",
         ]);
+        // if ($validated->fails()) {
+        //     return redirect()->route("orders.form.create.get", ['hotel' => $hotel]);
+        // }
+        // if ($validator->fails()) {
+        //     $test1 = $this->create($request);
+        //     return $test1;
+        // }
         $plan = Plan::where('id', '=', $request->plan_id)->first();
         return view("reserve/confirm", ['plan' => $plan]);
     }

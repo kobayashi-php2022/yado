@@ -163,6 +163,8 @@ return [
         'content' => 'プランの説明',
         'plan_name' => 'プラン名',
         'room_num' => '部屋数',
+        'num' => '宿泊人数',
+        'rate' => '評価',
     ],
 
 ];

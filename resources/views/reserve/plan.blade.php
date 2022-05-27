@@ -39,19 +39,24 @@
     @if (request('search_check_in') !== null && request('search_check_out') !== null && request('search_rooms_num') !== null) 
         {{-- チェックイン日のほうがチェックアウト日よりも前の日程であれば表示 --}}
         @if (request('search_check_in') < request('search_check_out'))
-            {{-- まだ空き部屋があれば予約ボタン表示 --}}
-            @if ($reserved_rooms_sum + request('search_rooms_num') <= $plan->rooms_num)
-                <p>この日程で予約できます。</p>
-                <form action="{{ route('orders.form.create') }}" method="post">
-                    @csrf
-                    <input type="hidden" name="plan_id" value="{{ $plan->id }}">
-                    <input type="hidden" name="search_check_in" value="{{ request('search_check_in') }}">
-                    <input type="hidden" name="search_check_out" value="{{ request('search_check_out') }}">
-                    <input type="hidden" name="search_rooms_num" value="{{ request('search_rooms_num') }}">
-                    <button type="submit">このプランを予約する</button>
-                </form>
+            {{-- 今日以降の日程であれば表示 --}}
+            @if (request('search_check_in') >= date('Y-m-d'))
+                {{-- まだ空き部屋があれば予約ボタン表示 --}}
+                @if ($reserved_rooms_sum + request('search_rooms_num') <= $plan->rooms_num)
+                    <p>この日程で予約できます。</p>
+                    <form action="{{ route('orders.form.create', $plan->id) }}" method="get">
+                        @csrf
+                        <input type="hidden" name="plan_id" value="{{ $plan->id }}">
+                        <input type="hidden" name="search_check_in" value="{{ request('search_check_in') }}">
+                        <input type="hidden" name="search_check_out" value="{{ request('search_check_out') }}">
+                        <input type="hidden" name="search_rooms_num" value="{{ request('search_rooms_num') }}">
+                        <button type="submit">このプランを予約する</button>
+                    </form>
+                @else
+                    <p>満室のためこの日程では予約できません。違う日程を選択してください。</p>
+                @endif
             @else
-                <p>この日程では予約できません。違う日程を選択してください。</p>
+                <p>チェックイン日は明日以降の日程を指定してください。</p>
             @endif
         @else
             <p>チェックアウト日はチェックイン日よりも後の日付を選択してください。</p>

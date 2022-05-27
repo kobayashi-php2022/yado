@@ -39,10 +39,10 @@ class CommentController extends Controller
      */
     public function store(Request $request, User $user, Hotel $hotel)
     {
-        // $this->validate($request, [
-        //     "nickname" => "required|max:255",
-        //     "star" => "required",
-        // ]);
+        $this->validate($request, [
+            "nickname" => "required|max:255",
+            "rate" => "required",
+        ]);
         Comment::create([
             'hotels_id' => $request->hotel_id,
             'user_id' => \Auth::id(),

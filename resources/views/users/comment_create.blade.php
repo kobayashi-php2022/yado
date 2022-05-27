@@ -2,7 +2,7 @@
 
 @section('content')
 <h1>口コミを投稿する</h1>
-
+@include('commons/error_flash')
 <form action="{{ route('comments.store') }}" method="post" id="comment-post-form">
     @csrf
     <p>
