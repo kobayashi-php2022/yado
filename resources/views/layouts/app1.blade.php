@@ -8,8 +8,8 @@
 
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 
-	<title>@yield('title') | {{ config('app.name') }}</title>
-	
+	<title>@yield('title')</title>
+
 	<meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
 
 	<!--     Fonts and icons     -->
@@ -76,24 +76,18 @@
 		}
 	</style>
 </head>
+	
+@yield('content')
 
-<body>
-    @include('commons.nav')
-    <main>
+    <footer class="footer footer-transparent footer-documentation">
         <div class="container">
-            @yield('content')
+            <div class="copyright">
+                &copy; yado4
+            </div>
         </div>
-    </main>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    </footer>
 
-<footer class="footer footer-transparent footer-documentation">
-    <div class="container">
-        <div class="copyright">
-            &copy; yado4
-        </div>
-    </div>
-</footer>
-
+</div>
 </body>
 
 	<!--   Core JS Files   -->
