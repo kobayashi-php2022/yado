@@ -7,6 +7,7 @@ use App\Http\Controllers\OrderController;
 use App\Http\Controllers\HotelController;
 use App\Http\Controllers\PlanController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\MemberController;
 use App\Http\Controllers\CommentController;
 
 use Illuminate\Http\Request;
@@ -56,8 +57,3 @@ Route::group(['middleware' => ['auth']], function () {
         return view('admin/top');
     });
 });
-
-// 行き場のないルーティングたち
-
-// Route::get('/index', [UserController::class,'index'])->name('mypage');
-//Route::post('/conf', function(Request $request){
