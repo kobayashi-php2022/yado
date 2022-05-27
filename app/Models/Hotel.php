@@ -33,6 +33,6 @@ class Hotel extends Model
     // comentsテーブルと一対多の関係
     public function comments() 
     { 
-        return $this->hasMany(Comment::class);
+        return $this->hasMany(Comment::class, 'hotels_id');
     }
 }
