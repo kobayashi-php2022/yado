@@ -92,6 +92,7 @@ class MemberController extends Controller
             'name' => $request->name,
             'address' => $request->address,
             'tel' => $request->tel,
+            'email' => $request->email,
         ]);
         return redirect(route('members.show',$member->id));
     }

@@ -4,7 +4,7 @@
 
 <form action="{{ route('members.index') }}" method="get">
     @csrf
-    <h1>会員情報を検索</h1>
+    <div class="p-3 mb-2 bg-secondary text-white">会員検索</div>
     <dl>
         <dt>ID検索：</dt>
         <dl><input type="number" name="id" id="id" min="1" max="300" value="{{ request('id') }}"></dl>
@@ -12,7 +12,7 @@
         <dl><input type="text" name="name" id="name" value="{{ request('name') }}"></dl>
         <p><input type="submit" value="検索"></p>
     </form>
-    <p>検索結果を表示</p>
+    <div class="p-3 mb-2 bg-secondary text-white">会員一覧</div>
     @foreach ($users as $member)
         <div class="info_index">
                 <table style="margin-left: 30px;">
