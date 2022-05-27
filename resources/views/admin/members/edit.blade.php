@@ -13,11 +13,11 @@
             </p>
             <p>
                 <label for="address">住所</label>
-                <input type="text" name="address" id="address" minlength="1" maxlength="100" value="{{ $user->address }}" required>
+                <input type="text" name="address" id="address" minlength="1" maxlength="100" value="{{ $user->address }}">
             </p>
             <p>
                 <label for="tel">電話番号</label>
-                <input type="tel" name="tel" id="tel" pattern="\d{1,5}-\d{1,4}-\d{4,5}" title="電話番号は、市外局番からハイフン（-）を入れて記入してください。" value="{{ $user->tel }}" required>
+                <input type="tel" name="tel" id="tel" pattern="\d{1,5}-\d{1,4}-\d{4,5}" title="電話番号は、市外局番からハイフン（-）を入れて記入してください。" value="{{ $user->tel }}">
             </p>
             <p>
                 <label for="email">メールアドレス</label>
