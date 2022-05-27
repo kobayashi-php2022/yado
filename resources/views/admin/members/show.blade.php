@@ -2,7 +2,6 @@
 
 @section('content')
 
-<h1>会員情報詳細</h1>
 <div class="p-3 mb-2 bg-secondary text-white">予約一覧</div>
  @if($user->orders->count()>0) 
     <?php $i=1;?>
@@ -31,7 +30,7 @@
             <td>部屋数</td>
             <td>{{ $order->room }}部屋</td>
         </tr>
-            <a href="#" onclick="deleteOrder()">この予約をキャンセルする</a>
+            <a href="#" onclick="deleteOrder()">この予約をキャンセル</a>
             <form action ="{{route('members.ruin',$order->id)}}" method="post" id="delete-form">
             @csrf
             @method('delete')
@@ -75,10 +74,10 @@
         <td>{{ $user->email }}</td>
     </tr>
     <tr>
-            <td><a href="{{ route('members.edit', $user) }}">編集する</a></td>
+            <td><a href="{{ route('members.edit', $user) }}">編集</a></td>
             </br>
             <td>
-            <a href="#" onclick="deleteUser()">この会員を退会させる</a>
+            <a href="#" onclick="deleteUser()">この会員を退会</a>
             <form action ="{{route('members.destroy',$user)}}" method="post" id="delete-form">
             @csrf
             @method('delete')
