@@ -1,4 +1,4 @@
-<!doctype html>
+{{-- <!doctype html>
 <html lang="ja">
 <head>
 	<meta charset="utf-8" />
@@ -197,8 +197,8 @@
     </script>
 
 </html>
+--}}
 
-<?php /*
 @extends('layouts.app')
 
 @section('content')
