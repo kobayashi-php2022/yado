@@ -2,46 +2,7 @@
 
 @section('title', '新宿トラベル_ログイン画面')
 @section('content')
-
-<body>
 	<div class="image-container set-full-height" style="background-image: url('img/wizard-city.jpg')">
-    <a href="">
-	         <div class="logo-container">
-	            <div class="logo">
-	                <img src="img/logo.png"alt="logo" style="width: 50%;">
-	            </div>
-	        </div>
-	    </a>
-        
-    <body class="components-page2">
-
-    <nav class="navbar navbar-transparent navbar-fixed-top navbar-color-on-scroll" role="navigation">
-  <div class="container">
-    <!-- Brand and toggle get grouped for better mobile display -->
-    <div class="navbar-header">
-      <button id="menu-toggle" type="button" class="navbar-toggle" data-target="#navigation-doc">
-        <span class="sr-only">Toggle navigation</span>
-        <span class="icon-bar bar1"></span>
-        <span class="icon-bar bar2"></span>
-        <span class="icon-bar bar3"></span>
-      </button>
-
-    </div>
-
-    <!-- Collect the nav links, forms, and other content for toggling -->
-    <div class="collapse navbar-collapse" id="navigation-doc">
-		<ul  class="nav navbar-nav navbar-right">
-    <li>
-				<a href="#">TOPページへ</a>
-			</li>
-			<li>
-    	</ul>
-
-    </div><!-- /.navbar-collapse -->
-  </div><!-- /.container-fluid -->
-</nav>
-
-	    <!--   Big container   -->
 	    <div class="container">
 	        <div class="row">
 		        <div class="col-sm-8 col-sm-offset-2">
@@ -91,9 +52,9 @@
               </div>
           </form>
 		                </div>
-		            </div> <!-- wizard container -->
+		            </div>
 		        </div>
-	        </div> <!-- row -->
-	    </div> <!--  big container -->
-
+	        </div>
+	    </div>
+      
 @endsection

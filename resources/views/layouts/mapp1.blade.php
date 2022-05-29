@@ -77,7 +77,7 @@
 	</style>
 </head>
 <body>
-	@include('commons.nav_kanri')
+	@include('commons.nav_member')
 	@yield('content')
 
     <footer class="footer footer-transparent footer-documentation">

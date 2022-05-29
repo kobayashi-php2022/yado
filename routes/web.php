@@ -66,7 +66,7 @@ Route::group(['middleware' => ['auth']], function () {
     Route::patch('/members/{member}', [MemberController::class,'update'])->name('members.update');
 
     Route::get('/', function () {
-        return view('admin/members/index');
+        return view('index');
     });
 
 });

@@ -1,54 +1,11 @@
-@extends('layouts.app1')
+@extends('layouts.mapp1')
 
 @section('title', '新宿トラベル_宿の詳細')
 @section('content')
 
-<body class="components-page">
-
-<a href="">
-	         <div class="logo-container">
-	            <div class="logo">
-	                <img src="img/logo.png"alt="logo" style="width: 50%;">
-	            </div>
-	        </div>
-	    </a>
-
-<nav class="navbar navbar-transparent navbar-fixed-top navbar-color-on-scroll" role="navigation">
-  <div class="container">
-    <!-- Brand and toggle get grouped for better mobile display -->
-    <div class="navbar-header">
-      <button id="menu-toggle" type="button" class="navbar-toggle" data-target="#navigation-doc">
-        <span class="sr-only">Toggle navigation</span>
-        <span class="icon-bar bar1"></span>
-        <span class="icon-bar bar2"></span>
-        <span class="icon-bar bar3"></span>
-      </button>
-
-    </div>
-
-    <!-- Collect the nav links, forms, and other content for toggling -->
-    <div class="collapse navbar-collapse" id="navigation-doc">
-		<ul  class="nav navbar-nav navbar-right">
-        <li>
-				<a href="#">マイページ</a>
-			</li>
-    	</ul>
-
-    </div><!-- /.navbar-collapse -->
-  </div><!-- /.container-fluid -->
-</nav>
-
+<div class="components-page">
 <div class="wrapper">
 	<div class="header header-filter" style="background-image: url('{{ \Storage::url($hotel->image) }}');">
-<!--これを適用させるには―――？？
-  <div class="header_image">
-    @if (!is_null($hotel->image))
-    <img src="{{ \Storage::url($hotel->image) }}" width="600" height="400">
-    @else
-    <img src="{{ \Storage::url('items/no_image.png') }}" width="400" height="400">
-    @endif
-</div>
--->
 		<div class="container">
         <div class="row">
 				<div class="col-md-6 col-md-offset-3 text-center">
@@ -143,8 +100,10 @@
 <a href="">　< 戻る</a>
             </div>
         </div>
+        </div>
     </div>
-    </div>
+</div>
+</div>
 
     <style>
         /* 追加 */

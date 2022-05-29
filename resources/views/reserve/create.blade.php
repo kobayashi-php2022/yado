@@ -1,28 +1,10 @@
-@extends('layouts.app2')
+@extends('layouts.mapp2')
 
 @section('title', '新宿トラベル_予約内容の入力')
 @section('content')
 
 	<div class="image-container set-full-height" style="background-image: url('img/wizard-book.jpg')">
-    <a href="">
-	         <div class="logo-container">
-	            <div class="logo">
-	                <img src="img/logo.png"alt="logo"style="width: 50%;">
-	            </div>
-	        </div>
-	    </a>
-    <body class="components-page2">
-
-<nav class="navbar navbar-transparent navbar-fixed-top navbar-color-on-scroll" role="navigation">
-  <div class="container">
-    <div class="navbar-header">
-      <button id="menu-toggle" type="button" class="navbar-toggle" data-target="#navigation-doc">
-        <span class="sr-only">Toggle navigation</span>
-        <span class="icon-bar bar1"></span>
-        <span class="icon-bar bar2"></span>
-        <span class="icon-bar bar3"></span>
-      </button>
-
+    <div class="components-page2">
     <h1>予約内容の入力</h1>
     <p>必要な情報を入力し、「次へ」ボタンを押してください。予約が完了すると宿泊契約が成立します。</p>
     @include('commons/error_flash')
@@ -211,11 +193,13 @@
                                     <hr>
                                     <a onClick="history.back()">　< 戻る</a>
 		                        </div>
-		                    </div> <!-- wizard container -->
+		                    </div> 
                         </div>
                     </div>
                 </div>
-	    	</div> <!-- row -->
-		</div> <!--  big container -->
-
-		@endsection
+                </div> 
+            </div>
+        </div> 
+        </div> 
+    </div> 
+@endsection

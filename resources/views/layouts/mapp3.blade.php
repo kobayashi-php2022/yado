@@ -27,9 +27,8 @@
 </head>
 
 <body>
-
+		@include('commons.nav_member')
 		@yield('content')
-
 
 	    <div class="footer">
 	        <div class="container text-center">

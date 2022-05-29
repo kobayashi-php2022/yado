@@ -25,7 +25,7 @@
 </head>
 
 <body>
-	@include('commons.nav_kanri')
+	@include('commons.nav_member')
 	@yield('content')
 
 	    <div class="footer">
