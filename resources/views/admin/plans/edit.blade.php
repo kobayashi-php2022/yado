@@ -67,7 +67,6 @@
 			                            	<div class="col-sm-12">
                                             <div class="create">
 			                                	<h4 class="info-text">宿泊施設の情報を更新してください</h4>
-                                                @include('commons/error_flash')
 			                            	</div>
                                         @include('commons/error_flash')
 

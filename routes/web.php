@@ -56,4 +56,17 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('/admin', function () {
         return view('admin/top');
     });
+
+    //管理者会員情報
+    Route::get('/members', [MemberController::class,'index'])->name('members.index');
+    Route::delete('/ruin/{id}', [MemberController::class,'ruin'])->name('members.ruin');
+    Route::delete('/members/{member}', [MemberController::class,'destroy'])->name('members.destroy');
+    Route::get('/members/{member}', [MemberController::class,'show'])->name('members.show');
+    Route::get('/members/{member}/edit', [MemberController::class,'edit'])->name('members.edit');
+    Route::patch('/members/{member}', [MemberController::class,'update'])->name('members.update');
+
+    Route::get('/', function () {
+        return view('admin/members/index');
+    });
+
 });
