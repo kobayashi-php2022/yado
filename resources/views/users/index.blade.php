@@ -103,6 +103,12 @@
                     }
                 </script>
             </form>
+        @else
+            <form action="{{ route('comments.create') }}" method="get">
+                @csrf
+                <input type="hidden" name="hotel_id" value="{{ $order->hotel->id }}">
+                <input type="submit" value="口コミを投稿する">
+            </form>
         @endif
         </div>
     @endforeach

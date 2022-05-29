@@ -83,32 +83,41 @@
         <td>メールアドレス</td>
         <td>{{ $hotel->email }}</td>
     </tr>
-    <tr>
-        <td>登録日</td>
-        <td>{{ $hotel->created_at }}</td>
-    </tr>
-    <tr>
-        <td>最終更新日</td>
-        <td>{{ $hotel->updated_at }}</td>
-    </tr>
-    </table>
-
-
-    <h2>プラン</h2>
-{{-- プラン検索 --}}
-{{-- <p>予約可能なプランを表示するには、日程と部屋数を入力してください</p>
-<form action="{{ route('hotels.show', $hotel->id) }}" method="get">
-    <dl style="margin-left: 30px;">
-        <dt>チェックイン日</dt>
-        <dd><input type="date" name="search_check_in" id="search_check_in" value="{{ request('search_check_in') }}"></dd>
-        <dt>チェックアウト日</dt>
-        <dd><input type="date" name="search_check_out" id="search_check_out" value="{{ request('search_check_out') }}"></dd>
-        <dt>部屋数</dt>
-        <dd><input type="number" name="search_rooms_num" id="search_rooms_num" value="{{ request('search_rooms_num') }}">部屋</dd>
-    </dl>
-    <input type="submit" value="検索">
+</table>
+<h3>口コミ</h3>
+@if(count($comments))
+<div class="box">
+    @foreach ($comments as $comment)
+        <table class="bg-light ml-4 m-2">
+            <tr>
+                <td>投稿日</td>
+                <td>{{ $comment->created_at }}</td>
+            </tr>
+            <tr>
+                @if(empty($comment->user->nickname))
+                    <td>名無しさん</td>
+                @else
+                    <td>{{ $comment->user->nickname }}さん</td>
+                @endif
+                <td><span class="star" data-rate="{{ $comment->star }}"></span></td>
+            </tr>
+            <tr>    
+                <td colspan="2">{!! nl2br(e($comment->comment)) !!}</td>
+            </tr>
+        </table>
+        @endforeach
+    </div>
+    @else
+        <p>口コミはまだありません。</p>
+    @endif
+    
+{{-- <form action="{{ route('comments.create') }}" method="get" class="ml-4">
+    @csrf
+    <input type="hidden" name="hotel_id" value="{{ $hotel->id }}">
+    <input type="submit" value="口コミを投稿する">
 </form> --}}
-{{-- プラン一覧・追加 --}}
+
+<h3>プラン</h3>
     @foreach ($plans as $plan)
     <div>
         <table style="margin-left: 30px; margin-top:30px;">
@@ -130,7 +139,6 @@
         <a href="{{ route('plans.show', $plan->id) }}"><button type="submit" lass='btn btn-primary' style="margin-left: 30px;">空き情報の確認</button></a>
     </div>
     @endforeach
-{{-- @endif --}}
 <hr>
 <a href="">　< 戻る</a>
             </div>
