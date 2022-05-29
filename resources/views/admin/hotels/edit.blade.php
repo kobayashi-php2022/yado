@@ -77,7 +77,7 @@
                                         <div class="b" style="text-align:center;">
                                         <button class="btn btn-danger" type="submit" ><a href="{{ route('hotels.show', $hotel->id) }}" style="color: white;">更新</a></button>
                                             </div>
-                                            <p><a href="#">< 戻る</a></p>
+                                            <p><a href="#" onclick="history.back(-1);return false;">< 戻る</a></p>
 		                                	</div>
 		                            	</div>
 		                            </div>

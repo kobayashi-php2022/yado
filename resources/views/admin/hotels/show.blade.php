@@ -107,7 +107,7 @@
 </form>
 {{-- @endif --}}
 <hr>
-<a href="">< 一覧に戻る</a>
+<a href="#" onclick="history.back(-1);return false;">< 一覧に戻る</a>
             </div>
             </div>
         </div>

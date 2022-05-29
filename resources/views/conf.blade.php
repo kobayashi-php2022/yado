@@ -2,65 +2,21 @@
 
 @section('title', '新宿トラベル_新規会員登録完了')
 @section('content')
-
-<body>
-	<div class="image-container set-full-height" style="background-image: url('img/wizard-profile.jpg')">
-    <a href="">
-	         <div class="logo-container">
-	            <div class="logo">
-	                <img src="logo.png"alt="logo" style="width: 50%;">
-	            </div>
-	        </div>
-	    </a>
-        
-    <body class="components-page2">
-
-    <nav class="navbar navbar-transparent navbar-fixed-top navbar-color-on-scroll" role="navigation">
-  <div class="container">
-    <!-- Brand and toggle get grouped for better mobile display -->
-    <div class="navbar-header">
-      <button id="menu-toggle" type="button" class="navbar-toggle" data-target="#navigation-doc">
-        <span class="sr-only">Toggle navigation</span>
-        <span class="icon-bar bar1"></span>
-        <span class="icon-bar bar2"></span>
-        <span class="icon-bar bar3"></span>
-      </button>
-
-    </div>
-
-    <!-- Collect the nav links, forms, and other content for toggling -->
-    <div class="collapse navbar-collapse" id="navigation-doc">
-		<ul  class="nav navbar-nav navbar-right">
-			<li>
-				<a href="#">TOPページへ</a>
-			</li>
-    	</ul>
-
-    </div><!-- /.navbar-collapse -->
-  </div><!-- /.container-fluid -->
-</nav>
-
-	    <!--   Big container   -->
 	    <div class="container">
 	        <div class="row">
 		        <div class="col-sm-8 col-sm-offset-2">
-		            <!--      Wizard container        -->
 		            <div class="wizard-container">
-		                <div class="card wizard-card" data-color="green" id="wizardProfile">
-
-		                    	<div class="wizard-header">
+		                <div class="card wizard-card" data-color="green" id="wizardProfile">		                    	<div class="wizard-header">
 		                        	<h3 class="wizard-title">
 		                        	  新規会員登録
 		                        	</h3>
 		                    	</div>
-                                
 								<div class="wizard-navigation">
-									<ul>
+									            <ul>
 			                            <li><a href="#about" data-toggle="tab">新規会員情報の確認</a></li>
 			                            <li><a href="#" data-toggle="tab"></a></li>
 			                        </ul>
 								</div>
-
 		                        <div class="tab-content">
                                 <br><p style="text-align: center; font-size:16px;">以下の内容でお間違いないでしょうか</p><br>
                                 <form action="{{route('complete')}}" method="POST">
@@ -95,19 +51,11 @@
                                     <input type="hidden" name="auth" value="会員">
                                 </form>		                
                               </div>
-		            </div> <!-- wizard container -->
+		            </div>
 		        </div>
-	        </div><!-- end row -->
-	    </div> <!--  big container -->
+	        </div>
+	    </div>
 
-	    <div class="footer">
-	        <div class="container text-center">
-            <div class="copyright">
-                &copy; yado4
-            </div>
-        </div>
-	</div>
-	</div>
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
                                     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
 
@@ -155,21 +103,6 @@
                                         }
                                     });
                                     </script>
-
-</body>
-
-	<!--   Core JS Files   -->
-    <script src="js/jquery-2.2.4.min.js" type="text/javascript"></script>
-	<script src="js/bootstrap.min.js" type="text/javascript"></script>
-	<script src="js/jquery.bootstrap.js" type="text/javascript"></script>
-
-	<!--  Plugin for the Wizard -->
-	<script src="js/material-bootstrap-wizard.js"></script>
-
-    <!--  More information about jquery.validate here: http://jqueryvalidation.org/	 -->
-	<script src="js/jquery.validate.min.js"></script>
-
-</html>
 @endsection
 
 <?php /*

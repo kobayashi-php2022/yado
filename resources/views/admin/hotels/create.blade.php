@@ -6,11 +6,8 @@
 	    <div class="container">
 	        <div class="row">
 		        <div class="col-sm-8 col-sm-offset-2">
-		            <!--      Wizard container        -->
 		            <div class="wizard-container">
 		                <div class="card wizard-card" data-color="red" id="wizard">
-		                <!--        You can switch " data-color="blue" "  with one of the next bright colors: "green", "orange", "red", "purple"             -->
-
 								<div class="wizard-navigation">
 									<ul>
 			                            <li><a href="#details" data-toggle="tab">新規宿泊施設の登録</a></li>
@@ -73,7 +70,7 @@
                                             <div class="b" style="text-align:center;">
                                             <button class="btn btn-danger btn-md" style="color: white;">新規登録</button>
                                             </div>
-                                            <p><a href="#">< 戻る</a></p>
+                                            <p><a href="#" onclick="history.back(-1);return false;">< 戻る</a></p>
                                             </div>
 		                            	</div>
 		                            </div>

@@ -1,6 +1,6 @@
 @extends('layouts.app1')
 
-@section('title', '新宿トラベル_宿詳細画面')
+@section('title', '新宿トラベル_会員情報')
 @section('content')
 
 <div class="components-page2">
@@ -40,7 +40,7 @@
             @endforeach
             {{ $users->appends(Request::all())->links('pagination::bootstrap-4') }}
                     <hr>
-                    <a href="">< 一覧に戻る</a>
+                    <a href="#" onclick="history.back(-1);return false;">< 一覧に戻る</a>
                                 </div>
                             </div>
                         </div>

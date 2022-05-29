@@ -38,9 +38,6 @@
         <li>
 				<a href="{{ route('reserve.index') }}">TOPページ</a>
 			</li>
-			<li>
-          <a href="{{ route('users.index') }}">マイページ</a>
-      </li>
     	</ul>
 
     </div>
@@ -94,7 +91,6 @@
                                         <div class="valid-feedback">O.K.</div>
                                         <div class="invalid-feedback">入力されたパスワードが一致しません。</div>
                                         <div class="row">
-                                    <div class="col-md-8 offset-md-3">
                                     @if($errors->count())
                                     <ul class="alert" style="color:red; font-size:12px;">
                                         @foreach($errors->all() as $error)
@@ -102,6 +98,7 @@
                                         @endforeach
                                     </ul>
                                     @endif
+                                    <div class="col-md-8 offset-md-3">
                                     <p><input type="submit" value="入力内容を確認" class="btn btn-success"></p><br>
                                     <p>または　<a href="{{route('login')}}">ログイン</a></p>
                                     </div>

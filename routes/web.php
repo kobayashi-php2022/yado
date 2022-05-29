@@ -65,8 +65,8 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('/members/{member}/edit', [MemberController::class,'edit'])->name('members.edit');
     Route::patch('/members/{member}', [MemberController::class,'update'])->name('members.update');
 
-    Route::get('/', function () {
-        return view('index');
-    });
+    Route::get('/reserve', [HotelController::class,'index'])->name('reserve.index');
+    Route::get('/reserve/{reserve}', [HotelController::class,'show'])->name('reserve.show');
+    Route::get('/reserve/{reserve}/edit', [HotelController::class,'edit'])->name('reserve.edit');
 
 });

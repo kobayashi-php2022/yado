@@ -1,6 +1,6 @@
-@extends('layouts.app3')
+@extends('layouts.mapp3')
 
-@section('title', '新宿トラベル_ログイン画面')
+@section('title', '新宿トラベル_ログイン')
 @section('content')
 	<div class="image-container set-full-height" style="background-image: url('img/wizard-city.jpg')">
 	    <div class="container">

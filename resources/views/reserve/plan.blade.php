@@ -85,7 +85,7 @@
                         @endif
                       </div>
                     <hr/>
-                    <a onClick="history.back()">　< 戻る</a>
+                    <a href="#" onclick="history.back(-1);return false;">　< 戻る</a>
                  </div>
             </div>
         </div>

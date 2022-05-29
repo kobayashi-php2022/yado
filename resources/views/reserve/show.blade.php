@@ -97,7 +97,7 @@
     </div>
     @endforeach
 <hr>
-<a href="">　< 戻る</a>
+<a href="#" onclick="history.back(-1);return false;">　< 戻る</a>
             </div>
         </div>
         </div>
