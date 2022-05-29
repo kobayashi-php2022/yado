@@ -1,6 +1,6 @@
 @extends('layouts.mapp2')
 
-@section('title', '新宿トラベル_宿情報の変更')
+@section('title', '新宿トラベル_口コミ投稿')
 @section('content')  
 	<div class="image-container set-full-height" style="background-image: url('img/wizard-book.jpg')">
 	    <div class="container">

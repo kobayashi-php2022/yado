@@ -1,6 +1,6 @@
 @extends('layouts.app3')
 
-@section('title', '新宿トラベル_新規会員登録完了')
+@section('title', '新宿トラベル_新規会員登録')
 @section('content')
 	    <div class="container">
 	        <div class="row">

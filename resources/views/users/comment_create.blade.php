@@ -1,6 +1,6 @@
 @extends('layouts.mapp2')
 
-@section('title', '新宿トラベル_口コミ')
+@section('title', '新宿トラベル_口コミ投稿')
 @section('content')
 <div class="container">
 	        <div class="row">

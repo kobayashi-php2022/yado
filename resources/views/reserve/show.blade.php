@@ -1,6 +1,6 @@
 @extends('layouts.mapp1')
 
-@section('title', '新宿トラベル_宿の詳細')
+@section('title', '新宿トラベル_宿の詳細情報')
 @section('content')
 
 <div class="components-page">

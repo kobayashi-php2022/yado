@@ -1,6 +1,6 @@
 @extends('layouts.mapp3')
 
-@section('title', '新宿トラベル_会員情報画面')
+@section('title', '新宿トラベル_会員情報の変更')
 @section('content')
 	    <div class="container">
 	        <div class="row">
