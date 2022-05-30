@@ -26,7 +26,6 @@ use Illuminate\Http\Request;
 
 Route::get('/', [HotelController::class,'index']);
 
-
 //ログイン・会員登録
 Route::get('/register', [RegisterController::class,'index'])->name('register');
 Route::post('/conf', [HomeController::class,'confirm'])->name('conf');
@@ -43,7 +42,7 @@ Route::group(['middleware' => ['auth']], function () {
     
     //リソースルーティング
     Route::resource('hotels', HotelController::class)->except([
-        'index', 'show'
+        'index', 'show',
     ]);
     Route::resource('users', UserController::class);
     Route::resource('plans', PlanController::class);

@@ -53,12 +53,14 @@ class HotelController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create(Hotel $hotel)
+
+    public function create(Request $request)
     {
-        //新規作成画面を表示
-        $this->authorize($hotel);
+        $this->authorize('create', Hotel::class);
         $hotel = new Hotel;
         $categories = Category::all();
+        // eagerロード？
+        // $hotel = Hotel::with('category')->where('category_id', $category->id)->first();
         return view('admin/hotels/create', ['hotel' => $hotel, 'categories' => $categories]);
     }
 
