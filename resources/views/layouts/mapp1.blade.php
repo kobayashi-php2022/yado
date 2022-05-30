@@ -3,8 +3,8 @@
 <head>
 	<meta charset="utf-8" />
 
-	<link rel="apple-touch-icon" sizes="76x76" href="/img/apple-icon.png" />
-	<link rel="icon" type="image/png" href="/img/favicon.ico" />
+	<link rel="apple-touch-icon" sizes="76x76" href="img/apple-icon.png" />
+	<link rel="icon" type="image/png" href="img/favicon.ico" />
 
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 
@@ -83,7 +83,7 @@
     <footer class="footer footer-transparent footer-documentation">
         <div class="container">
             <div class="copyright">
-                &copy; shinjuku toravel -2022
+                &copy; yado4
             </div>
         </div>
     </footer>
