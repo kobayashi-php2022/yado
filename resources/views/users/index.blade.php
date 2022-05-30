@@ -29,6 +29,7 @@
             </tr>
             <tr>
                 <td>ホテル名</td>
+                
                 <td>{{ $order->hotel->name }}</td>
             </tr>
             <tr>

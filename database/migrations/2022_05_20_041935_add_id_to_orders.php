@@ -14,12 +14,17 @@ class AddIdToOrders extends Migration
     public function up()
     {
         Schema::table('orders', function (Blueprint $table) {
-            $table->unsignedBigInteger('hotels_id');
             $table->unsignedBigInteger('user_id');
-            $table->foreign('user_id')->references('id')->on('users');
-            $table->foreign('hotels_id')->references('id')->on('hotels');
+            $table->foreign('user_id')->references('id')->on('users')
+                ->onUpdate('CASCADE')->onDelete('CASCADE');
+
+            $table->unsignedBigInteger('hotels_id');
+            $table->foreign('hotels_id')->references('id')->on('hotels')
+                ->onUpdate('CASCADE')->onDelete('CASCADE');
+                
             $table->unsignedBigInteger('plan_id');
-            $table->foreign('plan_id')->references('id')->on('plans');
+            $table->foreign('plan_id')->references('id')->on('plans')
+                ->onUpdate('CASCADE')->onDelete('CASCADE');
         });
     }
 

@@ -26,10 +26,10 @@ class HotelRequest extends FormRequest
     {
         return [
             'category' => 'required',
-            'name' => 'required',
-            'address' => 'required',
-            'email' => 'required',
-            'tel' => 'required',
+            'name' => 'required|max:255',
+            'address' => 'required|max:255',
+            'email' => 'required|max:255',
+            'tel' => 'required|max:255',
             'image' => 'file|mimes:jpeg,jpg,png|max:1600',            
         ];
     }

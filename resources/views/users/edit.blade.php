@@ -66,3 +66,4 @@
 	    </div>
 
 @endsection
+{{-- minlength="1" maxlength="100" --}}

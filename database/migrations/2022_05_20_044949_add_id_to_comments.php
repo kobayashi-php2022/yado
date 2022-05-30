@@ -14,8 +14,9 @@ class AddIdToComments extends Migration
     public function up()
     {
         Schema::table('comments', function (Blueprint $table) {
-            $table->unsignedBigInteger('hotels_id');
-            $table->foreign('hotels_id')->references('id')->on('hotels');
+            $table->unsignedBigInteger('hotels_id')->nullable();
+            $table->foreign('hotels_id')->references('id')->on('hotels')
+                ->onUpdate('SET NULL')->onDelete('SET NULL');
         });
     }
 

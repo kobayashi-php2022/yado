@@ -46,8 +46,8 @@
             <td>部屋数</td>
             <td>{{ $order->room }}部屋</td>
         </tr>
-            <a href="#" onclick="deleteOrder()" class='btn btn-success'>この予約をキャンセル</a>
-            <form action ="{{route('members.ruin',$order->id)}}" method="post" id="delete-form">
+            <a href="#" onclick="deleteOrder()">この予約をキャンセル</a>
+            <form action ="{{route('members.ruin',$order->id)}}" method="post" id="reserve-delete-form">
             @csrf
             @method('delete')
             </form>
@@ -55,7 +55,7 @@
                 function deleteOrder(){
                 event.preventDefault();
                 if(window.confirm('本当にキャンセルしますか？')){
-                    document.getElementById('delete-form').submit();
+                    document.getElementById('reserve-delete-form').submit();
                 }
                 }
             </script>
@@ -92,8 +92,8 @@
             <td><a href="{{ route('members.edit', $user) }}" class='btn btn-primary'>編集</a></td>
             </br>
             <td>
-            <a href="#" onclick="deleteUser()" class='btn'>この会員を退会</a>
-            <form action ="{{route('members.destroy',$user)}}" method="post" id="delete-form">
+            <a href="#" onclick="deleteUser()">この会員を退会</a>
+            <form action ="{{route('members.destroy',$user)}}" method="post" id="user-delete-form">
             @csrf
             @method('delete')
             </form>
@@ -101,7 +101,7 @@
                 function deleteUser(){
                 event.preventDefault();
                 if(window.confirm('本当に退会させますか？')){
-                    document.getElementById('delete-form').submit();
+                    document.getElementById('user-delete-form').submit();
                 }
                 }
             </script>

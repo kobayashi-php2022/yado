@@ -36,26 +36,26 @@
                                                 <select name="category" id="category">
                                                     <option value=""></option>
                                                     @foreach ($categories as $category)
-                                                        <option value="{{ $category->id }}" @if(request('category') == $category->id) selected @endif >
+                                                        <option value="{{ $category->id }}" @if(old('category') == $category->id) selected @endif >
                                                             {{ $category->name }}
                                                         </option>
                                                     @endforeach
                                                 </select>
                                             </p>            <p>
                                                 <label for="name">宿名：　　　　　</label>
-                                                <input type="text" name="name" id="name" value={{ request('name')}}>
+                                                <input type="text" name="name" id="name" value={{ old('name')}}>
                                             </p>
                                             <p>
                                                 <label for="address">住所：　　　　　</label>
-                                                <input type="text" name="address" id="address" value={{ request('text')}}>
+                                                <input type="text" name="address" id="address" value={{ old('text')}}>
                                             </p>
                                             <p>
                                                 <label for="email">メールアドレス：</label>
-                                                <input type="email" name="email" id="email" value={{ request('email')}}>
+                                                <input type="email" name="email" id="email" value={{ old('email')}}>
                                             </p>
                                             <p>
                                                 <label for="tel">電話番号：　　　</label>
-                                                <input type="tel" name="tel" id="tel" value={{ request('tel')}}>
+                                                <input type="tel" name="tel" id="tel" value={{ old('tel')}}>
                                             </p>
                                             {{-- 画像投稿 --}}
                                             <p>
@@ -78,6 +78,7 @@
 		                            	</div>
 		                            </div>
 		                        </div>
+                        
 		                    </form>
 		                </div>
 		            </div> 
