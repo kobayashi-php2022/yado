@@ -27,26 +27,26 @@
         <?php echo $i;
               $i++; ?>
         <tr>
-            <td>ホテル名</td>
+            <td>ホテル名：</td>
             <td>{{ $order->hotel->name }}</td>
         </tr>
         <tr>
-            <td>プラン名</td>
+            <td>プラン名：</td>
             <td>{{$order->plan->name}}</td>
         </tr>
         <tr>
-            <td>日程</td>
+            <td>日程：</td>
             <td>{{$order->check_in}} から {{$order->check_out}}</td>
         </tr>
         <tr>
-            <td>人数</td>
+            <td>人数：</td>
             <td>{{$order->num}}人</td>
         </tr>
         <tr>
             <td>部屋数</td>
             <td>{{ $order->room }}部屋</td>
         </tr>
-            <a href="#" onclick="deleteOrder()">この予約をキャンセル</a>
+            <a href="#" onclick="deleteOrder()" class='btn btn-success'>この予約をキャンセル</a>
             <form action ="{{route('members.ruin',$order->id)}}" method="post" id="delete-form">
             @csrf
             @method('delete')
@@ -59,7 +59,6 @@
                 }
                 }
             </script>
-        </tr>
     </table>
     </div>
     @endforeach
@@ -90,10 +89,10 @@
         <td>{{ $user->email }}</td>
     </tr>
     <tr>
-            <td><a href="{{ route('members.edit', $user) }}">編集</a></td>
+            <td><a href="{{ route('members.edit', $user) }}" class='btn btn-primary'>編集</a></td>
             </br>
             <td>
-            <a href="#" onclick="deleteUser()">この会員を退会</a>
+            <a href="#" onclick="deleteUser()" class='btn'>この会員を退会</a>
             <form action ="{{route('members.destroy',$user)}}" method="post" id="delete-form">
             @csrf
             @method('delete')
