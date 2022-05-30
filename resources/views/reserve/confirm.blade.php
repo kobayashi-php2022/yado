@@ -25,9 +25,9 @@
             @include('commons/error_flash')
           <form action="{{ route('orders.complete') }}" method="post">
             @csrf
-            <p style="margin-left:30px;">予約するプラン</p>
-            <table style="font-size: 16px; margin-left:30px;">
-            <tr>
+            <p>予約するプラン</p>
+            <table>
+                <tr>
                     <td>宿泊施設名</td>
                     <td>{{ $plan->hotel->name }}</td>
                     <input type="hidden" name="hotels_id" value="{{ $plan->hotels_id }}">
@@ -43,9 +43,9 @@
                 </tr>
             </table>
             <hr>
-            <p style="margin-left:30px;">予約者情報</p>
-            <table style="margin-left:30px;">
-            <tr>
+            <p>予約者情報</p>
+            <table>
+                <tr>
                     <td>お名前</td>
                     <td>:{{ Auth::user()->name }}</td>
                 </tr>
@@ -65,9 +65,9 @@
                 </tr>
             </table>
             <hr>
-            <p style="margin-left:30px;">予約内容</p>
-            <table style="margin-left:30px;">
-            <tr>
+            <p>予約内容</p>
+            <table>
+                <tr>
                     <td>チェックイン</td>
                     <td>{{ request('check_in') }}</td>
                     <input type="hidden" name="check_in" id="check_in" value="{{ request('check_in') }}">
@@ -87,9 +87,8 @@
                     <td>{{ request('room') }}部屋</td>
                     <input type="hidden" name="room" id="room" value="{{ request('room') }}">
                 </tr>
-            <div style="text-align:center;">
-            <p><input type="submit" class="btn btn-primary" value="予約"></p>
-            </div>
+            </table>
+            <input type="submit" value="予約">
         </form>
         <hr>
     <a href="#" onclick="history.back(-1);return false;">　< 戻る</a>

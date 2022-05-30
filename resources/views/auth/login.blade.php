@@ -34,11 +34,6 @@
                 <input type="password" id="password" class="form-control" name="password" placeholder="パスワード" required>
               </div>
             </div>
-            <br>
-            <div style="text-align: center;">
-              <p><input type="submit" value="ログイン" class='btn btn-primary'></p><br>
-              <p>または、<a href="{{route('register')}}">新規会員登録</a></p>
-              </div>
             <div class="row">
               <div class="col-md-8 offset-md-3">
               @if($errors->count())
@@ -48,6 +43,9 @@
                 @endforeach
             </ul>
             @endif
+              <p><input type="submit" value="ログイン" class="btn btn-secondary"></p><br>
+              <p>または</p>
+              <p><a href="{{route('register')}}">新規会員登録</a></p>
               </div>
               </div>
           </form>

@@ -19,11 +19,16 @@
         <div class="section">
         <div class="row">
             <div class="col-md-8 col-md-offset-1">
+
+{{-- <div class="header_image">
+    @if (!is_null($hotel->image))
+    <img src="{{ \Storage::url($hotel->image) }}" width="600" height="400">
+    @else
+    <img src="{{ \Storage::url('items/no_image.png') }}" width="400" height="400">
+    @endif
+</div> --}}
+<h1>{{ $hotel->name }}</h1>
 <table style="margin-left: 30px;">
-<tr>
-        <th>宿名</th>
-        <th>{{ $hotel->name }}</a></th>
-    </tr>
     <tr>
         <td>宿分類</td>
         <td>{{ $hotel->category->name }}</td>
@@ -93,7 +98,7 @@
                 <td>{{ $plan->price }}円</td>
             </tr>
         </table>
-        <a href="{{ route('plans.show', $plan->id) }}"><button type="submit" lass='btn btn-primary' style="margin-left: 30px;">空き情報の確認</button></a>
+        <a href="{{ route('plans.show', $plan->id) }}"><button type="submit" style="margin-left: 30px;">空き情報を確認する</button></a>
     </div>
     @endforeach
 <hr>

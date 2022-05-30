@@ -1,6 +1,5 @@
 @extends('layouts.mapp1')
 
-@section('title', '新宿トラベル_宿詳細画面')
 @section('content')
 <div class="components-page">
             <div class="wrapper">
@@ -170,6 +169,4 @@
     @endif
 <hr>
 <button type="button" onClick="history.back()">戻る</button>
---}}
-
 @endsection

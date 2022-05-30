@@ -1,6 +1,5 @@
 @extends('layouts.mapp1')
 
-@section('title', '新宿トラベル')
 @section('content')
 
 <div class="components-page2">
@@ -13,11 +12,14 @@
 			@csrf
 			<h2 style="color: white;">宿情報の検索</h2><br>
     <dl>
-        <dt><strong style="color: white; font-size:16px;">名前検索：</strong><input type="text" name="name" id="name" value="{{ request('name') }}"></dt><br>
+        <dt>名前検索：</dt>
+        <dl><input type="text" name="name" id="name" value="{{ request('name') }}"></dl>
 
-        <dt><strong style="color: white; font-size:16px;">住所検索：</strong><input type="text" name="address" id="address" value="{{ request('address') }}"></dt><br>
+        <dt>住所検索：</dt>
+        <dl><input type="text" name="address" id="address" value="{{ request('address') }}"></dl>
 
-        <dt><strong style="color: white; font-size:16px;">宿分類検索：</strong>
+        <dt>宿分類検索：</dt>
+        <dl>
             <select name="category" id="category">
                 <option value=""></option>
                 @foreach ($categories as $category)
@@ -26,25 +28,19 @@
                         {{ $category->name }}
                     </option>
                 @endforeach
-            </select></dt>            
-    </dl>
-        <button class="btn btn-primary btn-lg" type="submit">検索</button><br>   
-		</div>
-    </form>	
-			</div>
-		</div>
-	</div>
-    <div class="main main-raised">
-        <div class="section">
-        <div class="row">
-            <div class="col-md-8 col-md-offset-1">
-				<p>検索結果を表示</p>
+            </select>
+        </dl>
+
+        <p><input type="submit" value="検索"></p>
+    </form>
+    <hr>
+    <p>検索結果を表示</p>
     {{-- 宿データの一覧 --}}
     @foreach ($hotels as $hotel)
         <div class="info_index">
             {{-- 宿写真と宿詳細 --}}
             <div class="info" style="display:flex; margin:40px;">
-                @if ($hotel->image !== "")
+                @if (!is_null($hotel->image))
                 <img src="{{ \Storage::url($hotel->image) }}" width="100" height="100">
                 @else
                 <img src="{{ \Storage::url('items/no_image.png') }}" width="100" height="100">

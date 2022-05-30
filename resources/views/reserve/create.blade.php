@@ -1,6 +1,5 @@
 @extends('layouts.mapp2')
 
-@section('title', '新宿トラベル_予約内容の入力')
 @section('content')
 
 	    <div class="container">

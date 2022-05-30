@@ -1,6 +1,5 @@
 @extends('layouts.mapp1')
 
-@section('title', '新宿トラベル_マイページ')
 @section('content')
 
 <div class="components-page">
@@ -23,7 +22,7 @@
 @if($user->orders()->count()) 
     @foreach($orders as $order)
         <div class="container mt-2 mb-2 border rounded">
-        <table style="font-size: 14px;">
+        <table>
             <tr>
                 <td>予約日</td>
                 <td>{{ $order->created_at }}</td>
@@ -54,7 +53,7 @@
             </tr>
         </table>
         @if($order->check_in > date("Y-m-d"))
-            <a href="#" onclick="deleteOrder()"><button class="btn btn-secondary">この予約をキャンセルする</button></a>
+            <a href="#" onclick="deleteOrder()"><button>この予約をキャンセルする</button></a>
             <form action ="{{route('orders.destroy',$order)}}" method="post" id="order-delete-form">
                 @csrf
                 @method('delete')
@@ -81,40 +80,36 @@
 @else
     <p>現在予約しているプランはありません。</p>
 @endif 
-        </div>
-<hr/>
 
-<div class="p-3 mb-2 bg-secondary"><h5 style="font-weight: bold;">会員登録情報</h5></div>
+
+<div class="p-3 mb-2 bg-secondary text-white">会員登録情報</div>
 <div class="cotainer">
 <div class="row justify-content-center mt-5">
 <div class="col-md-8">
 <div class="card">
-<table>
-            <tr>
-                <td>会員ID：{{$user->id}}</td>
-            </tr>
-            <tr>
-                <td>お名前：{{$user->name}}</td>
-            </tr>
-            <tr>
-                <td>住所：{{$user->address}}</td>
-            </tr>
-            <tr>
-                <td>生年月日：{{$user->birth}}</td>
-            </tr>
-            <tr>
-                <td>電話番号：{{$user->tel}}</td>
-            </tr>
-            <tr>
-                <td>メールアドレス：{{$user->email}}</td>
-            </tr>
-        </table>
+                    <tr>
+                        <td><div class="card-header">会員ID：{{$user->id}}
+                            
+                            </div>
+                        </td>
+            <div class="card-body">
+    <td>お名前：{{$user->name}}<br></td>
+    <td>住所：{{$user->address}}<br></td>
+    <td>生年月日：{{$user->birth}}<br></td>
+    <td>電話番号：{{$user->tel}}<br></td>
+    <td>メールアドレス：{{$user->email}}</td>
+</tr>
+</div>
+        </div>
+        </div>
+        </div>
 <p class="text-center">
-        <a href="{{route('users.edit', $user->id)}}"><input type="submit" value="変更" class="btn btn-Primary"></a>
-                            <a href="#" onclick="deleteUser()"><input type="submit" value="退会" class="btn btn-secondary"></a>
+        <a href="{{route('users.edit', $user->id)}}"><input type="submit" value="変更" class="btn btn-secondary text-center"></a>
+                            <a href="#" onclick="deleteUser()"><input type="submit" value="退会" class="btn btn-secondary text-center"></a>
                             <form action ="{{route('users.destroy',$user)}}" method="post" id="delete-form">
                             @csrf
                             @method('delete')
+                            </form>
                                 <script type="text/javascript">
                                 function deleteUser(){
                                     event.preventDefault();

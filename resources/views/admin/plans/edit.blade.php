@@ -1,7 +1,24 @@
-@extends('layouts.app2')
+@extends('layouts.app')
 
-@section('title', '新宿トラベル_プラン情報の変更')
 @section('content')
+    <h1>宿泊施設の更新</h1>
+    {{-- 削除ボタン --}}
+    <p>
+        <a href="#" onclick="deletePlan()">削除する</a>
+        <form action="{{ route('plans.destroy', $plan) }}" method="post" id="plans-delete-form">
+            @csrf
+            @method('delete')
+        </form>
+        <script>
+            function deletePlan() {
+                event.preventDefault();
+                if (window.confirm('このプランにお客様の予約がある場合、自動的に削除されます。\r\n本当に削除しますか？')) {
+                    document.getElementById('plans-delete-form').submit();
+                }
+            }
+        </script>
+    </p>
+    @include('commons/error_flash')
 
 	<div class="image-container set-full-height" style="background-image: url('img/wizard-book.jpg')">
 	    <div class="container">
@@ -26,7 +43,7 @@
                                         @include('commons/error_flash')
 
                                         <div class="create">
-                                            <form action="" method="post" enctype="multipart/form-data">
+                                            <form action="{{ route('plans.update', $plan->id) }}" method="post" enctype="multipart/form-data">
                                                 @csrf
                                                 @method('patch')
                                                 <div class="col-mozi" style="margin-left:100px;">
