@@ -72,7 +72,7 @@
             <form action="{{ route('comments.create') }}" method="get">
                 @csrf
                 <input type="hidden" name="hotel_id" value="{{ $order->hotel->id }}">
-                <input type="submit" value="口コミを投稿する">
+                <input type="submit"class="btn btn-primary" value="口コミを投稿する">
             </form>
         @endif
         </div>
@@ -81,16 +81,11 @@
 @else
     <p>現在予約しているプランはありません。</p>
 @endif 
-        </div>
-<hr/>
 
 <div class="p-3 mb-2 bg-secondary"><h5 style="font-weight: bold;">会員登録情報</h5></div>
-<div class="cotainer">
-<div class="row justify-content-center mt-5">
-<div class="col-md-8">
-<div class="card">
-<table>
-            <tr>
+        <div class="container mt-2 mb-2 border rounded">
+        <table>
+        <tr>
                 <td>会員ID：{{$user->id}}</td>
             </tr>
             <tr>
@@ -109,8 +104,9 @@
                 <td>メールアドレス：{{$user->email}}</td>
             </tr>
         </table>
-<p class="text-center">
-        <a href="{{route('users.edit', $user->id)}}"><input type="submit" value="変更" class="btn btn-Primary"></a>
+        </div>
+        <p>
+        <a href="{{route('users.edit', $user->id)}}"><button type="submit"class="btn btn-primary">変更</button></a>
                             <a href="#" onclick="deleteUser()"><input type="submit" value="退会" class="btn btn-secondary"></a>
                             <form action ="{{route('users.destroy',$user)}}" method="post" id="delete-form">
                             @csrf
