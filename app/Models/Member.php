@@ -14,6 +14,7 @@ class Member extends Model
         'name', 
         'address',
         'tel',
+        'email'
     ];
 
     public function orders()

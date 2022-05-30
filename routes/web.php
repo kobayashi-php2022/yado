@@ -52,10 +52,11 @@ Route::group(['middleware' => ['auth']], function () {
     Route::resource('orders', OrderController::class);
     Route::resource('comments', CommentController::class);
     
+
     //管理者トップ
     Route::get('/admin', function () {
         return view('admin/top');
-    });
+    })->name('admin');
 
     //管理者会員情報
     Route::get('/members', [MemberController::class,'index'])->name('members.index');
@@ -64,4 +65,5 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('/members/{member}', [MemberController::class,'show'])->name('members.show');
     Route::get('/members/{member}/edit', [MemberController::class,'edit'])->name('members.edit');
     Route::patch('/members/{member}', [MemberController::class,'update'])->name('members.update');
+    
 });

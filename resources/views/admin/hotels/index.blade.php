@@ -196,6 +196,7 @@
         </div>
     @endforeach
 {{ $hotels->appends(Request::All())->links('pagination::bootstrap-4') }}
+<p><a href="{{route('admin')}}">管理者トップに戻る</a></p> 
             </div>
         </div>
     </div>
