@@ -26,7 +26,6 @@ use Illuminate\Http\Request;
 
 Route::get('/', [HotelController::class,'index']);
 
-
 //ログイン・会員登録
 Route::get('/register', [RegisterController::class,'index'])->name('register');
 Route::post('/conf', [HomeController::class,'confirm'])->name('conf');

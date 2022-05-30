@@ -53,6 +53,7 @@ class HotelController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
     public function create(Request $request)
     {
         $this->authorize('create', Hotel::class);

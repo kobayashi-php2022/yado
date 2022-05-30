@@ -141,7 +141,7 @@
                         </dl>
                         <button class="btn btn-primary btn-lg" type="submit">検索</button><br>
                     </form>	
-                    <a href="{{ route('hotels.create') }}" style="color: white;"><button class="btn btn-danger btn-sm">新規登録</button></a><br><br>
+                    <a href="{{ route('hotels.create' ) }}" style="color: white;"><button class="btn btn-danger btn-sm">新規登録</button></a><br><br>
                 </div>
 			</div>
 		</div>

@@ -135,11 +135,11 @@
                                             <p>
                                                 <textarea name="content" id="content" cols="30" rows="10"></textarea>
                                             </p> --}}
-                                            <input type="submit" value="登録">
 		                                	</div>
 		                            	</div>
 		                            </div>
 		                        </div>
+                        
 		                    </form>
 		                </div>
 		            </div> <!-- wizard container -->
