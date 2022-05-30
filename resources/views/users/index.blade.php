@@ -30,7 +30,6 @@
             </tr>
             <tr>
                 <td>ホテル名</td>
-                
                 <td>{{ $order->hotel->name }}</td>
             </tr>
             <tr>
@@ -91,7 +90,7 @@
 <div class="p-3 mb-2 bg-secondary"><h5 style="font-weight: bold;">会員登録情報</h5></div>
         <div class="container mt-2 mb-2 border rounded">
         <table class="table">
-        <tr>
+            <tr>
                 <td>会員ID：{{$user->id}}</td>
             </tr>
             <tr>
