@@ -1,11 +1,9 @@
 {{-- ロゴ --}}
-<a href="{{ route('reserve.index') }}">
 	         <div class="logo-container">
 	            <div class="logo">
-	                <img src="img/logo.png"alt="logo" style="width: 50%;">
+                    <a href="{{ route('reserve.index') }}"><img src="/img/logo.png"alt="logo" style="width: 50%;"></a>
 	            </div>
 	        </div>
-	    </a>
 
 {{-- メニュー --}}
       @if (Route::has('login'))

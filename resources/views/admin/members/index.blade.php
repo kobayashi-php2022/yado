@@ -58,8 +58,5 @@
                             table th{
                                 font-size:16px;
                             }
-                            dt {
-                                color: white;
-                            }
                         </style>
 @endsection

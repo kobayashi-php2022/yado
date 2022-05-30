@@ -20,11 +20,11 @@
 </head>
 
 <body>
-	<div class="image-container set-full-height" style="background-image: url('img/wizard-profile.jpg')">
+	<div class="image-container set-full-height" style="background-image: url('/img/wizard-profile.jpg')">
   <a href="{{ route('reserve.index') }}">
 	         <div class="logo-container">
 	            <div class="logo">
-	                <img src="img/logo.png"alt="logo" style="width: 50%;">
+	                <a href="{{ route('reserve.index') }}"><img src="/img/logo.png"alt="logo" style="width: 50%;"></a>
 	            </div>
 	        </div>
 	    </a>
@@ -117,7 +117,7 @@
 	    <div class="footer">
 	        <div class="container text-center">
             <div class="copyright">
-                &copy; yado4
+                &copy; shinjuku toravel -2022
             </div>
         </div>
 	</div>

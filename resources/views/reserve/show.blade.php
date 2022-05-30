@@ -93,7 +93,7 @@
                 <td>{{ $plan->price }}円</td>
             </tr>
         </table>
-        <a href="{{ route('plans.show', $plan->id) }}"><button type="submit" lass='btn btn-primary' style="margin-left: 30px;">空き情報の確認</button></a>
+        <a href="{{ route('plans.show', $plan->id) }}"><button type="submit" class='btn btn-primary' style="margin-left: 30px;">空き情報の確認</button></a>
     </div>
     @endforeach
 <hr>
