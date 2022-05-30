@@ -13,6 +13,7 @@
             </tr>
             <tr>
                 <td>ホテル名</td>
+                
                 <td>{{ $order->hotel->name }}</td>
             </tr>
             <tr>
@@ -79,7 +80,6 @@
             <div class="card-body">
     <td>お名前：{{$user->name}}<br></td>
     <td>住所：{{$user->address}}<br></td>
-    <td>生年月日：{{$user->birth}}<br></td>
     <td>電話番号：{{$user->tel}}<br></td>
     <td>メールアドレス：{{$user->email}}</td>
 </tr>

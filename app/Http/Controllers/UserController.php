@@ -80,6 +80,11 @@ class UserController extends Controller
      */
     public function update(Request $request, User $user)
     {
+        $this->validate($request,[
+            'name'=>'max:20',
+            'address'=>'max:100',
+            'email'=>'max:100',
+        ]);
         $user->update($request->all());
         return redirect(route('users.index',$user));
     }
