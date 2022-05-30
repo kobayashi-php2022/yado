@@ -9,6 +9,7 @@ use App\Http\Controllers\PlanController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\MemberController;
 use App\Http\Controllers\CommentController;
+use App\Http\Controllers\AdminController;
 
 use Illuminate\Http\Request;
 
@@ -51,9 +52,14 @@ Route::group(['middleware' => ['auth']], function () {
     
 
     //管理者トップ
-    Route::get('/admin', function () {
-        return view('admin/top');
-    })->name('admin');
+    Route::get('/admin', [AdminController::class,'index'])->name('admin');
+    // Route::get('/admin', function (Request $request) {
+    //     if ($request->user->auth !== '管理者') {
+    //         abort(403, '権限がありません');
+    //     }
+    //     return view('admin.top');
+    // })->name('admin');
+    
 
     //管理者会員情報
     Route::get('/members', [MemberController::class,'index'])->name('members.index');

@@ -15,8 +15,9 @@ class MemberController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(Request $request)
+    public function index(Request $request, User $user)
     {
+        $this->authorize($user);
         $query = Member::select('id','name');
 
         if($request->name) {
@@ -57,8 +58,9 @@ class MemberController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Member $member)
+    public function show(Member $member, User $user)
     {
+        $this->authorize($user);
         $orders = Order::with('user')->get();
         $user = Member::select('id','name','address','tel','email')->where('id', "=", $member->id)->first();
         return view('admin/members/show', ['user' => $user, 'orders' => $orders]);
@@ -72,6 +74,7 @@ class MemberController extends Controller
      */
     public function edit(Member $user)
     {
+        $this->authorize($user);
         $user_id = \Request::segment(2);
         $member = Member::find($user_id);
         return view('admin/members/edit', ['user' => $member]);
@@ -86,6 +89,7 @@ class MemberController extends Controller
      */
     public function update(Request $request, Member $user)
     {
+        $this->authorize($user);
         $user_id = \Request::segment(2);
         $member = Member::find($user_id);
         $member->update([
@@ -106,6 +110,7 @@ class MemberController extends Controller
     public function destroy(Member $user)
     {
         {
+            $this->authorize($user);
             $user_id = \Request::segment(2);
             $member = Member::find($user_id);
             $member->delete();
