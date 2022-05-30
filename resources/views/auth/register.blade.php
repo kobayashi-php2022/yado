@@ -43,7 +43,7 @@
             <div class="form-group row">
               <label for="password" class="col-md-3 col-form-label text-md-right"></label>
               <div class="col-md-6">
-                <input type="password" id="password" class="form-control" name="password" placeholder="パスワード" required>
+                <input type="password" id="password" class="form-control" minLength="8" name="password" placeholder="8文字以上のパスワード" required>
               </div>
             </div>
             <div class="form-group row">

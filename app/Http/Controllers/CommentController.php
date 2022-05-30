@@ -42,6 +42,7 @@ class CommentController extends Controller
         $this->validate($request, [
             "nickname" => "required|max:255",
             "rate" => "required",
+            "comment" => 'max:200',
         ]);
         Comment::create([
             'hotels_id' => $request->hotel_id,

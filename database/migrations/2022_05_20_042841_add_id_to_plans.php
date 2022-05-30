@@ -15,7 +15,8 @@ class AddIdToPlans extends Migration
     {
         Schema::table('plans', function (Blueprint $table) {
             $table->unsignedBigInteger('hotels_id');
-            $table->foreign('hotels_id')->references('id')->on('hotels');
+            $table->foreign('hotels_id')->references('id')->on('hotels')
+                ->onUpdate('CASCADE')->onDelete('CASCADE');
         });
     }
 
