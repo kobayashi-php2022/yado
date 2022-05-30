@@ -12,18 +12,18 @@
             </p>
             <p>
                 <label for="plan_name">プラン名</label>
-                <input type="text" name="plan_name" id="plan_name">
+                <input type="text" name="plan_name" id="plan_name" value="{{ old('plan_name') }}">
             </p>
             <p>
                 <textarea name="content" id="content" cols="30" rows="10" placeholder="プランの説明"></textarea>
             </p>
             <p>
                 <label for="price">料金</label>
-                <input type="number" name="price" id="price">円
+                <input type="number" name="price" id="price" value="{{ old('price') }}">円
             </p>
             <p>
                 <label for="rooms_num">部屋数</label>
-            <input type="number" name="rooms_num" id="rooms_num">
+            <input type="number" name="rooms_num" id="rooms_num" value="{{ old('rooms_num') }}">
             </p>
             <input type="submit" value="登録">
             <hr>

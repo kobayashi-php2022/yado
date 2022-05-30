@@ -168,6 +168,7 @@ return [
         'confirm-password' => 'パスワード確認',
         'nickname' => '投稿者名',
         'comment' => 'コメント',
+        'rooms_num' => '部屋数',
     ],
 
 ];
