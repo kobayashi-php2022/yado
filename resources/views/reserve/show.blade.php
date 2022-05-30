@@ -46,9 +46,12 @@
         <td>{{ $hotel->email }}</td>
     </tr>
 </table>
+
+<hr>
 <h3>口コミ</h3>
 @if(count($comments))
 <div class="box">
+    <hr>
     @foreach ($comments as $comment)
         <table class="bg-light ml-4 m-2">
             <tr>
@@ -67,6 +70,7 @@
                 <td colspan="2">{!! nl2br(e($comment->comment)) !!}</td>
             </tr>
         </table>
+        <hr>
         @endforeach
     </div>
     @else
@@ -79,6 +83,7 @@
     <input type="submit" value="口コミを投稿する">
 </form> --}}
 
+<hr>
 <h3>プラン</h3>
     @foreach ($plans as $plan)
     <div>

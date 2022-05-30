@@ -1,5 +1,6 @@
 @extends('layouts.mapp1')
 
+@section('title', '新宿トラベル マイページ')
 @section('content')
 
 <div class="components-page">
@@ -17,15 +18,15 @@
         <div class="section">
         <div class="row">
             <div class="col-md-8 col-md-offset-1">
-
+<hr>
 <div class="p-3 mb-2 bg-secondary"><h5 style="font-weight: bold;">予約履歴</h5></div>
 @if($user->orders()->count()) 
     @foreach($orders as $order)
         <div class="container mt-2 mb-2 border rounded">
         <table>
             <tr>
-                <td>予約日</td>
-                <td>{{ $order->created_at }}</td>
+                <td class="small">予約日時</td>
+                <td class="ml-2 small">{{ $order->created_at }}</td>
             </tr>
             <tr>
                 <td>ホテル名</td>
@@ -41,8 +42,11 @@
                 <td>{{ $order->plan->price }}円</td>
             </tr>
             <tr>
-                <td>日程</td>
-                <td>{{$order->check_in}} から {{$order->check_out}}</td>
+                <td rowspan="2">日程</td>
+                <td>チェックイン：{{$order->check_in}}</td>
+            </tr>
+            <tr>
+                <td>チェックアウト：{{$order->check_out}}</td>
             </tr>
             <tr>
                 <td>人数</td>
@@ -83,9 +87,10 @@
     <p>現在予約しているプランはありません。</p>
 @endif 
 
+<hr>
 <div class="p-3 mb-2 bg-secondary"><h5 style="font-weight: bold;">会員登録情報</h5></div>
         <div class="container mt-2 mb-2 border rounded">
-        <table>
+        <table class="table">
         <tr>
                 <td>会員ID：{{$user->id}}</td>
             </tr>
@@ -105,7 +110,7 @@
                 <td>メールアドレス：{{$user->email}}</td>
             </tr>
         </table>
-        </div>
+
         <p>
         <a href="{{route('users.edit', $user->id)}}"><button type="submit"class="btn btn-primary">変更</button></a>
         
@@ -121,7 +126,9 @@
             }
         }
         </script>
+</div>
 
+        <hr>
         <a href="#" onclick="deleteUser()"><input type="submit" value="退会" class="btn btn-secondary"></a>
         <form action ="{{route('users.destroy',$user)}}" method="post" id="delete-form">
             @csrf

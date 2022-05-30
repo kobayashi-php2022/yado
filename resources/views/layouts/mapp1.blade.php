@@ -21,6 +21,7 @@
     <link href="/css/material-bootstrap-wizard.css" rel="stylesheet"/>
 	<link href="/css/demo.css" rel="stylesheet" />
 	<link href="/css/main.css" rel="stylesheet" />
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous" />
 
     <script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js"></script>
 

@@ -58,22 +58,14 @@
                         <td>住所</td>
                         <td>{{ $hotel->address }}</td>
                     </tr>
-                    <tr>
+                    {{-- <tr>
                         <td>電話番号</td>
                         <td>{{ $hotel->tel }}</td>
                     </tr>
                     <tr>
                         <td>メールアドレス</td>
                         <td>{{ $hotel->email }}</td>
-                    </tr>
-                    <tr>
-                        <td>登録日</td>
-                        <td>{{ $hotel->created_at }}</td>
-                    </tr>
-                    <tr>
-                        <td>最終更新日</td>
-                        <td>{{ $hotel->updated_at }}</td>
-                    </tr>
+                    </tr> --}}
                 </table>
             </div>
         </div>
