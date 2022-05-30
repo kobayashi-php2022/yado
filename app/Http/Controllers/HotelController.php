@@ -53,7 +53,7 @@ class HotelController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Hotel $hotel)
     {
         //新規作成画面を表示
         $this->authorize($hotel);

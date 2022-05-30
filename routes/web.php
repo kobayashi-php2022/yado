@@ -25,9 +25,7 @@ use Illuminate\Http\Request;
 */
 
 Route::get('/', [HotelController::class,'index']);
-Route::resource('hotels', HotelController::class)->only([
-    'index', 'show'
-]);
+
 
 //ログイン・会員登録
 Route::get('/register', [RegisterController::class,'index'])->name('register');
@@ -67,3 +65,8 @@ Route::group(['middleware' => ['auth']], function () {
     Route::patch('/members/{member}', [MemberController::class,'update'])->name('members.update');
     
 });
+
+Route::resource('hotels', HotelController::class)->only([
+    'index', 'show'
+]);
+
