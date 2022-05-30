@@ -1,23 +1,8 @@
-@extends('layouts.app')
+@extends('layouts.app2')
 
+@section('title', '新宿トラベル_宿の詳細情報')
 @section('content')
-    <h1>宿泊施設の更新</h1>
-    {{-- 削除ボタン --}}
-    <p>
-        <a href="#" onclick="deletePlan()">削除する</a>
-        <form action="{{ route('plans.destroy', $plan) }}" method="post" id="plans-delete-form">
-            @csrf
-            @method('delete')
-        </form>
-        <script>
-            function deletePlan() {
-                event.preventDefault();
-                if (window.confirm('このプランにお客様の予約がある場合、自動的に削除されます。\r\n本当に削除しますか？')) {
-                    document.getElementById('plans-delete-form').submit();
-                }
-            }
-        </script>
-    </p>
+
     @include('commons/error_flash')
 
 	<div class="image-container set-full-height" style="background-image: url('/img/wizard-book.jpg')">
@@ -68,22 +53,22 @@
                                                 </p>
                                                 </div>
                                                 <div class="col-button" style="text-align:center;">
-                                                <button class="btn btn-danger" type="submit">更新</button>
-                                                {{-- 削除ボタン --}}
-                                            <button class="btn btn-default" onclick="deletePlan()">削除</button>
-                                                <form action="" method="post" id="plans-delete-form">
-                                                    @csrf
-                                                    @method('delete')
-                                                </form>
-                                                <script>
-                                                    function deletePlan() {
-                                                        event.preventDefault();
-                                                        if (window.confirm('このプランにお客様の予約がある場合、自動的に削除されます。\r\n本当に削除しますか？')) {
-                                                            document.getElementById('plans-delete-form').submit();
-                                                        }
-                                                    }
-                                                </script>
+                                                <input class="btn btn-danger" type="submit" value="更新">
                                             </form>
+                                            {{-- 削除ボタン --}}
+                                            <a href="#" onclick="deletePlan()" class="btn btn-default">削除</a>
+                                            <form action="{{ route('plans.destroy', $plan->id) }}" method="post" id="plans-delete-form">
+                                                @csrf
+                                                @method('delete')
+                                            </form>
+                                            <script>
+                                                function deletePlan() {
+                                                    event.preventDefault();
+                                                    if (window.confirm('このプランにお客様の予約がある場合、自動的に削除されます。\r\n本当に削除しますか？')) {
+                                                        document.getElementById('plans-delete-form').submit();
+                                                    }
+                                                }
+                                            </script>
                                             </div>
                                             </div>
                                             <br><a href="{{ route('hotels.show', $hotel->id) }}">　　< 戻る</a>

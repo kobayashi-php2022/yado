@@ -1,25 +1,19 @@
 @extends('layouts.mapp1')
-
+@section('title', '新宿トラベル')
 @section('content')
-
 <div class="components-page2">
 <div class="wrapper">
-	<div class="header header-filter" style="background-image: url('https://images.unsplash.com/photo-1423655156442-ccc11daa4e99?crop=entropy&dpr=2&fit=crop&fm=jpg&h=750&ixjsv=2.1.0&ixlib=rb-0.3.5&q=50&w=1450');">
-		<div class="container">
-			<div class="row">
+    <div class="header header-filter" style="background-image: url('https://images.unsplash.com/photo-1423655156442-ccc11daa4e99?crop=entropy&dpr=2&fit=crop&fm=jpg&h=750&ixjsv=2.1.0&ixlib=rb-0.3.5&q=50&w=1450');">
+        <div class="container">
+            <div class="row">
             <form action="{{ route('hotels.index') }}" method="get">
-				<div class="col-md-6 col-md-offset-3 text-center" style="background-color:rgba(255,255,255,0.25); text-shadow: 1px 1px 7px black;">
-			@csrf
-			<h2 style="color: white;">宿情報の検索</h2><br>
+                <div class="col-md-6 col-md-offset-3 text-center" style="background-color:rgba(255,255,255,0.25); text-shadow: 1px 1px 7px black;">
+            @csrf
+            <h2 style="color: white;">宿情報の検索</h2><br>
     <dl>
-        <dt>名前検索：</dt>
-        <dl><input type="text" name="name" id="name" value="{{ request('name') }}"></dl>
-
-        <dt>住所検索：</dt>
-        <dl><input type="text" name="address" id="address" value="{{ request('address') }}"></dl>
-
-        <dt>宿分類検索：</dt>
-        <dl>
+        <dt><strong style="color: white; font-size:16px;">名前検索：</strong><input type="text" name="name" id="name" value="{{ request('name') }}"></dt><br>
+        <dt><strong style="color: white; font-size:16px;">住所検索：</strong><input type="text" name="address" id="address" value="{{ request('address') }}"></dt><br>
+        <dt><strong style="color: white; font-size:16px;">宿分類検索：</strong>
             <select name="category" id="category">
                 <option value=""></option>
                 @foreach ($categories as $category)
@@ -28,24 +22,29 @@
                         {{ $category->name }}
                     </option>
                 @endforeach
-            </select>
-        </dl>
-
-        <p><input type="submit" value="検索"></p>
+            </select></dt>
+    </dl>
+        <button class="btn btn-primary btn-lg" type="submit">検索</button><br>
+        </div>
     </form>
-    <hr>
-    <p>検索結果を表示</p>
+            </div>
+        </div>
+    </div>
+    <div class="main main-raised">
+        <div class="section">
+        <div class="row">
+            <div class="col-md-8 col-md-offset-1">
+                <p>検索結果を表示</p>
     {{-- 宿データの一覧 --}}
     @foreach ($hotels as $hotel)
         <div class="info_index">
             {{-- 宿写真と宿詳細 --}}
             <div class="info" style="display:flex; margin:40px;">
-                @if (!is_null($hotel->image))
+                @if ($hotel->image !== "")
                 <img src="{{ \Storage::url($hotel->image) }}" width="100" height="100">
                 @else
                 <img src="{{ \Storage::url('items/no_image.png') }}" width="100" height="100">
                 @endif
-                
                 <table style="margin-left: 30px;">
                     <tr>
                         <th>宿名</th>
@@ -86,6 +85,4 @@
     </div>
     </div>
     </div>
-
-
 @endsection

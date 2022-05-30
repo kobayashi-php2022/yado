@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.app1')
 
 @section('title', '新宿トラベル_宿の詳細情報')
 @section('content')

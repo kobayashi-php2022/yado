@@ -24,8 +24,6 @@
     @foreach($user->orders as $order)
     <div class="container mt-2 mb-2">
     <table class="border rounded">
-        <?php echo $i;
-              $i++; ?>
         <tr>
             <td>ホテル名：</td>
             <td>{{ $order->hotel->name }}</td>
@@ -46,7 +44,7 @@
             <td>部屋数</td>
             <td>{{ $order->room }}部屋</td>
         </tr>
-            <a href="#" onclick="deleteOrder()">この予約をキャンセル</a>
+            <a href="#" onclick="deleteOrder()" class='btn btn-success'>この予約をキャンセル</a>
             <form action ="{{route('members.ruin',$order->id)}}" method="post" id="reserve-delete-form">
             @csrf
             @method('delete')
@@ -61,6 +59,7 @@
             </script>
     </table>
     </div>
+    <hr>
     @endforeach
 @else
     <p>現在予約しているプランはありません。</p>

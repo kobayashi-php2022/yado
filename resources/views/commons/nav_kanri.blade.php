@@ -18,6 +18,20 @@
 			<li>
                 <a href="{{ route('hotels.index') }}">宿検索</a>
             </li>
+            <li>
+                <a href="#" onclick="logoutUser()"><input type="submit" value="ログアウト" class="btn btn-secondary"></a>
+                <form action ="{{route('logout')}}" method="post" id="logout-form">
+                    @csrf
+                </form>
+                <script type="text/javascript">
+                function logoutUser(){
+                    event.preventDefault();
+                    if(window.confirm('ログアウトしますか？')){
+                    document.getElementById('logout-form').submit();
+                    }
+                }
+                </script>
+            </li>
     	</ul>
 
     </div><!-- /.navbar-collapse -->

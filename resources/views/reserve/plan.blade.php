@@ -62,7 +62,7 @@
                                 {{-- まだ空き部屋があれば予約ボタン表示 --}}
                                 @if ($reserved_rooms_sum + request('search_rooms_num') <= $plan->rooms_num)
                                     <p>この日程で予約できます。</p>
-                                    <form action="{{ route('orders.form.create') }}" method="post">
+                                    <form action="{{ route('orders.form.create', $plan->id) }}" method="get">
                                         @csrf
                                         <input type="hidden" name="plan_id" value="{{ $plan->id }}">
                                         <input type="hidden" name="search_check_in" value="{{ request('search_check_in') }}">

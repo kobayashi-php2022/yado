@@ -54,7 +54,7 @@
             </tr>
         </table>
         @if($order->check_in > date("Y-m-d"))
-            <a href="#" onclick="deleteOrder()"><button>この予約をキャンセルする</button></a>
+            <a href="#" onclick="deleteOrder()"><button class="btn btn-primary">この予約をキャンセルする</button></a>
             <form action ="{{route('orders.destroy',$order)}}" method="post" id="order-delete-form">
                 @csrf
                 @method('delete')
@@ -72,10 +72,11 @@
             <form action="{{ route('comments.create') }}" method="get">
                 @csrf
                 <input type="hidden" name="hotel_id" value="{{ $order->hotel->id }}">
-                <input type="submit"class="btn btn-primary" value="口コミを投稿する">
+                <input type="submit"class="btn btn-warning" value="口コミを投稿する">
             </form>
         @endif
         </div>
+        <hr>
     @endforeach
     {{ $orders->links('pagination::bootstrap-4') }}
 @else
@@ -107,21 +108,35 @@
         </div>
         <p>
         <a href="{{route('users.edit', $user->id)}}"><button type="submit"class="btn btn-primary">変更</button></a>
-                            <a href="#" onclick="deleteUser()"><input type="submit" value="退会" class="btn btn-secondary"></a>
-                            <form action ="{{route('users.destroy',$user)}}" method="post" id="delete-form">
-                            @csrf
-                            @method('delete')
-                            </form>
-                                <script type="text/javascript">
-                                function deleteUser(){
-                                    event.preventDefault();
-                                    if(window.confirm('本当に退会しますか？')){
-                                    document.getElementById('delete-form').submit();
-                                    }
-                                }
-                                </script>
-                                </p>
-            </div>
+        
+        <a href="#" onclick="logoutUser()"><input type="submit" value="ログアウト" class="btn btn-secondary"></a>
+        <form action ="{{route('logout')}}" method="post" id="logout-form">
+            @csrf
+        </form>
+        <script type="text/javascript">
+        function logoutUser(){
+            event.preventDefault();
+            if(window.confirm('ログアウトしますか？')){
+            document.getElementById('logout-form').submit();
+            }
+        }
+        </script>
+
+        <a href="#" onclick="deleteUser()"><input type="submit" value="退会" class="btn btn-secondary"></a>
+        <form action ="{{route('users.destroy',$user)}}" method="post" id="delete-form">
+            @csrf
+            @method('delete')
+        </form>
+        <script type="text/javascript">
+        function deleteUser(){
+            event.preventDefault();
+            if(window.confirm('本当に退会しますか？')){
+            document.getElementById('delete-form').submit();
+            }
+        }
+        </script>
+        </p>
+        </div>
         </div>
     </div>
     </div>

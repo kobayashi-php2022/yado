@@ -33,7 +33,8 @@ Route::post('/conf', [HomeController::class,'confirm'])->name('conf');
 Route::post('/complete', [HomeController::class,'complete'])->name('complete');
 
 Route::group(['middleware' => ['auth']], function () {
-    Route::get('/home', [HotelController::class,'index'])->name('home');
+    Route::get('/home', [AdminController::class,'index'])->name('home');
+    // Route::get('/logout', [Controller::class, 'logout']);
 
     //宿予約
     // Route::get('/create', [OrderController::class, 'create'])->name('orders.form.create.get');
@@ -63,11 +64,12 @@ Route::group(['middleware' => ['auth']], function () {
 
     //管理者会員情報
     Route::get('/members', [MemberController::class,'index'])->name('members.index');
-    Route::delete('/ruin/{id}', [MemberController::class,'ruin'])->name('members.ruin');
-    Route::delete('/members/{member}', [MemberController::class,'destroy'])->name('members.destroy');
     Route::get('/members/{member}', [MemberController::class,'show'])->name('members.show');
     Route::get('/members/{member}/edit', [MemberController::class,'edit'])->name('members.edit');
+    Route::delete('/ruin/{id}', [MemberController::class,'ruin'])->name('members.ruin');
+    Route::delete('/members/{member}', [MemberController::class,'destroy'])->name('members.destroy');
     Route::patch('/members/{member}', [MemberController::class,'update'])->name('members.update');
+
 
     Route::get('/reserve', [HotelController::class,'index'])->name('reserve.index');
     Route::get('/reserve/{reserve}', [HotelController::class,'show'])->name('reserve.show');

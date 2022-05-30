@@ -74,9 +74,11 @@ class MemberController extends Controller
      */
     public function edit(Member $user)
     {
+        $user = \Auth::user();
         $this->authorize($user);
         $user_id = \Request::segment(2);
         $member = Member::find($user_id);
+        // dd($member);
         return view('admin/members/edit', ['user' => $member]);
     }
 
@@ -87,8 +89,9 @@ class MemberController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Member $user)
+    public function update(Request $request, User $user)
     {
+        $user = \Auth::user();
         $this->authorize($user);
         $user_id = \Request::segment(2);
         $member = Member::find($user_id);
@@ -110,6 +113,7 @@ class MemberController extends Controller
     public function destroy(Member $user)
     {
         {
+            $user = \Auth::user();
             $this->authorize($user);
             $user_id = \Request::segment(2);
             $member = Member::find($user_id);

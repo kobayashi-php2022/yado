@@ -1,5 +1,6 @@
-@extends('layouts.app')
+@extends('layouts.app2')
 
+@section('title', '新宿トラベル_宿の詳細情報')
 @section('content')
  
 	<div class="image-container set-full-height" style="background-image: url('/img/wizard-book.jpg')">
@@ -66,7 +67,7 @@
                                             @endif
 
                                         </p>
-                                        <p>
+                                        {{-- <p>
                                             <label for="text">プラン名：</label>
                                             <input type="text" name="text" id="text">
                                         </p>

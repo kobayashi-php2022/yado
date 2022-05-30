@@ -22,6 +22,7 @@
 
 	<!-- CSS Just for demo purpose, don't include it in your project -->
 	<link href="/css/demo.css" rel="stylesheet" />
+	<link href="/css/main.css" rel="stylesheet" />
 </head>
 
 <body>

@@ -57,7 +57,7 @@
                                                 <tr>
                                                     <td>住所：</td>
                                                     {{-- 郵便番号での住所検索したい --}}
-                                                    <td><input type="text" name="address" id="address" value="{{ Auth::user()->address }}"></td>
+                                                    <td><input type="text" name="address" id="address" value="{{ Auth::user()->address }}" style="width:350px;"></td>
                                                 </tr>
                                                 <tr>
                                                     <td>電話番号：</td>
@@ -84,7 +84,7 @@
                                                 </tr>
                                                 <tr>
                                                     <td>宿泊人数：</td>
-                                                    <td><input type="number" name="num" id="num" value="{{ request('num') }}">人</td>
+                                                    <td><input type="number" name="num" id="num" value="{{ request('num') }}" style="width:4rem;">人</td>
                                                 </tr>
                                             </table>
                                             <div style="text-align:center;">
