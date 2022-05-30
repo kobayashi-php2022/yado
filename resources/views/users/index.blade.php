@@ -71,7 +71,7 @@
             <form action="{{ route('comments.create') }}" method="get">
                 @csrf
                 <input type="hidden" name="hotel_id" value="{{ $order->hotel->id }}">
-                <input type="submit" value="口コミを投稿する">
+                <input type="submit"class="btn btn-primary" value="口コミを投稿する">
             </form>
         @endif
         </div>
@@ -81,31 +81,32 @@
     <p>現在予約しているプランはありません。</p>
 @endif 
 
-
-<div class="p-3 mb-2 bg-secondary text-white">会員登録情報</div>
-<div class="cotainer">
-<div class="row justify-content-center mt-5">
-<div class="col-md-8">
-<div class="card">
-                    <tr>
-                        <td><div class="card-header">会員ID：{{$user->id}}
-                            
-                            </div>
-                        </td>
-            <div class="card-body">
-    <td>お名前：{{$user->name}}<br></td>
-    <td>住所：{{$user->address}}<br></td>
-    <td>生年月日：{{$user->birth}}<br></td>
-    <td>電話番号：{{$user->tel}}<br></td>
-    <td>メールアドレス：{{$user->email}}</td>
-</tr>
-</div>
+<div class="p-3 mb-2 bg-secondary"><h5 style="font-weight: bold;">会員登録情報</h5></div>
+        <div class="container mt-2 mb-2 border rounded">
+        <table>
+        <tr>
+                <td>会員ID：{{$user->id}}</td>
+            </tr>
+            <tr>
+                <td>お名前：{{$user->name}}</td>
+            </tr>
+            <tr>
+                <td>住所：{{$user->address}}</td>
+            </tr>
+            <tr>
+                <td>生年月日：{{$user->birth}}</td>
+            </tr>
+            <tr>
+                <td>電話番号：{{$user->tel}}</td>
+            </tr>
+            <tr>
+                <td>メールアドレス：{{$user->email}}</td>
+            </tr>
+        </table>
         </div>
-        </div>
-        </div>
-<p class="text-center">
-        <a href="{{route('users.edit', $user->id)}}"><input type="submit" value="変更" class="btn btn-secondary text-center"></a>
-                            <a href="#" onclick="deleteUser()"><input type="submit" value="退会" class="btn btn-secondary text-center"></a>
+        <p>
+        <a href="{{route('users.edit', $user->id)}}"><button type="submit"class="btn btn-primary">変更</button></a>
+                            <a href="#" onclick="deleteUser()"><input type="submit" value="退会" class="btn btn-secondary"></a>
                             <form action ="{{route('users.destroy',$user)}}" method="post" id="delete-form">
                             @csrf
                             @method('delete')

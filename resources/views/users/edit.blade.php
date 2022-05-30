@@ -1,7 +1,9 @@
-@extends('layouts.mapp3')
+@extends('layouts.mapp1')
 
-@section('title', '新宿トラベル_会員情報の変更')
+@section('title', '新宿トラベル')
 @section('content')
+
+<div class="image-container set-full-height" style="background-image: url('/img/wizard-profile.jpg')">
 	    <div class="container">
 	        <div class="row">
 		        <div class="col-sm-8 col-sm-offset-2">
@@ -12,12 +14,6 @@
                                     会員情報の変更
 		                        	</h3>
 		                    	</div>
-								<div class="wizard-navigation">
-									<ul>
-			                <li><a href="#details" data-toggle="tab">会員情報の変更</a></li>
-			                <li><a data-toggle="tab"></a></li>
-			            </ul>
-						</div><br><br>
           <div class="cotainer">
           <form action="{{route ('users.update', $user->id)}}" method="post">
         @method('patch')

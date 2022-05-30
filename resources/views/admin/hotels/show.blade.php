@@ -1,6 +1,8 @@
 @extends('layouts.app')
 
+@section('title', '新宿トラベル_宿の詳細情報')
 @section('content')
+
 
 <div class="components-page">
 <div class="wrapper">
@@ -135,5 +137,4 @@
             font-size:20px;
         }
 	</style>
-
 @endsection

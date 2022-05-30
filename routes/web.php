@@ -55,7 +55,7 @@ Route::group(['middleware' => ['auth']], function () {
     //管理者トップ
     Route::get('/admin', function () {
         return view('admin/top');
-    });
+    })->name('admin');
 
     //管理者会員情報
     Route::get('/members', [MemberController::class,'index'])->name('members.index');

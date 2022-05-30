@@ -1,15 +1,12 @@
-{{-- ロゴ --}}
-<a href="{{ route('reserve.index') }}">
-	         <div class="logo-container">
-	            <div class="logo">
-	                <img src="img/logo.png"alt="logo" style="width: 50%;">
-	            </div>
-	        </div>
-	    </a>
-
-{{-- メニュー --}}
       @if (Route::has('login'))
       <nav class="navbar navbar-transparent navbar-fixed-top navbar-color-on-scroll" role="navigation">
+      <a href="{{ route('reserve.index') }}">
+	         <div class="logo-container">
+	            <div class="logo">
+                    <img src="/img/logo.png"alt="logo" style="width: 50%;">
+	            </div>
+	        </div>
+          </a>
   <div class="container">
     <div class="collapse navbar-collapse" id="navigation-doc">
 		<ul  class="nav navbar-nav navbar-right">

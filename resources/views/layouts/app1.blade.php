@@ -3,8 +3,8 @@
 <head>
 	<meta charset="utf-8" />
 
-	<link rel="apple-touch-icon" sizes="76x76" href="img/apple-icon.png" />
-	<link rel="icon" type="image/png" href="img/favicon.ico" />
+	<link rel="apple-touch-icon" sizes="76x76" href="/img/apple-icon.png" />
+	<link rel="icon" type="/image/logo.png" href="/img/favicon.ico" />
 
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 
@@ -17,9 +17,9 @@
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" />
 
 	<!-- CSS Files -->
-    <link href="css/bootstrap.min.css" rel="stylesheet" />
-    <link href="css/material-bootstrap-wizard.css" rel="stylesheet"/>
-	<link href="css/demo.css" rel="stylesheet" />
+    <link href="/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="/css/material-bootstrap-wizard.css" rel="stylesheet"/>
+	<link href="/css/demo.css" rel="stylesheet" />
 
     <script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js"></script>
 
@@ -83,7 +83,7 @@
     <footer class="footer footer-transparent footer-documentation">
         <div class="container">
             <div class="copyright">
-                &copy; yado4
+                &copy; shinjuku toravel -2022
             </div>
         </div>
     </footer>
@@ -92,15 +92,15 @@
 </body>
 
 	<!--   Core JS Files   -->
-	<script src="../js/jquery-2.2.4.min.js" type="text/javascript"></script>
-	<script src="../js/bootstrap.min.js" type="text/javascript"></script>
-	<script src="../js/jquery.bootstrap.js" type="text/javascript"></script>
+	<script src="/js/jquery-2.2.4.min.js" type="text/javascript"></script>
+	<script src="/js/bootstrap.min.js" type="text/javascript"></script>
+	<script src="/js/jquery.bootstrap.js" type="text/javascript"></script>
 
 	<!--  Plugin for the Wizard -->
-	<script src="../js/material-bootstrap-wizard.js"></script>
+	<script src="/js/material-bootstrap-wizard.js"></script>
 
 	<!--  More information about jquery.validate here: http://jqueryvalidation.org/	 -->
-	<script src="../js/jquery.validate.min.js"></script>
+	<script src="/js/jquery.validate.min.js"></script>
 
     <script>
         var header_height;

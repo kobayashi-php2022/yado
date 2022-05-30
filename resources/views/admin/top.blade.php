@@ -98,16 +98,19 @@
 						<div class="card wizard-card2" data-color="purple">
 							<div class="row">
 								<div class="col-sm-4 col-sm-offset-2">
+								<a href="{{ route('hotels.index') }}">
 									<div class="choice" data-toggle="wizard-radio" rel="tooltip" title="宿を検索する">
-										<input type="radio" name="job" value="Design">
+										<input type="radio" name="job" value="Design" >
 										<div class="icon">
 											<i class="material-icons">rounded_corner</i>
 										</div>
 										<h6>宿検索</h6>
 									</div>
+								</a>
 								</div>
 
 								<div class="col-sm-4">
+								<a href="{{ route('members.index') }}">
 									<div class="choice" data-toggle="wizard-radio" rel="tooltip" title="会員を検索する">
 										<input type="radio" name="job" value="Code">
 										<div class="icon">
@@ -115,6 +118,7 @@
 										</div>
 										<h6>会員検索</h6>
 									</div>
+								</a>
 								</div>
 							</div>
 						</div>

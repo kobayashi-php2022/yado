@@ -1,26 +1,22 @@
-{{-- ロゴ --}}
-<a href="{{ route('admin.top') }}">
-	         <div class="logo-container">
-	            <div class="logo">
-	                <img src="img/logo.png"alt="logo" style="width: 50%;">
-	            </div>
-	        </div>
-	    </a>
 
-{{-- メニュー --}}
       @if (Route::has('login'))
       <nav class="navbar navbar-transparent navbar-fixed-top navbar-color-on-scroll" role="navigation">
+      <div class="logo-container">
+	            <div class="logo">
+	                <a href="{{ route('admin') }}"><img src="/img/logo.png"alt="logo" style="width: 50%;"></a>
+                </div>
+	        </div>
   <div class="container">
     <div class="collapse navbar-collapse" id="navigation-doc">
 		<ul  class="nav navbar-nav navbar-right">
         <li>
-				<a href="{{ route('admin.top') }}">管理者画面TOP</a>
+				<a href="{{ route('admin') }}">管理者画面TOP</a>
 			</li>
 			<li>
-                <a href="{{ route('admin.members.index') }}">会員検索</a>
+                <a href="{{ route('members.index') }}">会員検索</a>
             </li>
 			<li>
-                <a href="{{ route('admin.hotels.index') }}">宿検索</a>
+                <a href="{{ route('hotels.index') }}">宿検索</a>
             </li>
     	</ul>
 

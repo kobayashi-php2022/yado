@@ -30,19 +30,19 @@
 <h1>{{ $hotel->name }}</h1>
 <table style="margin-left: 30px;">
     <tr>
-        <td>宿分類</td>
+        <td>宿分類：</td>
         <td>{{ $hotel->category->name }}</td>
     </tr>
     <tr>
-        <td>住所</td>
+        <td>住所：</td>
         <td>{{ $hotel->address }}</td>
     </tr>
     <tr>
-        <td>電話番号</td>
+        <td>電話番号：</td>
         <td>{{ $hotel->tel }}</td>
     </tr>
     <tr>
-        <td>メールアドレス</td>
+        <td>メールアドレス：</td>
         <td>{{ $hotel->email }}</td>
     </tr>
 </table>
@@ -84,21 +84,21 @@
     <div>
         <table style="margin-left: 30px; margin-top:30px;">
             <tr>
-                <th>プラン名</th>
+                <th>プラン名：</th>
                 <th>
                     {{ $plan->name }}
                 </th>
             </tr>
             <tr>
-                <td>プランの説明</td>
+                <td>プランの説明：</td>
                 <td>{!! nl2br(e($plan->content)) !!}</td>
             </tr>
             <tr>
-                <td>料金</td>
+                <td>料金：</td>
                 <td>{{ $plan->price }}円</td>
             </tr>
         </table>
-        <a href="{{ route('plans.show', $plan->id) }}"><button type="submit" style="margin-left: 30px;">空き情報を確認する</button></a>
+        <a href="{{ route('plans.show', $plan->id) }}"><button type="submit" class='btn btn-primary' style="margin-left: 30px;">空き情報の確認</button></a>
     </div>
     @endforeach
 <hr>

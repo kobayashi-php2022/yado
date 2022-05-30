@@ -2,7 +2,7 @@
 
 @section('title', '新宿トラベル_ログイン')
 @section('content')
-	<div class="image-container set-full-height" style="background-image: url('img/wizard-city.jpg')">
+	<div class="image-container set-full-height" style="background-image: url('/img/wizard-city.jpg')">
 	    <div class="container">
 	        <div class="row">
 		        <div class="col-sm-8 col-sm-offset-2">
