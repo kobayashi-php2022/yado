@@ -36,9 +36,45 @@
             <div class="col-md-8 col-md-offset-1">
                 <p>検索結果を表示</p>
     {{-- 宿データの一覧 --}}
+    <div class="card-group" style="display: flex; overflow-x: auto; white-space: nowrap;">
     @foreach ($hotels as $hotel)
         <div class="info_index">
             {{-- 宿写真と宿詳細 --}}
+                <div class="card" style="width: 18rem;">
+                    @if (!is_null($hotel->image))
+                    <img src="{{ \Storage::url($hotel->image) }}" class="card-img-top" alt={{ $hotel->name }} style="width: 18rem; height: 12rem; object-fit: cover;">
+                    @else
+                    <img src="{{ \Storage::url('items/no_image.png') }}" class="card-img-top" alt={{ $hotel->name }} style="width: 18rem; height: 12rem; object-fit: cover;">
+                    @endif
+                    <div class="card-body">
+                    <h5 class="card-title">{{ $hotel->name }}</h5>
+                    <p class="card-text" style="height: 7rem; white-space: normal;">
+                        {{ $hotel->category->name }}<br>
+                        {{ $hotel->address }}
+                    </p>    
+                    @foreach($cheapest_plans as $value)
+                        @if(!is_null($value))
+                            @if($value['hotels_id'] == $hotel->id)
+                                <p>{{ $value['price'] }}円～</p>
+                            @endif
+                        @endif
+                    @endforeach
+                    <a href="{{ route('hotels.show', $hotel->id) }}" class="btn btn-primary">詳細へ</a>
+                    </div>
+                </div>
+            </div>
+    @endforeach
+    </div>
+    {{ $hotels->appends(Request::All())->links('pagination::bootstrap-4') }}
+    </div>
+    </div>
+    </div>
+    </div>
+    </div>
+    </div>
+@endsection
+
+{{--               
             <div class="info" style="display:flex; margin:40px;">
                 @if (!is_null($hotel->image))
                 <img src="{{ \Storage::url($hotel->image) }}" width="100" height="100">
@@ -58,14 +94,14 @@
                         <td>住所</td>
                         <td>{{ $hotel->address }}</td>
                     </tr>
-                    {{-- <tr>
+                    <tr>
                         <td>電話番号</td>
                         <td>{{ $hotel->tel }}</td>
                     </tr>
                     <tr>
                         <td>メールアドレス</td>
                         <td>{{ $hotel->email }}</td>
-                    </tr> --}}
+                    </tr>
                 </table>
             </div>
         </div>
@@ -77,4 +113,4 @@
     </div>
     </div>
     </div>
-@endsection
+@endsection --}}

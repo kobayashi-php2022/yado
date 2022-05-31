@@ -83,7 +83,7 @@
     <footer class="footer footer-transparent footer-documentation">
         <div class="container">
             <div class="copyright">
-                &copy; shinjuku toravel -2022
+                &copy; shinjuku travel -2022
             </div>
         </div>
     </footer>

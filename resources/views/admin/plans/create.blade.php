@@ -1,5 +1,6 @@
-@extends('layouts.app')
+@extends('layouts.app2')
 
+@section('title', '新宿トラベル_宿の詳細情報')
 @section('content')
 	<div class="image-container set-full-height" style="background-image: url('/img/wizard-book.jpg')">
 	    <div class="container">

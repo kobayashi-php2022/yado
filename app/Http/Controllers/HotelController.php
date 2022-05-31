@@ -32,7 +32,7 @@ class HotelController extends Controller
             $query->where('category_id', '=', $request->category);
         }
         //商品検索結果
-        $hotels = $query->orderBy('id')->paginate(10);
+        $hotels = $query->orderBy('id')->paginate(20);
 
         //予約可能件数の表示
         // $orders = Order::all();
@@ -44,7 +44,12 @@ class HotelController extends Controller
         if(\Auth::check() == true && \Auth::user()->auth == "管理者") {
             return view('admin/hotels/index', ['hotels' => $hotels, 'categories' => $categories]);
         } else {
-            return view('reserve/index', ['hotels' => $hotels, 'categories' => $categories]);
+            foreach($hotels as $hotel) {
+                // dd($hotel->id);
+                $cheapest_plans[] = Plan::with('hotel')->where('hotels_id', $hotel->id)->orderBy('price')->first();
+            }
+            // dd($cheapest_plans);
+            return view('reserve/index', ['hotels' => $hotels, 'categories' => $categories, 'cheapest_plans' => $cheapest_plans,]);
         }
     }
 

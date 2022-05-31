@@ -33,7 +33,7 @@
 	    <div class="footer">
 	        <div class="container text-center">
             <div class="copyright">
-                &copy; shinjuku toravel -2022
+                &copy; shinjuku travel -2022
             </div>
         </div>
 	</div>

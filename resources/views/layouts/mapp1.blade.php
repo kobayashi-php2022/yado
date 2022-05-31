@@ -85,7 +85,7 @@
     <footer class="footer footer-transparent footer-documentation">
         <div class="container">
             <div class="copyright">
-                &copy; yado4
+                &copy; shinjuku travel -2022
             </div>
         </div>
     </footer>
