@@ -29,9 +29,8 @@
     @endif
 </div>
 <p>
-    <a href="{{ route('hotels.edit', $hotel->id) }}">編集する</a>
-    |
-    <a href="#" onclick="deleteHotel()">削除する</a>
+    <a href="{{ route('hotels.edit', $hotel->id) }}" class="btn btn-primary">編集する</a>
+    <a href="#" onclick="deleteHotel()" class="btn btn-default">削除する</a>
     <form action="{{ route('hotels.destroy', $hotel) }}" method="post" id="hotels-delete-form">
         @csrf
         @method('delete')
@@ -83,7 +82,7 @@
 <form action="{{ route('plans.create') }}">
     @csrf
     <input type="hidden" name="hotel_id" value={{ $hotel->id }}>
-    <input type="submit" value="プランを追加する">
+    <input type="submit" value="プランを追加" class="btn btn-danger">
 </form>
 {{-- @endif --}}
 @foreach ($plans as $plan)
@@ -92,7 +91,7 @@
         <th>プラン名</th>
         <th>
             {{ $plan->name }}
-            <a href="{{ route('plans.edit', $plan->id) }}"><button>編集する</button></a>
+            <a href="{{ route('plans.edit', $plan->id) }}"><button class="btn btn-primary">編集する</button></a>
         </th>
     </tr>
     <tr>

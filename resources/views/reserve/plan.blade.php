@@ -75,7 +75,6 @@
                                     @else
                                         <p>
                                             満室です。違う日程を選択するか、別のプランを選んでください。<br>
-                                            残り部屋数：{{ $plan->rooms_num - $reserved_rooms_sum }}部屋
                                         </p>
                                     @endif
                                 @else

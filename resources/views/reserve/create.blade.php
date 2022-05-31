@@ -87,7 +87,7 @@
                                                     <td><input type="number" name="num" id="num" value="{{ request('num') }}" style="width:4rem;">人</td>
                                                 </tr>
                                             </table>
-                                            <div style="text-align:center;">
+                                            <div style="text-align:center; margin-left:-100px;">
                                             <p><input type="submit" class="btn btn-primary" value="次へ"></p>
                                             </div>
                                         </form>
@@ -102,7 +102,7 @@
                 </div> 
             </div>
         </div> 
-        </div> 
+         
    
 </div>
 @endsection

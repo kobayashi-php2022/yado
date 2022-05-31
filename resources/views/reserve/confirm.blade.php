@@ -90,7 +90,9 @@
                         <input type="hidden" name="room" id="room" value="{{ request('room') }}">
                     </tr>
                 </table>
-                <input type="submit" value="予約">
+                <div style="text-align: center; margin-left:-40px;">
+                    <input type="submit" value="予約" class="btn btn-primary">
+                </div>
             </div>
         </form>
         <hr>
