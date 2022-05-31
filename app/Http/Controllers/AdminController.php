@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Category;
 use App\Models\Hotel;
+use App\Models\Plan;
 
 use Illuminate\Http\Request;
 
@@ -21,7 +22,11 @@ class AdminController extends Controller
         } else {
             $hotels = Hotel::with('category')->paginate(10);
             $categories = Category::all();
-            return view('reserve/index', ['hotels' => $hotels, 'categories' => $categories]);
+            foreach($hotels as $hotel) {
+                // dd($hotel->id);
+                $cheapest_plans[] = Plan::with('hotel')->where('hotels_id', $hotel->id)->orderBy('price')->first();
+            }
+            return view('reserve/index', ['hotels' => $hotels, 'categories' => $categories, 'cheapest_plans' => $cheapest_plans,]);
         }
     }
 
