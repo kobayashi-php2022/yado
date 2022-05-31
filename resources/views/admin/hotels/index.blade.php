@@ -46,7 +46,7 @@
         <div class="info_index">
             {{-- 宿写真と宿詳細 --}}
             <div class="info" style="display:flex; margin:40px;">
-                @if ($hotel->image)
+                @if (!is_null($hotel->image))
                     <img src="{{ \Storage::url($hotel->image) }}" width="100" height="100">
                 @else
                     <img src="{{ url('/img/no_image.png') }}" width="100" height="100">
@@ -93,5 +93,3 @@
     </div>
 </div>
 @endsection
-
-http://127.0.0.1:8000/storage/

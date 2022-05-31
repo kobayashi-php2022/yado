@@ -2,6 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Category;
+use App\Models\Hotel;
+
 use Illuminate\Http\Request;
 
 class AdminController extends Controller
@@ -16,7 +19,9 @@ class AdminController extends Controller
         if(\Auth::check() == true && \Auth::user()->auth == "管理者") {
             return view('admin.top');
         } else {
-            return view('admin.error');
+            $hotels = Hotel::with('category')->paginate(10);
+            $categories = Category::all();
+            return view('reserve/index', ['hotels' => $hotels, 'categories' => $categories]);
         }
     }
 

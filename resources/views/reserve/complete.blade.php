@@ -2,6 +2,7 @@
 
 @section('title', '新宿トラベル_予約完了')
 @section('content')
+<div class="image-container set-full-height" style="background-image: url('/img/wizard-book.jpg')">
 	    <div class="container">
 	        <div class="row">
 		        <div class="col-sm-8 col-sm-offset-2">
@@ -21,6 +22,6 @@
 		        </div>
 	        </div>
             </div>
-	    </div>
-
+	    
+</div>
 @endsection
